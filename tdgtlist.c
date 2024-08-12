@@ -1039,7 +1039,8 @@ TdgtList *CreateTdgtList(parent_win, parent_tidgetinfo, ctl_id, x, y, w, h_pad,
       v_pad, num_visible_lines, can_select, multicolor, auto_scroll_on_insert)
    Window parent_win;
    TidgetInfo *parent_tidgetinfo;
-   int ctl_id, x, y, w, h_pad, v_pad, num_visible_lines, auto_scroll_on_insert;
+   int ctl_id, x, y, w, h_pad, v_pad, num_visible_lines, can_select,
+   	multicolor, auto_scroll_on_insert;
 {
    int bg_pixel=(threeDLook ? myLtGryPixel : myBgPixel), h=0, content_h=0;
    TdgtList *pTdgtList=NULL;

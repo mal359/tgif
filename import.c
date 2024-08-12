@@ -1372,7 +1372,7 @@ int ConvertGifToPpm6(pszGifPath, pszPpm6Path, ppm6_path_sz)
 static
 int FinishImport(remote_file, remote_tmp_fname, local_fname, which, pn_image_w,
       pn_image_h)
-   int remote_file, *pn_image_w, *pn_image_h;
+   int remote_file, which, *pn_image_w, *pn_image_h;
    char *remote_tmp_fname, *local_fname;
 {
    char xpm_fname[MAXPATHLENGTH+1], *rest=NULL, *psz_format=NULL;

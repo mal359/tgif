@@ -4724,6 +4724,7 @@ int LoadFile(FullName, ObjFile, GzippedObjFile)
    int ObjFile; /* equals TRUE if the file is an OBJ file */
                 /* equals FALSE if the file is a SYM or PIN file */
                 /* equals -1 if the file is an temporary OBJ file */
+   int GzippedObjFile;
 {
    struct ObjRec *obj_ptr=NULL;
    char tmp_filename[MAXPATHLENGTH+1], tmp_filefullpath[MAXPATHLENGTH+1];

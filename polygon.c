@@ -1007,7 +1007,7 @@ void ContinueForStructSplinePolygonControlPoints(OrigX, OrigY, LastX, LastY,
 static
 void EraseStructSplineLinesForContAndUpdateSvs(OrigX, OrigY, grid_x, grid_y,
       pev, num_pts, psv, sn, psv2, sn2, pipt_prev, pipt_first)
-   int OrigX, OrigY, grid_x, grid_y, sn, sn2;
+   int OrigX, OrigY, grid_x, grid_y, num_pts, sn, sn2;
    XEvent *pev;
    XPoint **psv, **psv2;
    IntPointTriplet *pipt_prev, *pipt_first;

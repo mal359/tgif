@@ -37,7 +37,7 @@
 
 void DumpRectPath(FP, LtX, LtY, RbX, RbY, Indent, LastLF)
    FILE *FP;
-   int LtX, LtY, RbX, RbY, Indent;
+   int LtX, LtY, RbX, RbY, Indent, LastLF;
 {
    register int i;
 

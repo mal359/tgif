@@ -152,7 +152,8 @@ int TgPressButtonLoop(dpy, win, pbbox, psbci)
 
 int TgGetScrollHit(x, y, orientation, scroll_area_w, scroll_area_h,
       start_frac, length, total, pn_btn_offset)
-   int x, y, scroll_area_w, scroll_area_h, length, total, *pn_btn_offset;
+   int x, y, orientation, scroll_area_w, scroll_area_h, length, total,
+   	*pn_btn_offset;
    double start_frac;
 {
    int block_start=0, block_size=0, min_block_size=1+(windowPadding<<1);
@@ -210,7 +211,7 @@ void TgDrawScrollBar(dpy, win, orientation, x_off, y_off, scroll_area_w,
       scroll_area_h, start_frac, length, total)
    Display *dpy;
    Window win;
-   int x_off, y_off, scroll_area_w, scroll_area_h, length, total;
+   int orientation, x_off, y_off, scroll_area_w, scroll_area_h, length, total;
    double start_frac;
 {
    int block_start=0, block_size=0, min_block_size=1+(windowPadding<<1);

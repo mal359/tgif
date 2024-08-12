@@ -4247,7 +4247,7 @@ void SizeAnObj(ObjPtr, TopOwner, AbsW, AbsH)
 
 static
 void DoSizeAllSelToGivenWidthHeight(abs_w, abs_h, do_width, do_height)
-   int abs_h, do_width, do_height;
+   int abs_w, abs_h, do_width, do_height;
 {
    struct SelRec *saved_top_sel=topSel, *saved_bot_sel=botSel, *sel_ptr=NULL;
    int saved_h_align=horiAlign, saved_v_align=vertAlign, num_to_resize=0;

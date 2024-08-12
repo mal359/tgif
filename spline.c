@@ -795,7 +795,7 @@ typedef struct MultiSplineRec {
 } *MultiSplineRecPtr;
 
 XPoint *MakeMultiSplinePolyVertex(Curved, N, Smooth, XOff, YOff, NumVs, Vs)
-   int *N, XOff, YOff, NumVs;
+   int Curved, *N, XOff, YOff, NumVs;
    char *Smooth;
    IntPoint *Vs;
 {

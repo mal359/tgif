@@ -510,6 +510,7 @@ void DrawHRuleTick(XOff)
 
 static
 void DrawVRuleTick(YOff)
+    int YOff;
 {
    XDrawLine(mainDisplay, vRuleWindow, revDefaultGC, 0, YOff, rulerLen, YOff);
 }

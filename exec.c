@@ -517,6 +517,7 @@ int AppendToTmpStr(psz)
 
 int AppendToTmpStr2(psz1, psz2, tg2)
    char *psz1, *psz2;
+   int tg2;
 {
    int len1=strlen(psz1), len2=strlen(psz2), rc=0;
    char *psz=(char*)malloc((len1+len2+1)*sizeof(char));

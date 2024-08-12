@@ -491,7 +491,7 @@ TdgtBtn *CreateTdgtBtn(parent_win, parent_tidgetinfo, ctl_id, x, y, w, h, h_pad,
       v_pad, btn_type, btn_style, state, font_style, str, pmosi)
    Window parent_win;
    TidgetInfo *parent_tidgetinfo;
-   int ctl_id, x, y, w, h, h_pad, v_pad, state, font_style;
+   int ctl_id, x, y, w, h, h_pad, v_pad, btn_type, btn_style, state, font_style;
    char *str;
    MouseOverStatusInfo *pmosi;
 {
