@@ -1182,6 +1182,18 @@ int InitAntiAlias()
    return TRUE;
 }
 
+void InitTgifDir() {
+   char *c_ptr=NULL;
+   if ((c_ptr=getenv("HOME")) == NULL) {
+      strcpy(homeDir, DIR_SEP_STR);
+   } else if (strlen(c_ptr) >= MAXPATHLENGTH-1) {
+      strcpy(homeDir, DIR_SEP_STR);
+   } else {
+      strcpy(homeDir, c_ptr);
+   }
+   sprintf(tgifDir, "%s%c.%s", homeDir, DIR_SEP, TOOL_NAME);
+}
+
 void Setup()
 {
    int bitmask=0, x_neg_in_def=FALSE, y_neg_in_def=FALSE;

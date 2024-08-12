@@ -345,6 +345,7 @@ void DoPrTgif(argc, argv, from_prtgif)
       argc--; argv++;
    }
    InitPaperSize();
+   InitTgifDir();
    InitTmpDir();
    InitPatFill();
    if (PRTGIF && !cmdLineOpenDisplay) {

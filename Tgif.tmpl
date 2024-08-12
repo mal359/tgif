@@ -52,7 +52,10 @@ MISCDEFINES	= -D_BACKGROUND_DONT_FORK -D_USE_XDRAWPOINT_TO_PUT_A_POINT \@@\
 		  -D_DONT_REENCODE=\"FFDingbests:ZapfDingbats\" \@@\
 		  -DDEFATTRGROUP=\"TANGRAM-II:Declaration:Events:Messages:Rewards:Initialization:Watches\" \@@\
 		  -D_NO_NKF -D_NO_CHINPUT -D_NO_XCIN \@@\
-		  -DUSE_XT_INITIALIZE -DPTHREAD
+		  -DUSE_XT_INITIALIZE -DPRINT_CMD=\"lpr\" \@@\
+		  -D_TMP_DIR_IN_HOME_DIR -DPTHREAD
+XCOMM		  -DUSE_XAPPLRESDIR \@@\
+XCOMM		  -DXAPPLOADDIR_DEF=\"/usr/X11R6/lib/X11/app-defaults\" \@@\
 MOREDEFINES	=
 
 XCOMM ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

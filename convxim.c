@@ -42,10 +42,10 @@
 
 #ifndef _NO_XIMP
 #define DEFAULT_MODIFIERS	""
-#define DEFAULT_LANG		"ja_JP.EUC"
+#define DEFAULT_LANG		"ja_JP.eucJP"
 #else /* _NO_XIMP */
 #define DEFAULT_MODIFIERS	"@im=_XWNMO"
-#define DEFAULT_LANG		"ja_JP.ujis"
+#define DEFAULT_LANG		"ja_JP.eucJP"
 #endif /* ~_NO_XIMP */
 
 typedef struct tagXICInfo {
