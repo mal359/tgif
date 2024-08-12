@@ -331,7 +331,11 @@ void InitText()
    strcpy(scriptFractionStr, "0.6");
    if ((c_ptr=XGetDefault(mainDisplay,TOOL_NAME,"ScriptFraction")) != NULL) {
       strcpy(scriptFractionStr, c_ptr);
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       scriptFraction = (float)atof(c_ptr);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       if (scriptFraction < 0.2 || scriptFraction > 1.01) {
          fprintf(stderr, TgLoadString(STID_INVALID_XDEF_USE_ALT_STR),
                TOOL_NAME, "ScriptFraction", scriptFractionStr, "0.6");
@@ -5963,7 +5967,11 @@ int SetScriptFractionValue(spec)
    float fv=(float)0.0;
    char buf[80];
 
+   char *old_locale=setlocale(LC_NUMERIC, "C");
    fv = (float)atof(spec);
+   if (old_locale != NULL) {
+      setlocale(LC_NUMERIC, old_locale);
+   } 
    UtilStrCpyN(buf, sizeof(buf), spec);
    if (fabs(fv - ((double)1.01)) < INT_TOL) {
       fv = (float)1.0;

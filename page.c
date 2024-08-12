@@ -1301,14 +1301,22 @@ int GetDimension(Spec, nNonPosReturnOK, pnNumPixels)
          (c_ptr=strstr(Spec, "In")) != NULL ||
          (c_ptr=strstr(Spec, "IN")) != NULL) {
       *c_ptr = '\0';
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       val = atof(Spec) * ((double)PIX_PER_INCH);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       *pnNumPixels = round(val);
       if (!nNonPosReturnOK && *pnNumPixels <= 0) return FALSE;
    } else if ((c_ptr=strstr(Spec, "cm")) != NULL ||
          (c_ptr=strstr(Spec, "Cm")) != NULL ||
          (c_ptr=strstr(Spec, "CM")) != NULL) {
       *c_ptr = '\0';
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       val = atof(Spec) * ((double)ONE_CM);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       *pnNumPixels = round(val);
       if (!nNonPosReturnOK && *pnNumPixels <= 0) return FALSE;
    } else if (sscanf(Spec, "%d", pnNumPixels) != 1) {
@@ -1332,14 +1340,22 @@ int GetDimensionInDouble(Spec, nNonPosReturnOK, pd_num_pixels)
          (c_ptr=strstr(Spec, "In")) != NULL ||
          (c_ptr=strstr(Spec, "IN")) != NULL) {
       *c_ptr = '\0';
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       dval = atof(Spec) * ((double)PIX_PER_INCH);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       *pd_num_pixels = dval;
       if (!nNonPosReturnOK && dval < (double)0) return FALSE;
    } else if ((c_ptr=strstr(Spec, "cm")) != NULL ||
          (c_ptr=strstr(Spec, "Cm")) != NULL ||
          (c_ptr=strstr(Spec, "CM")) != NULL) {
       *c_ptr = '\0';
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       dval = atof(Spec) * ((double)ONE_CM);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       *pd_num_pixels = dval;
       if (!nNonPosReturnOK && dval < (double)0) return FALSE;
    } else if (sscanf(Spec, "%lf", pd_num_pixels) != 1) {

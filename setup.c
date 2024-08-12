@@ -1482,7 +1482,11 @@ void Setup()
    }
    tiledPageScaling = 0.9;
    if ((c_ptr=XGetDefault(mainDisplay,TOOL_NAME,"TiledPageScaling")) != NULL) {
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       tiledPageScaling = (float)atof(c_ptr);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       if (tiledPageScaling <= 0.0 || tiledPageScaling > 1.0) {
          fprintf(stderr, TgLoadString(STID_INVALID_XDEF_USE_ALT_STR),
                TOOL_NAME, "TiledPageScaling", c_ptr, "0.9");

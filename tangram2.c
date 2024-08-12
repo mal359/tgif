@@ -1202,7 +1202,11 @@ void ExecSimulateStep(obj_ptr, orig_cmd)
    strcpy(execDummyStr, "Time=");
    attr_ptr = FindAttrWithName(named_obj, execDummyStr, &attr_owner_obj);
    if (attr_ptr == NULL) { BadAttr_Simulator(execDummyStr, orig_cmd); return; }
+   char *old_locale=setlocale(LC_NUMERIC, "C");
    tempo += atof(attr_ptr->attr_value.s);
+   if (old_locale != NULL) {
+      setlocale(LC_NUMERIC, old_locale);
+   } 
    sprintf(execDummyStr, "%.3f", tempo);
    ReplaceAttrFirstValue(attr_owner_obj, attr_ptr, execDummyStr);
 
@@ -1210,7 +1214,11 @@ void ExecSimulateStep(obj_ptr, orig_cmd)
    strcpy(execDummyStr, "Transitions=");
    attr_ptr = FindAttrWithName(named_obj, execDummyStr, &attr_owner_obj);
    if (attr_ptr == NULL) { BadAttr_Simulator(execDummyStr, orig_cmd); return; }
+   old_locale=setlocale(LC_NUMERIC, "C");
    transitions += atof(attr_ptr->attr_value.s);
+   if (old_locale != NULL) {
+      setlocale(LC_NUMERIC, old_locale);
+   } 
    sprintf(execDummyStr, "%d", transitions);
    ReplaceAttrFirstValue(attr_owner_obj, attr_ptr, execDummyStr);
 

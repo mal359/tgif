@@ -357,7 +357,11 @@ void InitXBm()
    strcpy(bitmapThresholdStr, ((halfToneBitmap) ? "0.5" : "1.0"));
    if ((c_ptr=XGetDefault(mainDisplay,TOOL_NAME,"BitmapThreshold"))!=NULL) {
       strcpy(bitmapThresholdStr, c_ptr);
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       bitmapThreshold = (float) atof(c_ptr);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       if (bitmapThreshold < 0 || bitmapThreshold > 1) {
          fprintf(stderr, TgLoadString(STID_INVALID_XDEF_USE_ALT_STR),
                TOOL_NAME, "BitmapThreshold", c_ptr,
@@ -396,7 +400,11 @@ void InitXBm()
    epsiPreviewBitmapThreshold = (float)0.5;
    if ((c_ptr=XGetDefault(mainDisplay,TOOL_NAME,
          "EPSIPreviewBitmapThreshold")) != NULL) {
+      char *old_locale=setlocale(LC_NUMERIC, "C");
       epsiPreviewBitmapThreshold = (float) atof(c_ptr);
+      if (old_locale != NULL) {
+         setlocale(LC_NUMERIC, old_locale);
+      } 
       if (epsiPreviewBitmapThreshold < ((float)0) ||
             epsiPreviewBitmapThreshold > (((float)1)+INT_TOL)) {
          fprintf(stderr, TgLoadString(STID_INVALID_XDEF_USE_ALT_STR),
