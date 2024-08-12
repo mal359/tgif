@@ -1040,6 +1040,22 @@ void ContinueCreateShape(orig_x, orig_y)
             } else {
                grid_y = (pos_h ? orig_y+w : orig_y-w);
             }
+            if (curShape == SHAPE_DISK) {
+               /* this is the only shape that creates an arc, in this case, the width must be even */
+               w = grid_x-orig_x;
+               h = grid_y-orig_y;
+               if (w & 0x1) {
+                  grid_x--;
+                  grid_y--;
+               }
+            }
+         } else {
+            int w=grid_x-orig_x;
+
+            if (curShape == SHAPE_DISK && w & 0x1) {
+               /* this is the only shape that creates an arc, in this case, the width must be even */
+               grid_x--;
+            }
          }
          DoCursor(grid_x, grid_y, grid_x-orig_x, grid_y-orig_y, MOTION_SHOW);
          HighLightCreateShape(grid_x, grid_y, GENERATE, &need_to_draw);
