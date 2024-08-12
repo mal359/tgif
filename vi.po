@@ -1,0 +1,48 @@
+# Vietnamese translation for tgif.
+# Copyright © 2005 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tgif 1/4.1.44-1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-07-10 17:17+0200\n"
+"PO-Revision-Date: 2005-08-10 16:35+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: LocFactoryEditor 1.2.2\n"
+
+#. Choices
+#: ../tgif.templates:10
+msgid "Metric, Imperial"
+msgstr "Mét, Anh"
+
+#. Description
+#: ../tgif.templates:12
+msgid "What units to use for the grid."
+msgstr "�ơn v�\u2039 cần dùng cho lư�\u203ai."
+
+#. Description
+#: ../tgif.templates:12
+msgid ""
+"If you turn on the snap-to grid in Tgif, what units do you want it scaled in?"
+msgstr "Nếu bạn bật lư�\u203ai �\u2018ính trong trình Tgif, bạn có mu�\u2018n tỷ l�\u2021 nó dùng �\u2018ơn v�\u2039 n� o?"
+
+#. Choices
+#: ../tgif.templates:18
+msgid "A4, Letter"
+msgstr "A4, Thư Mỹ"
+
+#. Description
+#: ../tgif.templates:20
+msgid "What size of paper to use."
+msgstr "Kích thư�\u203ac giấy cần dùng."
+
+#. Description
+#: ../tgif.templates:20
+msgid "What size of paper should Tgif use?"
+msgstr "Trình Tgif nên dùng giấy kích thư�\u203ac n� o?"
