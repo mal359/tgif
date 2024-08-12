@@ -334,24 +334,24 @@ int InitExportFilters()
 /* do not translate -- program constants */
 static char *gpszColorExportName[MAXDEFWHERETOPRINT] = {
    "Printer", "EPS", "PS", "XPM", "ASCII", "EPSI", "GIF/ISMAP", "HTML/USEMAP",
-   "PDF", "TiffEPSI", "PNG", "JPEG", "PPM", "NetList"
+   "PDF", "TiffEPSI", "PNG", "JPEG", "PPM", "NetList", "SVG"
 };
 
 static char *gpszBWExportName[MAXDEFWHERETOPRINT] = {
    "Printer", "EPS", "PS", "XBM", "ASCII", "EPSI", "GIF/ISMAP", "HTML/USEMAP",
-   "PDF", "TiffEPSI", "PNG", "JPEG", "PBM", "NetList"
+   "PDF", "TiffEPSI", "PNG", "JPEG", "PBM", "NetList", "SVG"
 };
 
 static char *gpszColorExportExt[MAXDEFWHERETOPRINT] = {
    NULL, EPSF_FILE_EXT, PS_FILE_EXT, XPM_FILE_EXT, TEXT_FILE_EXT,
    EPSF_FILE_EXT, "gif", "html", "pdf", EPSF_FILE_EXT, "png", "jpg", "ppm",
-   NETLIST_FILE_EXT
+   NETLIST_FILE_EXT, "svg"
 };
 
 static char *gpszBWExportExt[MAXDEFWHERETOPRINT] = {
    NULL, EPSF_FILE_EXT, PS_FILE_EXT, XBM_FILE_EXT, TEXT_FILE_EXT,
    EPSF_FILE_EXT, "gif", "html", "pdf", EPSF_FILE_EXT, "png", "jpg", "pbm",
-   NETLIST_FILE_EXT
+   NETLIST_FILE_EXT, "svg"
 };
 
 int GetExportIndex(nWhereToPrint, nMode)
