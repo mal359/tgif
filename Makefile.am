@@ -6,7 +6,7 @@ AUTOMAKE_OPTIONS = foreign
 TGIFDIR	= $(libdir)/X11/tgif
 
 CFLAGS=-DVERSION=\"$(VERSION)\" -DPROG="\"$(PACKAGE)\"" \
-	-Wall -I/usr/X11R6/include -DHAVE_CONFIG_H -DTGIF_PATH=\"$(TGIFDIR)\" -DPSFILE_MOD=0664 -DLOCALEDIR=\"/usr/share/locale\" -DTELEPORT_ATTR=\"warp_to=\" -DTMP_DIR=\"/tmp/\" -DLAUNCH_ATTR=\"launch=\" -DEXEC_ATTR=\"exec=\" -DEPSF_FILE_EXT=\"eps\" -DPS_FILE_EXT=\"ps\" -DXBM_FILE_EXT=\"xbm\" -DXPM_FILE_EXT=\"xpm\" -DOBJ_FILE_EXT=\"obj\" -DSYM_FILE_EXT=\"sym\" -DTEXT_FILE_EXT=\"txt\" -DPIN_FILE_EXT=\"pin\" -DNETLIST_FILE_EXT=\"net\" -DCOMP_FILE_EXT=\"cmp\"  -D_BACKGROUND_DONT_FORK -D_USE_XDRAWPOINT_TO_PUT_A_POINT -D_USE_PS_ADOBE_STRING=\"3.0/3.0\" -D_DONT_USE_MKTEMP -D_DONT_REENCODE=\"FFDingbests:ZapfDingbats\" -DDEFATTRGROUP=\"TANGRAM-II:Declaration:Events:Messages:Rewards:Initialization:Watches\" -D_NO_NKF -D_NO_CHINPUT -D_NO_XCIN -DUSE_XT_INITIALIZE -D_NO_LOCALE_SUPPORT
+	-Wall -I/usr/X11R6/include -DHAVE_CONFIG_H -DTGIF_PATH=\"$(TGIFDIR)\" -DPSFILE_MOD=0664 -DLOCALEDIR=\"/usr/share/locale\" -DTELEPORT_ATTR=\"warp_to=\" -DTMP_DIR=\"/tmp/\" -DLAUNCH_ATTR=\"launch=\" -DEXEC_ATTR=\"exec=\" -DEPSF_FILE_EXT=\"eps\" -DPS_FILE_EXT=\"ps\" -DXBM_FILE_EXT=\"xbm\" -DXPM_FILE_EXT=\"xpm\" -DOBJ_FILE_EXT=\"obj\" -DSYM_FILE_EXT=\"sym\" -DTEXT_FILE_EXT=\"txt\" -DPIN_FILE_EXT=\"pin\" -DNETLIST_FILE_EXT=\"net\" -DCOMP_FILE_EXT=\"cmp\"  -D_BACKGROUND_DONT_FORK -D_USE_XDRAWPOINT_TO_PUT_A_POINT -D_USE_PS_ADOBE_STRING=\"3.0/3.0\" -D_DONT_USE_MKTEMP -D_DONT_REENCODE=\"FFDingbests:ZapfDingbats\" -DDEFATTRGROUP=\"TANGRAM-II:Declaration:Events:Messages:Rewards:Initialization:Watches\" -D_NO_NKF -D_NO_CHINPUT -D_NO_XCIN -DUSE_XT_INITIALIZE
 
 
 bin_PROGRAMS	= tgif

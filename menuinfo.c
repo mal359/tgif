@@ -734,7 +734,7 @@ TgMenuInfo fileMenuInfo={ TGMUTYPE_TEXT, fileMenuItemInfo, CreateFileMenu };
 static TgMenuItemInfo transformMenuItemInfo[] = {
    { N_("Precise Scale..."), "Alt+)", N_("Scale selected objects"), NULL,
      CMDID_PRECISESCALE },
-   { "Precise Scale Everything...", NULL, N_("Scale everything"), NULL,
+   { N_("Precise Scale Everything..."), NULL, N_("Scale everything"), NULL,
      CMDID_PRECISESCALEEVERYTHING },
    { N_("Precise Rotate..."), NULL,
      N_("Rotate selected objects by a specified number of degrees"), NULL,
@@ -812,7 +812,7 @@ static TgMenuItemInfo addTickMarksMenuItemInfo[] = {
    { N_("Add Plus"), NULL,
      N_("Add plus tick marks at vertices of selected polys/polygons/splines"),
      NULL, CMDID_ADDPLUSTICKMARKS },
-   { N_("Add Hour Glasss"), NULL,
+   { N_("Add Hour Glasses"), NULL,
      N_("Add hour glass tick marks at vertices of selected polys/polygons/splines"),
      NULL, CMDID_ADDHOURGLASSTICKMARKS },
    { NULL, NULL, NULL, NULL, INVALID }
@@ -1170,7 +1170,7 @@ static TgMenuItemInfo flipRotateMenuItemInfo[] = {
    { N_("Reset Rotation Pivot"), NULL,
      N_("Reset user-specified rotation pivot to center of selected objects"),
      NULL, CMDID_RESETROTATEPIVOT },
-   { N_("Speficy Rotation Pivot..."), NULL,
+   { N_("Specify Rotation Pivot..."), NULL,
      N_("Specify the coordinates for the user-specified rotation pivot"), NULL,
      CMDID_SPECIFYROTATEPIVOT },
    { TGMUITEM_SEPARATOR, NULL, NULL, NULL, INVALID },

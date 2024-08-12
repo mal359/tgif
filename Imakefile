@@ -47,7 +47,8 @@ DEFINES		= $(DIRDEFINES) \@@\
                   $(XIMPDEFINES) \@@\
                   $(MISCDEFINES) \@@\
                   -DTGIF_DISTR_VER=\"$(TGIFVERSION)\" \@@\
-                  $(MOREDEFINES) -DQPL_LICENSE
+                  $(MOREDEFINES) -DQPL_LICENSE \@@\
+                  -DENABLE_NLS
 
 XCOMM Things to try to add to the DEFINES line above:
 XCOMM

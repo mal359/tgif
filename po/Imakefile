@@ -22,7 +22,7 @@ XCOMM -------------------------------------------- XCOMM
 
 #define IHaveSubdirs
 
-SUBDIRS = ja ru fr
+SUBDIRS = de fr ja ru
 
 #define PassCDebugFlags 'CDEBUGFLAGS=$(CDEBUGFLAGS)'
 
@@ -37,6 +37,7 @@ tar:
 	rm -f tgifintl-$(TGIFNLSVER).tar/**/*
 	tar cvf tgifintl-$(TGIFNLSVER).tar \
 		Imakefile Po.tmpl Po.tmpl-/**/* README HISTORY \
+		de/Imakefile de/de.po \
 		ja/Imakefile ja/ja.po \
 		ru/Imakefile ru/ru.po \
 		fr/Imakefile fr/fr.po
@@ -51,6 +52,7 @@ tar:
 
 versioninfo:
 	what Imakefile README Po.tmpl Po.tmpl-/**/* \
+               de/Imakefile de/de.po \
 		ja/Imakefile ja/ja.po \
 		ru/Imakefile ru/ru.po \
 		fr/Imakefile fr/fr.po \
