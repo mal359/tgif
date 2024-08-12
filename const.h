@@ -216,6 +216,9 @@
 #define RULER_W 20
 #define BRDR_W 1
 #define WINDOW_PADDING 2
+#define COLORBOX_X 16
+#define COLORBOX_Y 16
+#define COLORBOX_NELEM 10
 
 /* object types */
 

@@ -89,6 +89,7 @@
 #include "z_intrf.e"
 
 #include "tgificon.xbm"
+#include "xbm/redraw.xbm"
 
 #define DEF_VSBAR_H 64
 #define DEF_HSBAR_W 128
@@ -111,8 +112,8 @@
 #define ICON_WINDOW_H 64
 #define MENUBAR_WINDOW_W (TITLE_WINDOW_W)
 #define MENUBAR_WINDOW_H 20
-#define USER_REDRAW_WINDOW_W 44
-#define USER_REDRAW_WINDOW_H 20
+#define USER_REDRAW_WINDOW_W redraw_width+6
+#define USER_REDRAW_WINDOW_H redraw_height+4
 #define STATUS_WINDOW_W (TITLE_WINDOW_W-USER_REDRAW_WINDOW_W-(BRDR_W<<1))
 #define STATUS_WINDOW_H 20
 #define MODE_WINDOW_W (CHOICE_IMAGE_W)
@@ -122,7 +123,6 @@
 
 int	debugNoPointerGrab=FALSE;
 int	debugCopyPaste=FALSE;
-
 unsigned int	mainWinW = 0;
 unsigned int	mainWinH = 0;
 int	vSBarH = VSBAR_H;
@@ -427,6 +427,7 @@ void InverseInitWinSizes()
    CalcMenubarWindowHeight();
    CalcStatusSubWinGeom();
    SetChatWindowGeom();
+   UNUSED((void)redraw_bits);
 }
 
 void ComputeMainWinXY(MainWinX, MainWinY)

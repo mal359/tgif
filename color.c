@@ -1881,7 +1881,7 @@ TgMenu *CreateColorMenu(parent_menu, x, y, menu_info, status_str_xlated)
       TgMenuItem stMenuItem;
 
       menu->track_menubar = TRUE;
-      TgAdjustMenuGeometry(menu, 16, 16, 10);
+      TgAdjustMenuGeometry(menu, COLORBOX_X, COLORBOX_Y, COLORBOX_NELEM);
       menu_item = (&menu->menuitems[colorIndex]);
 
       memset(&stMenuItem, 0, sizeof(TgMenuItem));
