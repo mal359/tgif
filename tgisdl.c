@@ -809,7 +809,7 @@ TidgetInfo *CreateTdgtInsertSymbolDialogBox(dpy, parent_win)
 
    TidgetSetFocusWindow(None);
    if (!colorDisplay || mainVisual->class != TrueColor) {
-      strcpy(gszMsgBox, TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
+      strcpy(gszMsgBox, TgLoadString(STID_TOOL_SYMBOL_CHOOSER_NOT_AVAIL));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       free(pisdi);
       return NULL;
@@ -840,7 +840,7 @@ TidgetInfo *CreateTdgtInsertSymbolDialogBox(dpy, parent_win)
    cur_x = vh_padding+windowPadding;
    cur_y = vh_padding+windowPadding;
 
-   sprintf(caption, TgLoadString(STID_TOOL_COLOR_WHEEL), TOOL_NAME);
+   sprintf(caption, TgLoadString(STID_TOOL_SYMBOL_CHOOSER), TOOL_NAME);
    pTdgtBase = CreateTdgtBase(parent_win, NULL, ID_INSSYM_DIALOG, 0, 0, 100,
          100, vh_padding, vh_padding, (dialogboxUse3DBorder ? TGBS_RAISED :
          TGBS_NORMAL), caption);

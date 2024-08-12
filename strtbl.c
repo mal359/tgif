@@ -3663,6 +3663,10 @@ static char *gaszEnglishStrTable1500[] = {
    N_("Unsupported font encoding for the '%s' font.  The only support font encodings are \"big5\" and \"gb2312.1980\".  Please specify a valid zh_TW.big5 or zh_CN.euc font using the %s.%s X default."),
    /* STID_TOOL_GB_CHINESE_KEYPAD */
    N_("%s - Simplified Chinese (zh_CN.euc) Keypad"),
+   /* STID_TOOL_SYMBOL_CHOOSER */
+   N_("%s - Choose A Symbol"),
+   /* STID_TOOL_SYMBOL_CHOOSER_NOT_AVAIL */
+   N_("Symbol chooser table is not available."),
    NULL
 };
 

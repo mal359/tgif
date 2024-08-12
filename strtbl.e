@@ -1811,8 +1811,10 @@
 #define STID_TWO_XDEF_ONE_IGNORED          2529
 #define STID_BAD_ENCODING_TGTWB5_FONT      2530
 #define STID_TOOL_GB_CHINESE_KEYPAD        2531
+#define STID_TOOL_SYMBOL_CHOOSER           2532
+#define STID_TOOL_SYMBOL_CHOOSER_NOT_AVAIL 2533
 
-#define MAXNONCACHEDSTIDS 2532
+#define MAXNONCACHEDSTIDS 2534
 
 extern struct MouseStatusStrRec	colorMouseStatus[];
 extern struct MouseStatusStrRec	hAlignMouseStatus[];
