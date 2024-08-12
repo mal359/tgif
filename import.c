@@ -66,6 +66,7 @@
 #include "xbitmap.e"
 #include "xpixmap.e"
 #include "z_intrf.e"
+#include <string.h>
 
 typedef struct ImportInfoRec {
    char *name, *ext, *cmd;
@@ -2674,7 +2675,7 @@ void ImportGIFToXPixmapDeck()
    memset(&ii, 0, sizeof(struct ImportInfoRec));
 
    /* pick an animated GIF file */
-   sprintf(szTop, TgLoadString(STID_SEL_ANIM_GIF_FILE_TO_IMPORT));
+   strcpy(szTop, TgLoadString(STID_SEL_ANIM_GIF_FILE_TO_IMPORT));
    importingFile = TRUE;
    *gif_fname = *tmp_fname = '\0';
    if (importFromLibrary) {

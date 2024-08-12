@@ -670,7 +670,7 @@ FILE *GetTiffEPSIInfo(fp, pszEPS, file_buf_sz, pnPreviewOK)
          }
          fclose(xbm_fp);
          if (writeFileFailed) {
-            fprintf(stderr, TgLoadString(STID_FAIL_TO_WRITE_TO_STDOUT));
+            fprintf(stderr, "%s", TgLoadString(STID_FAIL_TO_WRITE_TO_STDOUT));
          }
          unlink(xbm_fname);
          *xbm_fname = '\0';

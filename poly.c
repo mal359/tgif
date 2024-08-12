@@ -57,6 +57,7 @@
 #include "strtbl.e"
 #include "util.e"
 #include "xpixmap.e"
+#include <stdio.h>
 
 #define RETREAT (0.8)
 
@@ -5506,7 +5507,7 @@ void ReadPolyObj(FP, Inbuf, ObjPtr)
       smooth[0] = smooth[num_pts-1] = FALSE;
       SetFileModified(TRUE);
 
-      sprintf(gszMsgBox, TgLoadCachedString(CSTID_BAD_SMOOTHHINGE_POLY_FIXED));
+      strcpy(gszMsgBox, TgLoadCachedString(CSTID_BAD_SMOOTHHINGE_POLY_FIXED));
       if (PRTGIF) {
          fprintf(stderr, "%s\n", gszMsgBox);
       } else {

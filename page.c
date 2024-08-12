@@ -62,6 +62,7 @@
 #include "xprtfltr.e"
 
 #include "xbm/leftend.xbm"
+#include <string.h>
 
 struct PageRec	*firstPage=NULL, *lastPage=NULL, *curPage=NULL;
 int		curPageNum=1, lastPageNum=1;
@@ -1583,7 +1584,7 @@ void DeletePages()
    if (spi.num_pages_specified == lastPageNum) {
       MsgBox(TgLoadString(STID_CANT_DEL_ALL_PAGES), TOOL_NAME, INFO_MB);
    } else if (spi.num_pages_specified > 0) {
-      sprintf(gszMsgBox, TgLoadString(spi.num_pages_specified > 1 ?
+      strcpy(gszMsgBox, TgLoadString(spi.num_pages_specified > 1 ?
             STID_DELETE_A_PAGE_CAUSE_FLUSH :
             STID_DELETE_PAGES_PAGE_CAUSE_FLUSH));
       if (firstCmd == NULL || OkToFlushUndoBuffer(gszMsgBox)) {

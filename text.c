@@ -71,6 +71,7 @@
 #include "wb.e"
 #include "xbitmap.e"
 #include "xpixmap.e"
+#include <string.h>
 
 #define ADVANCE_LEFT (TRUE)
 #define ADVANCE_RIGHT (FALSE)
@@ -3749,9 +3750,9 @@ void HandleCopyInDrawTextMode()
          copy_db_utf8_str && (double_byte_font_index != INVALID), NULL);
 
    if (copy_failed) {
-      sprintf(gszMsgBox, TgLoadString(STID_COPY_FAIL_SEL_STR_MAY_TOO_LNG));
+      strcpy(gszMsgBox, TgLoadString(STID_COPY_FAIL_SEL_STR_MAY_TOO_LNG));
    } else {
-      sprintf(gszMsgBox, TgLoadString(STID_COPY_BUFFER_UPDATED));
+      strcpy(gszMsgBox, TgLoadString(STID_COPY_BUFFER_UPDATED));
    }
    Msg(gszMsgBox);
    free(cut_buffer);

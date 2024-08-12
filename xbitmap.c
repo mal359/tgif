@@ -64,6 +64,7 @@
 #include "xpixmap.e"
 #include "xprtfltr.e"
 #include "z_intrf.e"
+#include <string.h>
 
 GC xbmGC=NULL;
 
@@ -147,7 +148,7 @@ void SetHtmlExportTemplate()
    char spec[MAXSTRING<<1];
 
    if (*gszHhtmlExportTemplate == '\0') {
-      sprintf(gszMsgBox, TgLoadString(STID_ENTER_HTML_TEMPLATE));
+      strcpy(gszMsgBox, TgLoadString(STID_ENTER_HTML_TEMPLATE));
    } else {
       sprintf(gszMsgBox, TgLoadString(STID_ENTER_HTML_TEMPLATE_CUR_IS),
             gszHhtmlExportTemplate);
@@ -172,7 +173,7 @@ void SetHtmlExportTemplate()
    }
    UtilStrCpyN(gszHhtmlExportTemplate, sizeof(gszHhtmlExportTemplate), spec);
    if (*gszHhtmlExportTemplate == '\0') {
-      sprintf(gszMsgBox, TgLoadString(STID_NO_HTML_TEMPLATE_FILE));
+      strcpy(gszMsgBox, TgLoadString(STID_NO_HTML_TEMPLATE_FILE));
    } else {
       sprintf(gszMsgBox, TgLoadString(STID_HTML_TEMPLATE_SET_TO_GIVEN),
             gszHhtmlExportTemplate);
@@ -421,7 +422,7 @@ void ExportThresholdBitmap()
       sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_GIVE_SMPLE_THRESHOLD),
             bitmapThresholdStr);
    } else {
-      sprintf(gszMsgBox, TgLoadString(STID_WILL_NOT_USE_SIMPLE_THRESHOLD));
+      strcpy(gszMsgBox, TgLoadString(STID_WILL_NOT_USE_SIMPLE_THRESHOLD));
    }
    Msg(gszMsgBox);
 }
@@ -3153,7 +3154,7 @@ void GenerateTemplateHtmlVar(map_fp, var_type, gif_fname, map_fname, fname,
       } else if ((attr_ptr=FindFileAttrWithName("title=")) != NULL) {
          fprintf(map_fp, "%s", attr_ptr->attr_value.s);
       } else {
-         fprintf(map_fp, TgLoadCachedString(CSTID_PARANED_UNKNOWN));
+         fprintf(map_fp, "%s", TgLoadCachedString(CSTID_PARANED_UNKNOWN));
       }
       break;
    case TGV_MAP_WIDTH: fprintf(map_fp, "%1d", RbX-LtX); break;

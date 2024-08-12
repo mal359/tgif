@@ -49,6 +49,7 @@
 #include "strtbl.e"
 #include "text.e"
 #include "util.e"
+#include <string.h>
 
 int     objFill=NONEPAT;
 int     transPat=FALSE;
@@ -1738,16 +1739,16 @@ void ChangeAllSelLineType(TypeIndex, HighLight)
    *gszMsgBox = '\0';
    switch (curSpline) {
    case LT_STRAIGHT:
-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_STRAIGHT));
+      strcpy(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_STRAIGHT));
       break;
    case LT_SPLINE:
-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_SPLINE));
+      strcpy(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_SPLINE));
       break;
    case LT_INTSPLINE:
-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_INTSPLINE));
+      strcpy(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_INTSPLINE));
       break;
    case LT_STRUCT_SPLINE:
-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_STRUCT_SPLINE));
+      strcpy(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_STRUCT_SPLINE));
       break;
    }
    Msg(gszMsgBox);
@@ -2290,7 +2291,7 @@ TgMenu *CreateLineDashMenu(parent_menu, x, y, menu_info, status_str_xlated)
       item_info->menu_str = (char*)(Pixmap*)(&lineDashPixmap[i]);
       item_info->shortcut_str = NULL;
       if (i == 0) {
-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_DASH_PAT_NO_DASH));
+         strcpy(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_DASH_PAT_NO_DASH));
       } else {
          sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_DASH_PAT_PAT_NUM),
                i);
@@ -2507,13 +2508,13 @@ TgMenu *CreatePenMenu(parent_menu, x, y, menu_info, status_str_xlated)
       item_info->shortcut_str = NULL;
       switch (i) {
       case NONEPAT:
-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_NONE));
+         strcpy(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_NONE));
          break;
       case SOLIDPAT:
-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_SOLID));
+         strcpy(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_SOLID));
          break;
       case BACKPAT:
-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_BACKGROUND));
+         strcpy(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_BACKGROUND));
          break;
       default:
          sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_PAT_NUM), i);

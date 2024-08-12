@@ -53,6 +53,7 @@
 #include "strtbl.e"
 #include "util.e"
 #include "xpixmap.e"
+#include <string.h>
 
 #define EXPAND_BBOX(bbox,x,y) \
    if ((x)<(bbox)->ltx) (bbox)->ltx=(x); if ((y)<(bbox)->lty) (bbox)->lty=(y); \
@@ -2041,7 +2042,7 @@ void ReadArcObj(FP, Inbuf, ObjPtr)
    }
 
    if (dir == ARC_CCW && angle2 < 0) {
-      sprintf(gszMsgBox, TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
+      strcpy(gszMsgBox, TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
       if (PRTGIF) {
          fprintf(stderr, "%s\n", gszMsgBox);
       } else {
@@ -2050,7 +2051,7 @@ void ReadArcObj(FP, Inbuf, ObjPtr)
       SetFileModified(TRUE);
       dir = ARC_CW;
    } else if (dir == ARC_CW && angle2 > 0) {
-      sprintf(gszMsgBox, TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
+      strcpy(gszMsgBox, TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
       if (PRTGIF) {
          fprintf(stderr, "%s\n", gszMsgBox);
       } else {

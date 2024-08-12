@@ -87,6 +87,7 @@
 #include "xbitmap.e"
 #include "xpixmap.e"
 #include "xprtfltr.e"
+#include <string.h>
 
 #ifdef _METRIC_PIX_PER_INCH
 #define METRIC_PIX_PER_INCH 127
@@ -4376,7 +4377,7 @@ int ImportGivenFile(file_name, group_and_lock, highlight)
          sprintf(gszMsgBox, TgLoadString(STID_FILE_VER_ABORT_IMPORT),
                fileVersion, TOOL_NAME, homePageURL);
       } else {
-         sprintf(gszMsgBox, TgLoadString(STID_FILE_CORRUPTED_ABORT_IMPORT));
+         strcpy(gszMsgBox, TgLoadString(STID_FILE_CORRUPTED_ABORT_IMPORT));
       }
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       SetDefaultCursor(mainWindow);
@@ -4863,7 +4864,7 @@ int LoadFile(FullName, ObjFile, GzippedObjFile)
          sprintf(gszMsgBox, TgLoadString(STID_FILE_VER_ABORT_OPEN),
                fileVersion, TOOL_NAME, homePageURL);
       } else {
-         sprintf(gszMsgBox, TgLoadString(STID_FILE_CORRUPTED_ABORT_OPEN));
+         strcpy(gszMsgBox, TgLoadString(STID_FILE_CORRUPTED_ABORT_OPEN));
       }
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       DrawPaperBoundary(drawWindow);
@@ -6610,7 +6611,7 @@ int DoGenDump(FileName)
          whereToPrint == HTML_FILE || whereToPrint == PNG_FILE ||
          whereToPrint == JPEG_FILE || whereToPrint == PPM_FILE) {
       if (topObj == NULL) {
-         sprintf(gszMsgBox, TgLoadString(STID_NO_OBJ_TO_EXPORT));
+         strcpy(gszMsgBox, TgLoadString(STID_NO_OBJ_TO_EXPORT));
          if (PRTGIF) {
             fprintf(stderr, "%s\n", gszMsgBox);
          } else {
@@ -7647,7 +7648,7 @@ int DoGenDump(FileName)
          SetOutputFileName(ps_file, TEXT_FILE_EXT, NULL, &FileName);
       } else {
          if (!curFileDefined) {
-            sprintf(gszMsgBox, TgLoadString(STID_NO_CUR_FILE_CANNOT_GEN_TEXT));
+            strcpy(gszMsgBox, TgLoadString(STID_NO_CUR_FILE_CANNOT_GEN_TEXT));
             MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
             unlink(tmpFile);
             return FALSE;
@@ -8676,7 +8677,7 @@ void SetTemplate()
       }
       sprintf(file_name, "%s%c%s", path, DIR_SEP, name);
    } else {
-      sprintf(gszMsgBox, TgLoadString(STID_SELECT_FILE_AS_TEMPLATE));
+      strcpy(gszMsgBox, TgLoadString(STID_SELECT_FILE_AS_TEMPLATE));
       if (SelectFileNameToImport(gszMsgBox, OBJ_FILE_EXT, file_name) ==
             INVALID) {
          return;

@@ -41,6 +41,7 @@
 #include "tidget.e"
 #include "tgisdl.e"
 #include "util.e"
+#include <string.h>
 
 InsertSymbolInfo gInsertSymbolInfo;
 
@@ -808,7 +809,7 @@ TidgetInfo *CreateTdgtInsertSymbolDialogBox(dpy, parent_win)
 
    TidgetSetFocusWindow(None);
    if (!colorDisplay || mainVisual->class != TrueColor) {
-      sprintf(gszMsgBox, TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
+      strcpy(gszMsgBox, TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       free(pisdi);
       return NULL;

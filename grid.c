@@ -51,6 +51,7 @@
 #include "util.e"
 #include "wb.e"
 #include "xprtfltr.e"
+#include <string.h>
 
 #define ENGLISH_GRID_STEP 8
 #define METRIC_GRID_STEP 5
@@ -358,7 +359,7 @@ void ToggleRightMargin()
       sprintf(gszMsgBox, TgLoadString(STID_RIGHT_MARGIN_IS), buf);
       Msg(gszMsgBox);
    } else {
-      sprintf(gszMsgBox, TgLoadString(STID_RIGHT_MARGIN_DISABLED));
+      strcpy(gszMsgBox, TgLoadString(STID_RIGHT_MARGIN_DISABLED));
       Msg(gszMsgBox);
    }
 }

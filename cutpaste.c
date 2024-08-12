@@ -72,6 +72,7 @@
 #include "util.e"
 #include "xbitmap.e"
 #include "xpixmap.e"
+#include <string.h>
 
 int	copyingToCutBuffer=FALSE;
 int	pastingFile=FALSE;
@@ -200,7 +201,7 @@ int WriteBufToCutBuffer(buf, bytes_to_write, buf_is_simple_string,
          lastKeyOrBtnEvInfo.time);
    if (XGetSelectionOwner(mainDisplay, XA_PRIMARY) != mainWindow) {
       setselowner_failed = TRUE;
-      sprintf(gszMsgBox, TgLoadString(STID_CANT_ACQUIRE_X_SELECTION));
+      strcpy(gszMsgBox, TgLoadString(STID_CANT_ACQUIRE_X_SELECTION));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
    } else {
       startSelectionOwnershipTimeValid = TRUE;
@@ -349,10 +350,10 @@ int CopyObjectToCutBuffer(force)
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
    } else {
       if (!WriteBufToCutBuffer(cut_buffer, stat.st_size, FALSE, FALSE, NULL)) {
-         sprintf(gszMsgBox, TgLoadString(STID_COPY_FAILED_OBJ_MAYBE_TOO_BIG));
+         strcpy(gszMsgBox, TgLoadString(STID_COPY_FAILED_OBJ_MAYBE_TOO_BIG));
          MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       } else {
-         sprintf(gszMsgBox, TgLoadString(STID_COPY_BUFFER_UPDATED));
+         strcpy(gszMsgBox, TgLoadString(STID_COPY_BUFFER_UPDATED));
          Msg(gszMsgBox);
       }
    }

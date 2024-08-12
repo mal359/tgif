@@ -73,6 +73,7 @@
 #include "util.e"
 #include "xbitmap.e"
 #include "xpixmap.e"
+#include <string.h>
 
 struct SelRec *outerSelForFind=NULL;
 struct SelRec *innerSelForFind=NULL;
@@ -1138,7 +1139,7 @@ void MakeRegularPolygon()
             INFO_MB);
       return;
    }
-   sprintf(gszMsgBox, TgLoadString(STID_VERTEX_AT_3_OCLOCK_YNC));
+   strcpy(gszMsgBox, TgLoadString(STID_VERTEX_AT_3_OCLOCK_YNC));
    if ((vertex_at_right=MsgBox(gszMsgBox, TOOL_NAME, YNC_MB)) ==
          MB_ID_CANCEL) {
       return;
@@ -6104,7 +6105,7 @@ void RemoveObjectShadow()
       return;
    }
    if (CountObjectWithShadow() == 0) {
-      sprintf(gszMsgBox, TgLoadString(STID_NO_OBJ_SHADOW_FOUND));
+      strcpy(gszMsgBox, TgLoadString(STID_NO_OBJ_SHADOW_FOUND));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       return;
    }

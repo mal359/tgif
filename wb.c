@@ -67,6 +67,7 @@
 #include "wb_seg.e"
 #include "xpixmap.e"
 #include "z_intrf.e"
+#include <stdio.h>
 
 struct WhiteBoardRec	gstWBInfo;
 
@@ -2283,7 +2284,7 @@ void UnpackCurrentTGWBState(p_cur_state)
    *content_type = '\0';
    if (!GetContentInfoFromBuf(buf, content_type, sizeof(content_type),
          &content_length, &buf_data_start)) {
-      sprintf(gszMsgBox, TgLoadString(STID_JOIN_WB_IN_FAILED_NO_CONTTYPE));
+      strcpy(gszMsgBox, TgLoadString(STID_JOIN_WB_IN_FAILED_NO_CONTTYPE));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       return;
    }
@@ -2512,7 +2513,7 @@ void UnpackCurrentTGWBState(p_cur_state)
       gstWBInfo.join_session_in_progress = TRUE;
    } else {
       CleanUpWBCmds();
-      sprintf(gszMsgBox, TgLoadString(STID_JOIN_WB_IN_PROGRESS_FAILED));
+      strcpy(gszMsgBox, TgLoadString(STID_JOIN_WB_IN_PROGRESS_FAILED));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
    }
    if (need_to_free_buf) UtilFree(buf);

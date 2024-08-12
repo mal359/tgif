@@ -50,6 +50,7 @@
 #include "util.e"
 #include "xbitmap.e"
 #include "xpixmap.e"
+#include <string.h>
 
 ColorWheelInfo gColorWheelInfo;
 
@@ -1727,7 +1728,7 @@ TidgetInfo *CreateTdgtColorWheelDialogBox(dpy, parent_win)
 
    TidgetSetFocusWindow(None);
    if (!colorDisplay || mainVisual->class != TrueColor) {
-      sprintf(gszMsgBox, TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
+      strcpy(gszMsgBox, TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
       free(pcwdi);
       return NULL;

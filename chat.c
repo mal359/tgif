@@ -589,6 +589,7 @@ int CreateChatSubWindows()
    int new_alloc=FALSE, ival=0, font_style=STYLE_NR;
    int is_bold=FALSE, is_italic=FALSE, color_index=colorIndex;
 
+
    if ((buf=tgGetProfileString("User", "Color", gstChatInfo.ini_fname)) !=
          NULL) {
       color_index = QuickFindColorIndex(NULL, buf, &new_alloc, TRUE);

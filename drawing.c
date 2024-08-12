@@ -87,6 +87,7 @@
 #include "wb.e"
 #include "xbitmap.e"
 #include "xpixmap.e"
+#include <string.h>
 
 #define O_VIS 4
 #define O_INVIS 4
@@ -3339,7 +3340,7 @@ void EditIndexedAttrInEditor(index)
 
    SaveStatusStrings();
    if (*attr_ptr->attr_name.s == '\0') {
-      sprintf(title, TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
+      strcpy(title, TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
       sprintf(cmd, gszEditorCmd, title, tfi.tmp_fname);
       sprintf(gszMsgBox, TgLoadString(STID_EDIT_UNNAME_ATTR_WITH_CMD), cmd);
    } else {
@@ -3460,7 +3461,7 @@ void EditIndexedAttrGroupInEditor(index)
    }
    SaveStatusStrings();
    if (*attr_ptr->attr_name.s == '\0') {
-      sprintf(title, TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
+      strcpy(title, TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
       sprintf(cmd, gszEditorCmd, title, tfi.tmp_fname);
       sprintf(gszMsgBox, TgLoadString(STID_EDIT_UNNAME_ATTR_WITH_CMD), cmd);
    } else {

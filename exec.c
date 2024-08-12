@@ -85,6 +85,7 @@
 #include "xpixmap.e"
 #include "xprtfltr.e"
 #include "z_intrf.e"
+#include <string.h>
 
 int execAnimating=FALSE;
 int execAnimateRedraw=FALSE;
@@ -1754,7 +1755,7 @@ int CheckExecInterrupt(orig_cmd)
    if (ESCPressed() || (check_any_button && XCheckMaskEvent(mainDisplay,
          ButtonPressMask | KeyPressMask, &ev)) || CheckInterrupt(TRUE)) {
       if (orig_cmd == NULL) {
-         sprintf(gszMsgBox, TgLoadString(STID_USER_INTR));
+         strcpy(gszMsgBox, TgLoadString(STID_USER_INTR));
       } else {
          sprintf(gszMsgBox, TgLoadString(STID_FUNC_USER_INTR), orig_cmd);
       }

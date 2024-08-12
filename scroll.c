@@ -45,6 +45,7 @@
 #include "util.e"
 
 #include "xbm/scrl_up.xbm"
+#include <string.h>
 
 #define FAKE_CM 80
 
@@ -1560,13 +1561,13 @@ void ChangeScrollMode(ModeIndex)
 
    switch (smoothScrollingCanvas) {
    case SMOOTH_SCROLLING:
-      sprintf(gszMsgBox, TgLoadString(STID_WILL_UPD_WIN_SMOOTH_SCROLL));
+      strcpy(gszMsgBox, TgLoadString(STID_WILL_UPD_WIN_SMOOTH_SCROLL));
       break;
    case JUMP_SCROLLING:
-      sprintf(gszMsgBox, TgLoadString(STID_WILL_UPD_WIN_JUMP_SCROLL));
+      strcpy(gszMsgBox, TgLoadString(STID_WILL_UPD_WIN_JUMP_SCROLL));
       break;
    case NO_UPDATE_SCROLLING:
-      sprintf(gszMsgBox, TgLoadString(STID_WILL_NOT_UPD_WIN_SCROLL));
+      strcpy(gszMsgBox, TgLoadString(STID_WILL_NOT_UPD_WIN_SCROLL));
       break;
    }
    Msg(gszMsgBox);

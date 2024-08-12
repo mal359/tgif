@@ -20,6 +20,8 @@
 
 #define _INCLUDE_FROM_FONT_C_
 
+#include <ctype.h>
+
 #include "tgifdefs.h"
 #include "cmdids.h"
 
@@ -1058,10 +1060,10 @@ void MyTextExtents(xfs, pszStr, nLen, pxcs)
                   (nOdd || ((*psz)&0x80) == nDoubleByte);
                   psz++, nSubStrIndex++) {
                if (nOdd) {
-                  gpszTmpStr16[nDoubleByteIndex].byte2 = (unsigned char)(*psz);
+                  gpszTmpStr16[nDoubleByteIndex].byte2 = (unsigned char)(*psz) & 0x7f;
                   nDoubleByteIndex++;
                } else {
-                  gpszTmpStr16[nDoubleByteIndex].byte1 = (unsigned char)(*psz);
+                  gpszTmpStr16[nDoubleByteIndex].byte1 = (unsigned char)(*psz) & 0x7f;
                }
                nOdd = !nOdd;
             }
@@ -1121,10 +1123,10 @@ int MyTextWidth(xfs, pszStr, nLen)
                   (nOdd || ((*psz)&0x80) == nDoubleByte);
                   psz++, nSubStrIndex++) {
                if (nOdd) {
-                  gpszTmpStr16[nDoubleByteIndex].byte2 = (unsigned char)(*psz);
+                  gpszTmpStr16[nDoubleByteIndex].byte2 = (unsigned char)(*psz) & 0x7f;
                   nDoubleByteIndex++;
                } else {
-                  gpszTmpStr16[nDoubleByteIndex].byte1 = (unsigned char)(*psz);
+                  gpszTmpStr16[nDoubleByteIndex].byte1 = (unsigned char)(*psz) & 0x7f;
                }
                nOdd = !nOdd;
             }
@@ -1170,10 +1172,10 @@ void MyDrawString(dpy, d, gc, nDepth, x, y, pszStr, nLen)
                   (nOdd || ((*psz)&0x80) == nDoubleByte);
                   psz++, nSubStrIndex++) {
                if (nOdd) {
-                  gpszTmpStr16[nDoubleByteIndex].byte2 = (unsigned char)(*psz);
+                  gpszTmpStr16[nDoubleByteIndex].byte2 = (unsigned char)(*psz) & 0x7f;
                   nDoubleByteIndex++;
                } else {
-                  gpszTmpStr16[nDoubleByteIndex].byte1 = (unsigned char)(*psz);
+                  gpszTmpStr16[nDoubleByteIndex].byte1 = (unsigned char)(*psz) & 0x7f;
                }
                nOdd = !nOdd;
             }

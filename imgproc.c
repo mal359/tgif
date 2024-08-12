@@ -62,6 +62,7 @@
 #include "xbitmap.e"
 #include "xpixmap.e"
 #include "z_intrf.e"
+#include <string.h>
 
 #define HISTOGRAMCOUNT(i) (gpHistogram[(i)].pixel)
 #define HISTOGRAMRED(i) (gpHistogram[(i)].red)
@@ -9102,7 +9103,8 @@ int SetupReplaceColorInfo(obj_ptr, prci)
             }
          }
          if (!found) {
-            snprintf(gszMsgBox, sizeof(gszMsgBox), TgLoadString(STID_CANNOT_FIND_GOOD_TRANSPIX));
+            strncpy(gszMsgBox, TgLoadString(STID_CANNOT_FIND_GOOD_TRANSPIX), sizeof(gszMsgBox));
+            gszMsgBox[sizeof(gszMsgBox) - 1] = 0;
             MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
             return FALSE;
          }
@@ -9753,7 +9755,7 @@ void ToggleFloodReplaceColorThreshold()
             fillReplaceBlueThresh);
       Msg(gszMsgBox);
    } else {
-      sprintf(gszMsgBox, TgLoadString(STID_FLOOD_REPLACE_DISABLED));
+      strcpy(gszMsgBox, TgLoadString(STID_FLOOD_REPLACE_DISABLED));
       Msg(gszMsgBox);
    }
 }

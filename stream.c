@@ -37,6 +37,7 @@
 #include "stream.e"
 #include "strtbl.e"
 #include "util.e"
+#include <string.h>
 
 static int gnMultipartReplace=FALSE;
 static int gnPossibleMultipartReplace=TRUE;
@@ -669,7 +670,7 @@ void FakeUserAgent(buf)
       *prev_agent = '\0';
       GetUserAgent(prev_agent, sizeof(prev_agent));
       if (*prev_agent == '\0') {
-         sprintf(gszMsgBox, TgLoadString(STID_ENTER_USERAGENT_FOR_HTTP));
+         strcpy(gszMsgBox, TgLoadString(STID_ENTER_USERAGENT_FOR_HTTP));
       } else {
          sprintf(gszMsgBox, TgLoadString(STID_ENTER_USERAGENT_FOR_HTTP_CUR),
                prev_agent);
@@ -685,7 +686,7 @@ void FakeUserAgent(buf)
    *prev_agent = '\0';
    GetUserAgent(prev_agent, sizeof(prev_agent));
    if (*prev_agent == '\0') {
-      sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_DEF_USERAGENT_HTTP));
+      strcpy(gszMsgBox, TgLoadString(STID_WILL_USE_DEF_USERAGENT_HTTP));
    } else {
       sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_NAMED_USERAGENT_HTTP),
             prev_agent);
@@ -708,7 +709,7 @@ void FakeReferer(buf)
       if (len > 0 && spec[len-1] == ')') spec[len-1] = '\0';
    } else {
       if (gpszFakedReferer == NULL) {
-         sprintf(gszMsgBox, TgLoadString(STID_ENTER_REFERRER_FOR_HTTP));
+         strcpy(gszMsgBox, TgLoadString(STID_ENTER_REFERRER_FOR_HTTP));
       } else {
          sprintf(gszMsgBox, TgLoadString(STID_ENTER_REFERRER_FOR_HTTP_CUR),
                gpszFakedReferer);
@@ -727,7 +728,7 @@ void FakeReferer(buf)
    UtilTrimBlanks(spec);
    HttpFakeReferer(spec);
    if (gpszFakedReferer == NULL) {
-      sprintf(gszMsgBox, TgLoadString(STID_WILL_NOT_USE_REFERRER_HTTP));
+      strcpy(gszMsgBox, TgLoadString(STID_WILL_NOT_USE_REFERRER_HTTP));
    } else {
       sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_NAMED_REFERRER_HTTP),
             gpszFakedReferer);
@@ -738,7 +739,7 @@ void FakeReferer(buf)
 void ToggleKeepAlive()
 {
    gnHttpKeepAlive = (!gnHttpKeepAlive);
-   sprintf(gszMsgBox, TgLoadString(gnHttpKeepAlive ?
+   strcpy(gszMsgBox, TgLoadString(gnHttpKeepAlive ?
          STID_WILL_USE_KEEP_ALIVE_HTTP : STID_NOT_WILL_USE_KEEP_ALIVE_HTTP));
    Msg(gszMsgBox);
 }

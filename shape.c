@@ -56,6 +56,7 @@
 #include "strtbl.e"
 #include "text.e"
 #include "util.e"
+#include <string.h>
 
 int numShapes=MAXSHAPES;
 int curShape=(-1);
@@ -1111,7 +1112,7 @@ void CreateShape()
 
    if ((objFill == NONEPAT || (objFill == BACKPAT && transPat)) &&
          (shapeShadowDx != 0 || shapeShadowDy != 0)) {
-      sprintf(gszMsgBox, TgLoadString(objFill==NONEPAT ?
+      strcpy(gszMsgBox, TgLoadString(objFill==NONEPAT ?
             STID_CREATE_SHADOW_SHAPE_NO_FILL :
             STID_CREATE_SHADOW_SHAPE_TRAN_FILL));
       switch (MsgBox(gszMsgBox, TOOL_NAME, YNC_MB)) {

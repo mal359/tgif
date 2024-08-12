@@ -46,6 +46,7 @@
 #include "util.e"
 #include "xbitmap.e"
 #include "xpixmap.e"
+#include <string.h>
 
 GC	rotateGC=NULL;
 Pixmap	textBackingBitmap=None, textBackingBgBitmap=None;
@@ -113,7 +114,7 @@ int InputOctalString(pszBuf, pnBufSize)
    if (canvasFontDoubleByte) {
       sprintf(gszMsgBox, TgLoadString(STID_INPUT_OCTAL_STR), "\\244\\244");
    } else {
-      sprintf(gszMsgBox, TgLoadString(STID_INPUT_STR));
+      strcpy(gszMsgBox, TgLoadString(STID_INPUT_STR));
    }
    Dialog(gszMsgBox, TgLoadCachedString(CSTID_DLG_ACCEPT_CANCEL), szSpec);
    UtilTrimBlanks(szSpec);

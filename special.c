@@ -70,6 +70,7 @@
 #include "util.e"
 #include "version.e"
 #include "wb.e"
+#include <string.h>
 
 int placingTopObj=FALSE;
 int connectingPortsByWire=FALSE;
@@ -1292,15 +1293,15 @@ void ConnectPortsToBroadcastWire()
    if (*existing_signal_name == '\0') {
       if (signal_name_diff) {
          /* conflicting signal names */
-         sprintf(gszMsgBox, TgLoadString(STID_CONFLICT_SIG_NAME_ENT_NEW));
+         strcpy(gszMsgBox, TgLoadString(STID_CONFLICT_SIG_NAME_ENT_NEW));
       } else {
          /* all ports have no signal names */
-         sprintf(gszMsgBox, TgLoadString(STID_PLS_ENT_SIG_NAME));
+         strcpy(gszMsgBox, TgLoadString(STID_PLS_ENT_SIG_NAME));
       }
    } else {
       UtilStrCpyN(new_signal_name, sizeof(new_signal_name),
             existing_signal_name);
-      sprintf(gszMsgBox, TgLoadString(STID_PLS_ENT_SIG_NAME));
+      strcpy(gszMsgBox, TgLoadString(STID_PLS_ENT_SIG_NAME));
    }
    if (!(*new_signal_name != '\0' && already_has_broadcast_signal_name)) {
       UtilTrimBlanks(new_signal_name);
@@ -3090,7 +3091,7 @@ void ExportToTable()
             }
          }
          if (ok) {
-            sprintf(&buf[cur_len], gszMsgBox);
+            strcpy(&buf[cur_len], gszMsgBox);
             cur_len += len;
          }
       }
@@ -3127,7 +3128,7 @@ void ExportToTable()
 void ToggleShowWireSignalName()
 {
    showWireSignalName = !showWireSignalName;
-   sprintf(gszMsgBox, TgLoadString(showWireSignalName ?
+   strcpy(gszMsgBox, TgLoadString(showWireSignalName ?
          STID_WILL_SHOW_WIRE_SIGNAL_NAME : STID_WILL_HIDE_WIRE_SIGNAL_NAME));
    Msg(gszMsgBox);
 }
