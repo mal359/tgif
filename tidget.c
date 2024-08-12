@@ -106,14 +106,14 @@ int IsTdgtWindowNotifyEvent(win, pXEv, pTdgtNtfy)
    if (pXEv->xany.window == win && pXEv->type == ClientMessage) {
       if (pXEv->xclient.message_type == gTidgetManager.notify_atom &&
             pXEv->xclient.format == 32 &&
-            pXEv->xclient.data.l[0] == TDGT_NOTIFY) {
+            (pXEv->xclient.data.l[0] & 0x0ffffffff) == TDGT_NOTIFY) {
          if (pTdgtNtfy != NULL) {
             memset(pTdgtNtfy, 0, sizeof(TdgtNtfy));
 
-            pTdgtNtfy->ctl_id = (int)(pXEv->xclient.data.l[1]);
-            pTdgtNtfy->nf_type = (int)(pXEv->xclient.data.l[2]);
-            pTdgtNtfy->nf_arg = (int)(pXEv->xclient.data.l[3]);
-            pTdgtNtfy->nf_arg2 = (int)(pXEv->xclient.data.l[4]);
+            pTdgtNtfy->ctl_id = (int)(pXEv->xclient.data.l[1] & 0x0ffffffff);
+            pTdgtNtfy->nf_type = (int)(pXEv->xclient.data.l[2] & 0x0ffffffff);
+            pTdgtNtfy->nf_arg = (int)(pXEv->xclient.data.l[3] & 0x0ffffffff);
+            pTdgtNtfy->nf_arg2 = (int)(pXEv->xclient.data.l[4] & 0x0ffffffff);
          }
          return TRUE;
       }
