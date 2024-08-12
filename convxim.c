@@ -33,6 +33,7 @@
 #include "convxim.e"
 #include "dialog.e"
 #include "font.e"
+#include "inmethod.e"
 #include "list.e"
 #include "miniline.e"
 #include "msg.e"
@@ -219,7 +220,7 @@ void XIMSetICFocus(dpy, win)
 	Msg(buf);
     }
 
-    for (i = 0; i <= (int)strlen(modifiers) - 4 ; i++) {
+    for (i = 0; modifiers != NULL && i <= (int)strlen(modifiers) - 4 ; i++) {
         if (strncmp((char *)&modifiers[i], "SCIM", 4) == 0 ||
                 strncmp((char *)&modifiers[i], "scim", 4) == 0) {
             modscim = True;
@@ -231,6 +232,7 @@ void XIMSetICFocus(dpy, win)
 	im = XOpenIM(mainDisplay, NULL, NULL, NULL);
 	if(im == NULL) {
 	    MsgBox(TgLoadString(STID_CANNOT_OPEN_XIM), TOOL_NAME, INFO_MB);
+	    CleanUpInputMethods();
 	    return;
 	}
     }
