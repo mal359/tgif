@@ -152,6 +152,7 @@ int Tgtwb5_SendKey(dpy, win, key_ev, buf)
    KeySym key_sym=(KeySym)0;
 
    has_ch = XLookupString(key_ev, s, sizeof(s), &key_sym, &c_stat);
+   has_ch += 0;
    TranslateKeys(s, &key_sym);
 
    return FALSE;

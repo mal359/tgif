@@ -81,7 +81,7 @@ int DrawAHorizontalTab(page_num, page_ptr, x, y, on_top, skip)
 {
    char s[20];
    XPoint v[5];
-   int w=0, num_digits=0, x_offset, y_offset;
+   int w=0, num_digits=0, x_offset;
    int bg_pixel=(threeDLook ? myLtGryPixel : myBgPixel);
 
    if (gnPageNumOnTab) {
@@ -114,7 +114,6 @@ int DrawAHorizontalTab(page_num, page_ptr, x, y, on_top, skip)
    } else {
       XDrawLines(mainDisplay, pageWindow, defaultGC, v, 5, CoordModeOrigin);
    }
-   y_offset = ((rulerFontHeight-7)>>1)+1;
    x_offset = (rulerFontWidth>>1)+rulerFontWidth;
    XDrawString(mainDisplay, pageWindow, defaultGC, x+x_offset,
          y+1+rulerFontAsc, s, num_digits);
@@ -1886,9 +1885,8 @@ void TileToStack()
    register struct ObjRec *obj_ptr, *prev_obj;
    int *dx=NULL, *dy=NULL, index;
    struct PageRec **page_handle=NULL;
-   struct ObjRec *saved_top_obj, *saved_bot_obj;
+   struct ObjRec *saved_bot_obj;
 
-   saved_top_obj=curPage->top;
    saved_bot_obj=curPage->bot;
    curPage->top = curPage->bot = NULL;
    DelAllPages();

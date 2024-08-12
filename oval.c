@@ -769,7 +769,7 @@ void ReadOvalObj(FP, Inbuf, ObjPtr)
    struct ObjRec **ObjPtr;
 {
    struct OvalRec *oval_ptr;
-   char color_str[40], bg_color_str[40], *s, width_spec[40];
+   char color_str[40], bg_color_str[40], *s, width_spec[40], *discard;
    int ltx, lty, rbx, rby, trans_pat=FALSE, fill, width, pen, dash, w, id=0;
    int new_alloc, rotation, locked=FALSE, transformed=FALSE, invisible=FALSE;
 
@@ -966,7 +966,8 @@ void ReadOvalObj(FP, Inbuf, ObjPtr)
       char inbuf[MAXSTRING+1];
       struct XfrmMtrxRec *ctm;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 

@@ -569,6 +569,7 @@ void ReadBoxObj(FP, Inbuf, ObjPtr)
    char color_str[40], bg_color_str[40], *s, width_spec[40];
    int ltx, lty, rbx, rby, fill, width, pen, dash, w, id=0, trans_pat=FALSE;
    int new_alloc, rotation, locked=FALSE, transformed=FALSE, invisible=FALSE;
+   char *discard;
 
    *ObjPtr = NULL;
 
@@ -768,7 +769,8 @@ void ReadBoxObj(FP, Inbuf, ObjPtr)
       char inbuf[MAXSTRING+1];
       struct XfrmMtrxRec *ctm;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 

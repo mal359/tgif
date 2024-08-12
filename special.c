@@ -1798,7 +1798,7 @@ int MakeIconic(sym_path, record_cmd)
    char icon_full_name[MAXPATHLENGTH], *rest=NULL, *psz=NULL;
    char sym_ext_str[MAXSTRING];
    FILE *fp=NULL;
-   int len, short_name, sym_ext_len, ltx, lty, rbx, rby, no_name=FALSE;
+   int short_name, ltx, lty, rbx, rby, no_name=FALSE;
 
    if (topSel == NULL || topSel != botSel) {
       MsgBox(TgLoadString(STID_SEL_ONLY_ONE_FOR_MAKEICONIC), TOOL_NAME,
@@ -1808,7 +1808,6 @@ int MakeIconic(sym_path, record_cmd)
    if (sym_path == NULL) {
       *icon_name = '\0';
       Dialog(TgLoadString(STID_ENTER_NAME_FOR_THE_ICON), NULL, icon_name);
-      len = strlen(icon_name);
       if (*icon_name == '\0') {
          Msg(TgLoadString(STID_NAME_NOT_SPEC_ICON_NOT_CREATE));
          return FALSE;
@@ -1816,10 +1815,8 @@ int MakeIconic(sym_path, record_cmd)
    } else {
       strncpy(icon_name, sym_path, sizeof(icon_name)-1);
       icon_name[sizeof(icon_name)-1] = '\0';
-      len = strlen(icon_name);
    }
    sprintf(sym_ext_str, ".%s", SYM_FILE_EXT);
-   sym_ext_len = strlen(sym_ext_str);
 
    if (FileNameHasExtension(icon_name, OBJ_FILE_TYPE, NULL, NULL)) {
       MsgBox(TgLoadString(STID_CANT_SAVE_OBJ_ICON_NOT_CREATE), TOOL_NAME,

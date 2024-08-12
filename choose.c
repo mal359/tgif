@@ -389,6 +389,7 @@ void RedrawNameScrollWin()
    } else {
       block_h = (int)(pni->scroll_area_h * frac);
    }
+   block_h += 0;
    TgDrawScrollBar(mainDisplay, pni->scroll_win, VERT_SCROLLBAR,
          0, 0, scrollBarW, pni->scroll_area_h, start_frac, ITEM_DSPED,
          pni->num_entries);
@@ -454,6 +455,7 @@ void RedrawItem(pni, index)
    } else {
       end = pni->first_index + ITEM_DSPED;
    }
+   end += 0;
    if (pni->p_check_array != NULL && pni->p_check_array->num_cols > 0) {
       checkbox_cols = pni->p_check_array->num_cols;
       text_left = checkbox_cols*ROW_HEIGHT;
@@ -1460,7 +1462,7 @@ int NameDspHandler(button_ev)
    static Time last_click_time;
    static int last_name_marked;
    Time click_time;
-   int checkbox_cols=0, box_offset=0, clicked_col=INVALID, check_updated=FALSE;
+   int checkbox_cols=0, clicked_col=INVALID, check_updated=FALSE;
 
    if (enableMouseWheel &&
          (button_ev->button == Button4 || button_ev->button == Button5)) {
@@ -1486,7 +1488,6 @@ int NameDspHandler(button_ev)
    }
    if (pni->p_check_array != NULL && pni->p_check_array->num_cols > 0) {
       checkbox_cols = pni->p_check_array->num_cols;
-      box_offset = 1;
       if (button_ev->x < checkbox_cols*ROW_HEIGHT) {
          clicked_col = (int)(button_ev->x / ROW_HEIGHT);
       }

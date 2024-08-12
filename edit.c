@@ -22,6 +22,7 @@
 
 #include "tgifdefs.h"
 #include "cmdids.h"
+#define SMOOTHSZ 5
 
 #include "align.e"
 #include "arc.e"
@@ -1755,7 +1756,7 @@ typedef struct tagAddStructuredPointInfo {
    int index; /* index into ssvlist */
    int start_mouse_x, start_mouse_y, n, ssn, already_moved, before;
    IntPoint *vlist, *ssvlist, vs[5], vs2[5];
-   char smooth[5], smooth2[5];
+   char smooth[SMOOTHSZ], smooth2[SMOOTHSZ];
    int num_vs, num_vs2, sn, sn2, saved_sn, saved_sn2;
    int dx_off, dy_off, extra_smooth, extra_smooth2;
    XPoint *sv, *sv2, dashed_vs[2];
@@ -1839,8 +1840,9 @@ int ContinueAddStructuredPolyOrPolygonPointSetup(paspi)
    smooth = paspi->smooth;
    vs2 = paspi->vs2;
    smooth2 = paspi->smooth2;
-   memset(smooth, 0, sizeof(5*sizeof(char)));
-   memset(smooth2, 0, sizeof(5*sizeof(char)));
+
+   memset(smooth, 0, SMOOTHSZ*sizeof(char));
+   memset(smooth2, 0, SMOOTHSZ*sizeof(char));
 
    paspi->x = paspi->tx = ssvlist[paspi->index].x;
    paspi->y = paspi->ty = ssvlist[paspi->index].y;
@@ -2047,8 +2049,8 @@ void ContinueAddStructuredPolyOrPolygonPointFirstMoved(paspi)
       IntPoint *vs=paspi->vs, *vs2=paspi->vs2;
       char *smooth=paspi->smooth, *smooth2=paspi->smooth2;
 
-      memset(smooth, 0, sizeof(5*sizeof(char)));
-      memset(smooth2, 0, sizeof(5*sizeof(char)));
+      memset(smooth, 0, SMOOTHSZ*sizeof(char));
+      memset(smooth2, 0, SMOOTHSZ*sizeof(char));
 
       if (paspi->before) {
          /* Add a point between the current and the previous point */
@@ -2209,8 +2211,8 @@ void ContinueAddStructuredPolyOrPolygonPointFirstMoved(paspi)
       IntPoint *vs=paspi->vs, *vs2=paspi->vs2;
       char *smooth=paspi->smooth, *smooth2=paspi->smooth2;
 
-      memset(smooth, 0, sizeof(5*sizeof(char)));
-      memset(smooth2, 0, sizeof(5*sizeof(char)));
+      memset(smooth, 0, SMOOTHSZ*sizeof(char));
+      memset(smooth2, 0, SMOOTHSZ*sizeof(char));
 
       if (!paspi->sssi.prev_valid) {
          /* first point of poly */
@@ -2802,7 +2804,7 @@ int ContinueAddPolyPoint(ObjPtr, MouseX, MouseY, Index, PolyPtr,
    int prev_x, prev_y, prev_tx, prev_ty, x, y, tx, ty, tmp_x, tmp_y;
    int next_x, next_y, next_tx, next_ty;
    int orig_x, orig_y, grid_x, grid_y, new_mouse_x, new_mouse_y;
-   int sel_ltx, sel_lty, sel_rbx, sel_rby, num=0, i, intn=0;
+   int sel_ltx, sel_lty, sel_rbx, sel_rby, i, intn=0;
    char *smooth=PolyPtr->smooth, *tmp_smooth=NULL;
    double prev_angle, next_angle, prev_dist, next_dist, dx, dy;
 
@@ -2959,11 +2961,9 @@ int ContinueAddPolyPoint(ObjPtr, MouseX, MouseY, Index, PolyPtr,
             if (before) {
                /* Add a point between the current and the previous point */
                if (Index == 0) {
-                  num = 2;
                   v[0].x = OFFSET_X(tx); v[0].y = OFFSET_Y(ty);
                   v[1].x = OFFSET_X(tx); v[1].y = OFFSET_Y(ty);
                } else {
-                  num = 3;
                   v[0].x = OFFSET_X(prev_tx); v[0].y = OFFSET_Y(prev_ty);
                   v[1].x = OFFSET_X(tx);      v[1].y = OFFSET_Y(ty);
                   v[2].x = OFFSET_X(tx);      v[2].y = OFFSET_Y(ty);
@@ -2971,11 +2971,9 @@ int ContinueAddPolyPoint(ObjPtr, MouseX, MouseY, Index, PolyPtr,
             } else {
                /* Add a point between the current and the next point */
                if (Index == n-1) {
-                  num = 2;
                   v[0].x = OFFSET_X(tx);      v[0].y = OFFSET_Y(ty);
                   v[1].x = OFFSET_X(tx);      v[1].y = OFFSET_Y(ty);
                } else {
-                  num = 3;
                   v[0].x = OFFSET_X(tx);      v[0].y = OFFSET_Y(ty);
                   v[1].x = OFFSET_X(tx);      v[1].y = OFFSET_Y(ty);
                   v[2].x = OFFSET_X(next_tx); v[2].y = OFFSET_Y(next_ty);
@@ -3190,6 +3188,10 @@ int ContinueAddPolygonPoint(ObjPtr, MouseX, MouseY, Index, PolygonPtr,
 #endif /* _TGIF_DBG */
    sel_ltx = selLtX; sel_lty = selLtY;
    sel_rbx = selRbX; sel_rby = selRbY;
+   v[1].x=0;
+   v[1].y=0;
+   v[1].x=0;
+   v[1].y=0;
 
    x = tx = vs[Index].x;
    y = ty = vs[Index].y;

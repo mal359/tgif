@@ -27,7 +27,7 @@ typedef struct WhiteBoardRec {
    int	do_whiteboard;
 
    char	send_fname[MAXPATHLENGTH];
-   char	gz_send_fname[MAXPATHLENGTH]; /* zlib, not gzip */
+   char	gz_send_fname[MAXPATHLENGTH+16]; /* zlib, not gzip */
    FILE *send_fp;
    FILE *gz_send_fp; /* zlib, not gzip */
    int	send_socket;
@@ -35,7 +35,7 @@ typedef struct WhiteBoardRec {
    int	listening;
 
    char	listen_fname[MAXPATHLENGTH];
-   char	gz_listen_fname[MAXPATHLENGTH]; /* zlib, not gzip */
+   char	gz_listen_fname[MAXPATHLENGTH+16]; /* zlib, not gzip */
    FILE	*listen_fp;
    FILE	*gz_listen_fp; /* zlib, not gzip */
    int	listen_socket;

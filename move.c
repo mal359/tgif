@@ -1064,7 +1064,7 @@ void UpdateInnerRubberObj(pInnerObj, pRubberInfo, dx, dy)
    RubberInfo *pRubberInfo;
    int dx, dy;
 {
-   int i=0, n=0;
+   int i=0;
    IntPoint *vs=NULL;
    struct PolyRec *poly_ptr=NULL;
    struct PolygonRec *polygon_ptr=NULL;
@@ -1092,10 +1092,8 @@ void UpdateInnerRubberObj(pInnerObj, pRubberInfo, dx, dy)
       case OBJ_POLY:
          poly_ptr = pInnerObj->detail.p;
          if (poly_ptr->curved == LT_STRUCT_SPLINE) {
-            n = poly_ptr->ssn;
             vs = poly_ptr->ssvlist;
          } else {
-            n = poly_ptr->n;
             vs = poly_ptr->vlist;
          }
          if (pInnerObj->ctm == NULL) {
@@ -1127,10 +1125,8 @@ void UpdateInnerRubberObj(pInnerObj, pRubberInfo, dx, dy)
       case OBJ_POLYGON:
          polygon_ptr = pInnerObj->detail.g;
          if (polygon_ptr->curved == LT_STRUCT_SPLINE) {
-            n = polygon_ptr->ssn;
             vs = polygon_ptr->ssvlist;
          } else {
-            n = polygon_ptr->n;
             vs = polygon_ptr->vlist;
          }
          if (pInnerObj->ctm == NULL) {

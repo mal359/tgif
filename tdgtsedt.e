@@ -61,7 +61,7 @@ extern int	TdgtSmplEditSetText ARGS_DECL((TdgtSmplEdit*, char *str));
 extern char	*TdgtSmplEditGetText ARGS_DECL((TdgtSmplEdit*));
 extern void	TdgtSmplEditGetTextFormatInfo ARGS_DECL((TdgtSmplEdit*,
 				TextFormatInfo*));
-extern int	TdgtSmplEditSetColorIndex ARGS_DECL((TdgtSmplEdit*, int));
+extern int	TdgtSmplEditSetColorIndex ARGS_DECL((TdgtSmplEdit*, long int));
 extern int	TdgtSmplEditGetColorIndex ARGS_DECL((TdgtSmplEdit*));
 extern int	TdgtSmplEditSetFontStyle ARGS_DECL((TdgtSmplEdit*, int));
 extern int	TdgtSmplEditGetFontStyle ARGS_DECL((TdgtSmplEdit*));

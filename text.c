@@ -981,7 +981,7 @@ int CreateTextObj(nDeactivateIM, nRedraw)
    struct TextRec *text_ptr=NULL;
    struct AttrRec *attr_ptr=NULL;
    MiniLinesInfo *minilines=NULL;
-   int num_lines=0, ltx=0, lty=0, rbx=0, rby=0, scr_ltx=0, scr_lty=0;
+   int num_lines=0, ltx=0, lty=0, rbx=0, rby=0, scr_ltx=0;
    int saved_font=curFont, saved_style=curStyle, saved_sz_unit=curSzUnit;
    int saved_just=textJust, saved_color=colorIndex;
    int saved_underline_on=curUnderlineOn;
@@ -1095,6 +1095,7 @@ int CreateTextObj(nDeactivateIM, nRedraw)
    switch (textJust) {
    case JUST_L:
       scr_ltx = OFFSET_X(textAbsX-2);
+      scr_ltx += 0;
       if (zoomedIn) {
          ltx = textAbsX-2-GRID_ABS_SIZE(2);
          rbx = textAbsX+textW+2+GRID_ABS_SIZE(2);
@@ -1124,7 +1125,6 @@ int CreateTextObj(nDeactivateIM, nRedraw)
       }
       break;
    }
-   scr_lty = OFFSET_Y(textAbsY);
    if (zoomedIn) {
       lty = textAbsY-2-GRID_ABS_SIZE(2);
       rby = textAbsY+textH+2+GRID_ABS_SIZE(2);
@@ -2426,7 +2426,6 @@ void HandleBS(key_ev, buf, key_sym, pn_has_char)
    KeySym key_sym;
    int *pn_has_char;
 {
-   struct AttrRec *attr_ptr=NULL;
    int merged_lines=FALSE;
    int nDeleteNextChar=(deleteNextCharWithDelKey &&
          CharIsDEL(key_ev, buf, key_sym, pn_has_char)) ||
@@ -2441,7 +2440,6 @@ void HandleBS(key_ev, buf, key_sym, pn_has_char)
       EndChangeCurText(FALSE);
       return;
    }
-   attr_ptr = curTextObj->detail.t->attr;
    if (nDeleteNextChar) {
       if (CanAdvanceRight(curStrBlock, textCurIndex)) {
          AdvanceRight(TRUE);
@@ -4076,7 +4074,7 @@ void DrawTextObj(Win, XOff, YOff, ObjPtr)
    struct ObjRec *ObjPtr;
 {
    struct TextRec *text_ptr=ObjPtr->detail.t;
-   int x, y, xinc=0, yinc=0, trans_pat=0, fill=0, pen=0;
+   int x, trans_pat=0, fill=0, pen=0;
    int use_cache=FALSE;
    XGCValues values;
 
@@ -4103,10 +4101,6 @@ void DrawTextObj(Win, XOff, YOff, ObjPtr)
       use_cache = TRUE;
    }
    x = ObjPtr->x - XOff;
-   y = ObjPtr->y - YOff;
-
-   xinc = 0;
-   yinc = textCursorH+textVSpace;
 
    trans_pat = ObjPtr->trans_pat;
    fill = text_ptr->fill;
@@ -5045,7 +5039,7 @@ void ReadTextObj(FP, Inbuf, ObjPtr)
 {
    int max_len=0, max_h=0, len;
    struct TextRec *text_ptr;
-   char color_str[40], bg_color_str[40], *s, *c_ptr, font_str[MAXSTRING];
+   char color_str[40], bg_color_str[40], *s, *c_ptr, *discard, font_str[MAXSTRING];
    char sb_font_str[MAXSTRING], inbuf[MAXSTRING+1];
    char cust_font_name[MAXSTRING+1]; /* this is not really used any more */
    int has_ps_bitmap=FALSE;
@@ -5486,7 +5480,8 @@ void ReadTextObj(FP, Inbuf, ObjPtr)
       int do_adjust=FALSE, dx=0, t[2];
       double dreal_x, dreal_y, m[4];
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 

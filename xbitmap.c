@@ -1999,8 +1999,10 @@ void MapEPSIToPix(DestX, DestY, DestW, DestH, SrcW, SrcH, SrcX, SrcY)
       *SrcX = (int)round((((float)SrcW)*((float)DestX))/((float)DestW));
       *SrcY = (int)round((((float)SrcH)*((float)DestY))/((float)DestH));
    }
-   if (*SrcX >= SrcW) *SrcX = SrcW-1; if (*SrcX < 0) *SrcX = 0;
-   if (*SrcY >= SrcH) *SrcY = SrcH-1; if (*SrcY < 0) *SrcY = 0;
+   if (*SrcX >= SrcW) *SrcX = SrcW-1;
+   if (*SrcX < 0) *SrcX = 0;
+   if (*SrcY >= SrcH) *SrcY = SrcH-1;
+   if (*SrcY < 0) *SrcY = 0;
 }
 
 void GenPreviewBitmap(FP, llxPage, llyPage, urxPage, uryPage)
@@ -5759,13 +5761,15 @@ int ReadTransformAndAdjustForXBm(FP, ObjPtr, xbm_ptr, transformed, rotate, flip)
    struct XBmRec *xbm_ptr;
    int transformed, rotate, flip;
 {
+   char *discard;
    if (fileVersion >= 33 && transformed) {
       char inbuf[MAXSTRING];
       struct XfrmMtrxRec *ctm=NULL;
       int real_x=0, real_y=0;
       struct BBRec orig_obbox;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 
@@ -5906,7 +5910,7 @@ void ReadXBmObj(FP, Inbuf, ObjPtr)
    struct ObjRec **ObjPtr;
 {
    struct XBmRec *xbm_ptr=NULL;
-   char color_str[40], bg_color_str[40], *s, inbuf[MAXSTRING], *c_ptr;
+   char color_str[40], bg_color_str[40], *s, inbuf[MAXSTRING], *c_ptr, *discard;
    int ltx, lty, rbx, rby, i, j, k, data=0, color_index;
    int nibble_count, bit_count, num_nibbles, fill, trans_pat=FALSE;
    int rotation=0, new_alloc, id=0, image_w=0, image_h=0;
@@ -6103,7 +6107,8 @@ void ReadXBmObj(FP, Inbuf, ObjPtr)
    if (fileVersion >= 24) {
       char *tmp_str, *s, *s1;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
 
       tmp_str = FindChar((int)'"', inbuf);
@@ -6345,7 +6350,7 @@ void ReadXBmObj(FP, Inbuf, ObjPtr)
       num_nibbles = ((image_w % 4) == 0) ? (int)(image_w>>2) :
             (int)(image_w>>2)+1;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
       scanLineNum++;
       c_ptr = &inbuf[5];
       nibble_count = 0;
@@ -6356,7 +6361,7 @@ void ReadXBmObj(FP, Inbuf, ObjPtr)
          for (i = 0; i < image_h; i++) {
             for (j = 0; j < num_nibbles; j++) {
                if (nibble_count++ == 64) {
-                  (void)fgets(inbuf, MAXSTRING, FP);
+                  discard=fgets(inbuf, MAXSTRING, FP);
                   scanLineNum++;
                   c_ptr = &inbuf[5];
                   nibble_count = 1;
@@ -6374,7 +6379,7 @@ void ReadXBmObj(FP, Inbuf, ObjPtr)
             bit_count = 0;
             for (j = 0; j < num_nibbles; j++) {
                if (nibble_count++ == 64) {
-                  (void)fgets(inbuf, MAXSTRING, FP);
+                  discard=fgets(inbuf, MAXSTRING, FP);
                   scanLineNum++;
                   c_ptr = &inbuf[5];
                   nibble_count = 1;

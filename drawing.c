@@ -1336,8 +1336,10 @@ void GetBetterBBox(ObjPtr, LtX, LtY, RbX, RbY, AlreadyFound)
       }
    }
    if (*AlreadyFound) {
-      if (ltx < *LtX) *LtX = ltx; if (lty < *LtY) *LtY = lty;
-      if (rbx > *RbX) *RbX = rbx; if (rby > *RbY) *RbY = rby;
+      if (ltx < *LtX) *LtX = ltx;
+      if (lty < *LtY) *LtY = lty;
+      if (rbx > *RbX) *RbX = rbx; 
+      if (rby > *RbY) *RbY = rby;
    } else {
       *LtX = ltx; *LtY = lty; *RbX = rbx; *RbY = rby;
    }
@@ -2911,6 +2913,7 @@ int ShortHand(input)
 
    key_ev = (&(input->xkey));
    have_ch = XLookupString(key_ev, buf, sizeof(buf), &key_sym, &c_stat);
+   have_ch += 0;
    TranslateKeys(buf, &key_sym);
 
    *args = '\0';
@@ -4057,6 +4060,7 @@ void HandleMotionForPortInDrawWindow(mouse_x, mouse_y)
 
    obj_ptr = FindAnObj(mouse_x, mouse_y, &owner_obj, &obj_under_cursor,
          port_name);
+   obj_ptr += 0;
    if (drawPolyHighlightedNode != NULL) {
       if (obj_under_cursor != drawPolyHighlightedNode) {
          /* un-highlight */

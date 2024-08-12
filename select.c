@@ -533,6 +533,7 @@ struct ObjRec *FindAnObj(XOff, YOff, OwnerObj, ConnectObj, ReturnedObjName)
             owner_obj = obj_ptr;
             returned_obj = attr_ptr->obj;
             found_attr = TRUE;
+            found_attr += 0;
             break;
          }
       }
@@ -1152,23 +1153,32 @@ struct ObjRec *PtInObjList(XOff, YOff, FirstObjPtr)
             YOff <= OFFSET_Y(obj_ptr->bbox.rby)+3) {
          switch (obj_ptr->type) {
          case OBJ_TEXT:
-            if (FindGoodText(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodText(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_XBM:
-            if (FindGoodXBm(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodXBm(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_XPM:
-            if (FindGoodXPm(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodXPm(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_BOX:
-            if (FindGoodBox(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodBox(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_OVAL:
-            if (FindGoodOval(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodOval(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_POLY:
-            if (FindGoodPoly(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodPoly(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_POLYGON:
-            if (FindGoodPolygon(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodPolygon(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_ARC:
-            if (FindGoodArc(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodArc(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_RCBOX:
-            if (FindGoodRCBox(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodRCBox(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
 
          case OBJ_GROUP:
          case OBJ_SYM:
@@ -1214,23 +1224,32 @@ struct ObjRec *PtInSelected(XOff, YOff)
             YOff <= OFFSET_Y(obj_ptr->bbox.rby)+3) {
          switch (obj_ptr->type) {
          case OBJ_TEXT:
-            if (FindGoodText(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodText(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_XBM:
-            if (FindGoodXBm(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodXBm(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_XPM:
-            if (FindGoodXPm(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodXPm(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_BOX:
-            if (FindGoodBox(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodBox(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_OVAL:
-            if (FindGoodOval(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodOval(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_POLY:
-            if (FindGoodPoly(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodPoly(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_POLYGON:
-            if (FindGoodPolygon(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodPolygon(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_ARC:
-            if (FindGoodArc(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodArc(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
          case OBJ_RCBOX:
-            if (FindGoodRCBox(XOff,YOff,obj_ptr)) return obj_ptr; break;
+            if (FindGoodRCBox(XOff,YOff,obj_ptr)) return obj_ptr;
+            break;
 
          case OBJ_GROUP:
          case OBJ_ICON:
@@ -2547,9 +2566,8 @@ void DelAllSelObj()
    if (curChoice == VERTEXMODE) {
       StartCompositeCmd();
       for (vsel_ptr=botVSel; vsel_ptr!=NULL; vsel_ptr=vsel_ptr->prev) {
-         int delete_it=FALSE, extra_vertex=FALSE, curved=(-1), ssn=0;
-         char *smooth=NULL, *ssmooth=NULL;
-         IntPoint *ssvlist=NULL;
+         int delete_it=FALSE, extra_vertex=FALSE, curved=(-1);
+         char *smooth=NULL;
 
          obj_ptr = vsel_ptr->obj;
 
@@ -2557,11 +2575,7 @@ void DelAllSelObj()
          case OBJ_POLY:
             poly_ptr = obj_ptr->detail.p;
             curved = poly_ptr->curved;
-            if (curved == LT_STRUCT_SPLINE) {
-               ssvlist = poly_ptr->ssvlist;
-               ssn = poly_ptr->ssn;
-               ssmooth = poly_ptr->ssmooth;
-            } else {
+            if (!(curved == LT_STRUCT_SPLINE)) {
                vlist = poly_ptr->vlist;
                n = poly_ptr->n;
                smooth = poly_ptr->smooth;
@@ -2572,9 +2586,6 @@ void DelAllSelObj()
             polygon_ptr = obj_ptr->detail.g;
             curved = polygon_ptr->curved;
             if (curved == LT_STRUCT_SPLINE) {
-               ssvlist = polygon_ptr->ssvlist;
-               ssn = polygon_ptr->ssn;
-               ssmooth = polygon_ptr->ssmooth;
             } else {
                vlist = polygon_ptr->vlist;
                n = polygon_ptr->n;

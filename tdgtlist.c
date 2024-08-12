@@ -80,18 +80,13 @@ void RedrawTdgtListItem(pTdgtList, index, pListItemInfo)
    ListItemInfo *pListItemInfo;
 {
    ListInfo *pListInfo=(&pTdgtList->list_info);
-   int len=0, top=0, end=0, checkbox_cols=0, text_left=0, box_offset=0, box_w=0;
+   int len=0, top=0, checkbox_cols=0, text_left=0, box_offset=0, box_w=0;
    int selected=(index==pListInfo->marked_index);
-   int length=ListLength(&pListInfo->list);
    XGCValues values;
 
    if (!pTdgtList->can_select) selected = FALSE;
    top = gnListFontAsc+1;
-   if (pListInfo->first_index+pListInfo->num_visible_lines > length) {
-      end = length;
-   } else {
-      end = pListInfo->first_index + pListInfo->num_visible_lines;
-   }
+
    if (pListInfo->p_check_array != NULL &&
          pListInfo->p_check_array->num_cols > 0) {
       checkbox_cols = pListInfo->p_check_array->num_cols;
@@ -224,25 +219,12 @@ void RedrawTdgtListScrollWindow(pTdgtList)
    TdgtList *pTdgtList;
 {
    ListInfo *pListInfo=(&pTdgtList->list_info);
-   double frac=(double)0, start_frac=(double)0;
-   int block_h=0, block_start=0;
+   double start_frac=(double)0;
    int length=ListLength(&pListInfo->list);
 
    start_frac = (length > 0) ?  (double)((double)(pListInfo->first_index) /
          (double)length) : ((double)0.0);
-   /* starting pixel */
-   block_start = (int)(pTdgtList->scr_area_h * start_frac);
 
-   if (length > pListInfo->num_visible_lines) {
-      frac = (double)((double)pListInfo->num_visible_lines / (double)(length));
-   } else {
-      frac = 1.0;
-   }
-   if (pListInfo->first_index+pListInfo->num_visible_lines >= length) {
-      block_h = pTdgtList->scr_area_h - block_start;
-   } else {
-      block_h = (int)(pTdgtList->scr_area_h * frac);
-   }
    TgDrawScrollBar(mainDisplay, pTdgtList->scr_win, VERT_SCROLLBAR,
          0, 0, scrollBarW, pTdgtList->scr_area_h, start_frac,
          pListInfo->num_visible_lines, length);

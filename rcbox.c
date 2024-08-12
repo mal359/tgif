@@ -760,7 +760,7 @@ void ReadRCBoxObj(FP, Inbuf, ObjPtr)
    struct ObjRec **ObjPtr;
 {
    struct RCBoxRec *rcbox_ptr;
-   char color_str[40], bg_color_str[40], *s, msg[MAXSTRING], width_spec[40];
+   char color_str[40], bg_color_str[40], *s, msg[MAXSTRING], width_spec[40], *discard;
    int ltx, lty, rbx, rby, trans_pat=FALSE, fill, width, pen, dash, radius;
    int rotation, new_alloc, id=0, w, locked=FALSE;
    int transformed=FALSE, invisible=FALSE;
@@ -933,7 +933,8 @@ void ReadRCBoxObj(FP, Inbuf, ObjPtr)
       char inbuf[MAXSTRING+1];
       struct XfrmMtrxRec *ctm;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 

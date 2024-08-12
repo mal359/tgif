@@ -394,7 +394,7 @@ int FtpSendPortCmd(n_socket, pn_data_socket)
 {
    struct sockaddr_in soc_address;
    struct sockaddr_in *sin=(&soc_address);
-   char port_cmd[20];
+   char port_cmd[40];
 
    *pn_data_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
    if (*pn_data_socket < 0) {
@@ -661,6 +661,7 @@ int FtpGetContent(n_socket, data_socket, is_dir, ppsz_buf, pn_buf_sz)
    if (is_dir) {
       /* a directory */
       status = FtpDoRead(accepted_socket, ppsz_buf, pn_buf_sz);
+      status += 0;
    } else {
       /* a file */
       status = FtpDoRead(accepted_socket, ppsz_buf, pn_buf_sz);

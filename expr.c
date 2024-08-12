@@ -443,15 +443,10 @@ int EvalArithmaticOp(op_code, op_str, v, result_ptr)
    char *op_str;
    struct VRec *v, *result_ptr;
 {
-   int left_ival, right_ival;
-   double left_dval, right_dval;
-
    if (!((v[1].vtype == INT_VAL || v[1].vtype == DBL_VAL) &&
          (v[0].vtype == INT_VAL || v[0].vtype == DBL_VAL))) {
       return BadOperandType(op_str);
    }
-   left_ival = right_ival = 0;
-   left_dval = right_dval = (double)0.0;
    switch (v[1].vtype) {
    case INT_VAL:
       switch (v[0].vtype) {

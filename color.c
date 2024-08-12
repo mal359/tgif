@@ -1380,14 +1380,14 @@ int DrawAVerticalTab(color_index, x, y, skip)
 
 void RedrawColorWindow()
 {
-   int i, x=(windowPadding>>1), y=0, y_start;
+   int i, x=(windowPadding>>1), y=0;
 
    needToRedrawColorWindow = FALSE;
    if (!colorLayers || colorWindow == None) return;
 
    XClearWindow(mainDisplay, colorWindow);
 
-   y_start = y = (upend_height*MAX_VERTICAL_BTNS)+(windowPadding>>1);
+   y = (upend_height*MAX_VERTICAL_BTNS)+(windowPadding>>1);
    for (i=0; i < maxColors; i++) {
       if (i >= colorWindowFirstIndex) {
          int h=0;
@@ -1699,12 +1699,12 @@ void ChangeAllSelColor(ColorIndex, HighLight)
       dont_do_obj = TRUE;
    }
    if (topSel == NULL || stickyMenuSelection) {
-      int text_obj_created=FALSE, text_cursor_shown=FALSE;
+      int text_obj_created=FALSE;
 
       if (!dont_check_text) {
          if (!(curChoice == DRAWTEXT && textCursorShown)) {
-            text_cursor_shown = textCursorShown;
             text_obj_created = TieLooseEnds();
+            text_obj_created += 0;
          }
       }
       colorIndex = ColorIndex;
@@ -1722,7 +1722,6 @@ void ChangeAllSelColor(ColorIndex, HighLight)
       }
       if (!dont_check_text) {
          if (curChoice == DRAWTEXT && textCursorShown) {
-            text_cursor_shown = TRUE;
             if (ChangeEditTextProperty(PROP_MASK_COLOR, colorIndex)) {
                curTextModified = TRUE;
                RedrawCurText();

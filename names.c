@@ -393,6 +393,7 @@ DspList *DirListing(Path, ExtStr, OtherExtStr)
 
    while ((d=readdir(dirp)) != NULL) {
       len = strlen(d->d_name);
+      len += 0;
       if (ext_len == 0) {
 #ifdef VMS
          if (len > 4 && (strcmp(".dir", &d->d_name[len-4]) == 0)) {

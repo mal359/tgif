@@ -1451,15 +1451,13 @@ void FreeEditAttrInfo(pEditAttrInfo)
    EditAttrInfo *pEditAttrInfo;
    /* pEditAttrInfo will also be freed before returning */
 {
-   int i=0, num_attrs=0, *fore_colors=NULL, *attr_indices=NULL;
+   int i=0, num_attrs=0;
    char **attr_names=NULL, **attr_values=NULL, **attr_strings=NULL;
    char **status_strings=NULL;
 
    if (pEditAttrInfo == NULL) return;
 
    num_attrs = pEditAttrInfo->num_attrs;
-   fore_colors = pEditAttrInfo->fore_colors;
-   attr_indices = pEditAttrInfo->attr_indices;
    attr_names = pEditAttrInfo->attr_names;
    attr_values = pEditAttrInfo->attr_values;
    attr_strings = pEditAttrInfo->attr_strings;

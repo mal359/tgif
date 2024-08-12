@@ -685,6 +685,7 @@ void HandleSelectionClear(input)
    Time time;
 
    win = input->xselectionclear.window;
+   win += 0;
    selection = input->xselectionclear.selection;
    time = input->xselectionclear.time;
 
@@ -749,6 +750,7 @@ void HandleSelectionRequest(input)
    target = input->xselectionrequest.target;
    property = input->xselectionrequest.property;
    time = input->xselectionrequest.time;
+   time += 0;
 
    /* do not translate -- program constants */
    DebugSelectRequest(property, target, 1, "function entry point");

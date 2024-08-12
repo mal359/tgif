@@ -2242,6 +2242,7 @@ void SavePages(pSpecifyPagesInfo)
    UtilTrimBlanks(new_file_name);
    if (*new_file_name == '\0') return;
    len = strlen(new_file_name);
+   len += 0;
 
    saved_cur_page = curPage;
    for (page_num=0, curPage=firstPage; curPage != NULL;
@@ -6606,6 +6607,7 @@ int DoGenDump(FileName)
    }
    if (whereToPrint >= MAXDEFWHERETOPRINT) {
       export_cap = GetExportFilterCapability(whereToPrint);
+      export_cap += 0;
    }
    if (whereToPrint == XBM_FILE || whereToPrint == GIF_FILE ||
          whereToPrint == HTML_FILE || whereToPrint == PNG_FILE ||

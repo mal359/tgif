@@ -574,7 +574,7 @@ T_ControlPacket * ct_pack_in;
     char line_format[ MAXFORMATSIZE ];
     char var_value[ MAXSTRING + 1 ];
     char last_object_name[ MAXOBJECTNAME ];
-    char name_string[ MAXSYMBOLNAME+MAXFORMATSIZE ];
+    char name_string[ MAXSYMBOLNAME+MAXFORMATSIZE+16 ];
     char value_string[ MAXVALUESIZE ];
     char att_name[ 15 ];
     struct ObjRec *owner_obj=NULL, *named_obj;
@@ -788,6 +788,7 @@ int * options; int * initial_index; int * final_index;
 {
     int i;
     char * pt;
+    double discard;
 
     /* Syntax for requests: symname([i(:f)])(<symformat>)=(symvalue) */
 
@@ -911,7 +912,8 @@ int * options; int * initial_index; int * final_index;
         }
         else
         {
-            strtod( buffer, &pt );
+            discard=strtod( buffer, &pt );
+            UNUSED ((void) discard);
 
             if( pt != buffer )
             {
@@ -931,12 +933,14 @@ char * getNextValue( char * values, char ** endpt )
 {
     static char value[MAXVALUESIZE];
     char * buffer;
+    double discard;
 
     buffer = values;
 
     SKIP_WHITESPACE(buffer);
     
-    strtod( buffer, endpt );
+    discard=strtod( buffer, endpt );
+    UNUSED ((void) discard);
     if( *endpt == buffer )
         return(NULL);
 

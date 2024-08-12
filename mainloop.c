@@ -235,13 +235,15 @@ static
 void ExecWithFile(CmdName, FileName)
    char *CmdName, *FileName;
 {
+   int discard;
    char s[255];
 
 #ifdef _BACKGROUND_DONT_FORK
    /* do not translate -- program constants */
    sprintf(s, "xterm -bd red -e %s %s", CmdName, FileName);
    strcat(s, " &");
-   (void)system(s);
+   discard=system(s);
+   UNUSED ((void) discard);
 #else /* ~_BACKGROUND_DONT_FORK */
    int pid;
 
@@ -1237,6 +1239,7 @@ int JustInit(pszFile, pnNeedToCheckAutoExec)
 
    if (gstWBInfo.do_whiteboard) {
       static int initialized=FALSE;
+      initialized += 0;
 
 #ifdef _TGIF_DBG /* debug, do not translate */
       TgAssert(!initialized,

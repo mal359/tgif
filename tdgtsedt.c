@@ -72,7 +72,7 @@ char *TdgtSmplEditBinarySearch(caption, len, max_w, font_ptr,
     * When &caption[too_long-1] is too long and &caption[too_long] is not
     *         long enough, return &caption[too_long].
     */
-   int prev_too_long=INVALID, too_long=0, too_short=len, found=FALSE;
+   int too_long=0, too_short=len, found=FALSE;
    
    while (!found) {
       int w=0;
@@ -86,7 +86,6 @@ char *TdgtSmplEditBinarySearch(caption, len, max_w, font_ptr,
       if (too_short-too_long <= 4) {
          w = (pf_text_width_func)(font_ptr, &caption[too_long], len-too_long);
          if (w > max_w) {
-            prev_too_long = too_long;
             too_long++;
          } else {
             return (&caption[too_long]);
@@ -504,7 +503,7 @@ void TdgtSmplEditGetTextFormatInfo(pTdgtSmplEdit, pTextFormatInfo)
 
 int TdgtSmplEditSetColorIndex(pTdgtSmplEdit, color_index)
    TdgtSmplEdit *pTdgtSmplEdit;
-   int color_index;
+   long int color_index;
 {
    int prev_color_index=pTdgtSmplEdit->color_index;
 

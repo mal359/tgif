@@ -183,7 +183,7 @@ int WriteBufToCutBuffer(buf, bytes_to_write, buf_is_simple_string,
     * otherwise, it's an object
     */
 {
-   int copy_failed=FALSE, setselowner_failed=FALSE;
+   int copy_failed=FALSE;
 
    ClearSelection();
    SetCutBuffer(buf, bytes_to_write, buf_is_simple_string, buf_is_utf8_string);
@@ -200,7 +200,6 @@ int WriteBufToCutBuffer(buf, bytes_to_write, buf_is_simple_string,
    XSetSelectionOwner(mainDisplay, XA_PRIMARY, mainWindow,
          lastKeyOrBtnEvInfo.time);
    if (XGetSelectionOwner(mainDisplay, XA_PRIMARY) != mainWindow) {
-      setselowner_failed = TRUE;
       strcpy(gszMsgBox, TgLoadString(STID_CANT_ACQUIRE_X_SELECTION));
       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
    } else {
@@ -526,6 +525,7 @@ unsigned int PasteString(CutBuffer, highlight, record_cmd)
             }
          }
          *dest_c_ptr = '\0';
+         pMiniLine += 0;
          pMiniLine = CreateMiniLineFromString(s, &pFirstMiniLine,
                &pLastMiniLine);
       } else {
@@ -3385,7 +3385,7 @@ void PasteProperties(nPrompt)
    int nPrompt;
 {
    struct PropertiesRec properties;
-   long lMask=0L, lSkip=0L;
+   long lMask=0L;
    struct CheckArrayRec check_array;
    int len=0, from_selection=FALSE;
    char *cut_buffer=NULL;
@@ -3418,8 +3418,6 @@ void PasteProperties(nPrompt)
          &properties)) {
       return;
    }
-   lSkip = (~lMask);
-
    if (nPrompt) {
       SelectProperties(TgLoadString(STID_UNCHECK_PROP_FOR_PASTE_DOTS),
             PASTE_PROP, &check_array, &properties);
@@ -3527,7 +3525,7 @@ int SelectPropSetForRestore(pszTitle, pszPropSet, nPropSetSize)
 void RestoreProperties()
 {
    struct PropertiesRec properties;
-   long lMask=0L, lSkip=0L;
+   long lMask=0L;
    struct CheckArrayRec check_array;
    char szPropSet[MAXSTRING], szPropSetSec[MAXSTRING];
 
@@ -3544,8 +3542,6 @@ void RestoreProperties()
          &properties)) {
       return;
    }
-   lSkip = (~lMask);
-
    SelectProperties(TgLoadString(STID_UNCHECK_PROP_FOR_RESTORE_DOTS),
          RESTORE_PROP, &check_array, &properties);
    CleanUpCheckArray(&check_array);

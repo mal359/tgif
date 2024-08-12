@@ -1799,7 +1799,7 @@ void StretchStructSpline(XGridOff, YGridOff, ObjPtr, Index)
    char smooth[5], smooth2[5];
    XEvent input, ev;
    XPoint *sv=NULL, *sv2=NULL, *saved_sv=NULL, *saved_sv2=NULL;
-   IntPoint vs[5], vs2[5], start_v, *vlist=NULL, *pvs=NULL;
+   IntPoint vs[5], vs2[5], start_v={0,0}, *vlist=NULL, *pvs=NULL;
    StretchStructuredSplineInfo sssi;
 
    if (ObjPtr->locked) {
@@ -2951,8 +2951,10 @@ void StretchSimplePoly(ObjPtr)
          ltx = rbx = x;
          lty = rby = y;
       } else {
-         if (x < ltx) ltx = x; if (y < lty) lty = y;
-         if (x > rbx) rbx = x; if (y > rby) rby = y;
+         if (x < ltx) ltx = x;
+         if (y < lty) lty = y;
+         if (x > rbx) rbx = x;
+         if (y > rby) rby = y;
       }
    }
    ObjPtr->obbox.ltx = ObjPtr->x = ltx;
@@ -2983,8 +2985,10 @@ void StretchSimplePolygon(ObjPtr)
          ltx = rbx = x;
          lty = rby = y;
       } else {
-         if (x < ltx) ltx = x; if (y < lty) lty = y;
-         if (x > rbx) rbx = x; if (y > rby) rby = y;
+         if (x < ltx) ltx = x;
+         if (y < lty) lty = y;
+         if (x > rbx) rbx = x;
+         if (y > rby) rby = y;
       }
    }
    ObjPtr->obbox.ltx = ObjPtr->x = ltx;
@@ -3932,7 +3936,7 @@ void ScaleAllSelObj()
 void PreciseScaleEverything()
 {
    int corner=CORNER_RB, saved_h_align=horiAlign, saved_v_align=vertAlign;
-   int saved_cur_page_num=curPageNum, prev_page_num=curPageNum;
+   int saved_cur_page_num=curPageNum;
    int saved_stretchable_text=stretchableText;
    char spec[MAXSTRING], buf[MAXSTRING];
    struct BBRec obbox;
@@ -4008,7 +4012,6 @@ void PreciseScaleEverything()
       ShowPage();
       XSync(mainDisplay, False);
       /* RecordCmd(CMD_GOTO_PAGE, NULL, NULL, NULL, curPageNum); */
-      prev_page_num = curPageNum;
       sprintf(gszMsgBox, TgLoadCachedString(CSTID_SCALING_EVERYTHING_PAGE),
             curPageNum, lastPageNum);
       SetStringStatus(gszMsgBox);
@@ -6317,7 +6320,7 @@ void ShearSel(XGridOff, YGridOff, ObjPtr, Corner)
    XPoint all_bbox_vs[5], obj_obbox_vs[5];
    int grid_x=XGridOff, grid_y=YGridOff, dx, dy;
    int saved_x=XGridOff, saved_y=YGridOff;
-   int shearing=TRUE, shear_hori=FALSE;
+   int shearing=TRUE;
    double dx_scale=(double)1000, dy_scale=(double)1000;
    double dx_shear=(double)0, dy_shear=(double)0;
    char buf[80];
@@ -6365,11 +6368,9 @@ void ShearSel(XGridOff, YGridOff, ObjPtr, Corner)
       return;
    }
    if (Corner == CORNER_TOP || Corner == CORNER_BOTTOM) {
-      shear_hori = TRUE;
       multX = 0.0;
       multY = (Corner == CORNER_BOTTOM ? 1.0 : (-1.0));
    } else {
-      shear_hori = FALSE;
       multX = (Corner == CORNER_RIGHT ? 1.0 : (-1.0));
       multY = 0.0;
    }
@@ -7125,7 +7126,8 @@ void MoveRotatePivot(Corner)
 void AutoRotatePivotSubMenu(index)
    int index;
 {
-   if (!autoRotatePivot == index) return;
+   if ((!autoRotatePivot) == index)
+      return;
 
    ToggleAutoRotatePivot();
 }

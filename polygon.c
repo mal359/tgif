@@ -2089,7 +2089,7 @@ void ReadPolygonObj(FP, Inbuf, ObjPtr)
    register int i;
    struct PolygonRec *polygon_ptr;
    IntPoint *v;
-   char color_str[40], bg_color_str[40], *s, inbuf[MAXSTRING];
+   char color_str[40], bg_color_str[40], *s, inbuf[MAXSTRING], *discard;
    int num_pts, ltx=0, lty=0, rbx=0, rby=0, x, y, id=0;
    int trans_pat=FALSE, fill, width, pen, w, new_alloc, locked=FALSE;
    int curved, dash, initialized, rotation, count;
@@ -2158,12 +2158,15 @@ void ReadPolygonObj(FP, Inbuf, ObjPtr)
             initialized = TRUE;
             ltx = rbx = x; lty = rby = y;
          } else {
-            if (x < ltx) ltx = x; if (y < lty) lty = y;
-            if (x > rbx) rbx = x; if (y > rby) rby = y;
+            if (x < ltx) ltx = x;
+            if (y < lty) lty = y;
+            if (x > rbx) rbx = x;
+            if (y > rby) rby = y;
          }
       }
    } else {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       s = inbuf;
       InitScan(s, "\t\n, []");
@@ -2181,12 +2184,14 @@ void ReadPolygonObj(FP, Inbuf, ObjPtr)
             initialized = TRUE;
             ltx = rbx = x; lty = rby = y;
          } else {
-            if (x < ltx) ltx = x; if (y < lty) lty = y;
-            if (x > rbx) rbx = x; if (y > rby) rby = y;
+            if (x < ltx) ltx = x;
+            if (y < lty) lty = y;
+            if (x > rbx) rbx = x;
+            if (y > rby) rby = y;
          }
          if (++count == 8 && i != num_pts-1) {
             count = 0;
-            (void)fgets(inbuf, MAXSTRING, FP);
+            discard=fgets(inbuf, MAXSTRING, FP);
             scanLineNum++;
             s = inbuf;
             InitScan(s, "\t\n, []");
@@ -2411,7 +2416,7 @@ void ReadPolygonObj(FP, Inbuf, ObjPtr)
       return;
    }
    if (fileVersion >= 33 && transformed) {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 

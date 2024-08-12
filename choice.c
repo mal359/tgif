@@ -306,8 +306,10 @@ void UpdateAbcBitmap()
             if (new_y >= abc_height) new_y = abc_height-1;
             if (XGetPixel(abcImage, new_x, new_y) == 1) {
                XPutPixel(image, c, r, 1);
-               if (c < ltx) ltx = c; if (r < lty) lty = r;
-               if (c > rbx) rbx = c; if (r > rby) rby = r;
+               if (c < ltx) ltx = c;
+               if (r < lty) lty = r;
+               if (c > rbx) rbx = c;
+               if (r > rby) rby = r;
             }
          }
       }

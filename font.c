@@ -1249,16 +1249,14 @@ Pixmap PaintVertChar(pTextExtents, nRotate)
    int nRotate;
    /* Caller must not delete the returned pixmap! */
 {
-   int w=0, lbearing=0, rextra=0, image_w=0, image_h=0;
+   int lbearing=0, image_w=0, image_h=0;
    int r=0, dest_cols=0, dest_rows=0;
    int saved_db_vert=canvasFontDoubleByteVertical;
    XImage *src_image=NULL;
    XGCValues values;
 
    SetTextExtentsInfo(pTextExtents);
-   w = pTextExtents->w;
    lbearing = pTextExtents->lbearing;
-   rextra = pTextExtents->rextra;
    image_w = pTextExtents->bbox_w;
    image_h = pTextExtents->bbox_h;
 
@@ -3537,6 +3535,7 @@ void InitABasicFontSet(pFontSet, ppszFontSetName, opt_name, pnFontWidth,
       int n=0;
 
       n = XFontsOfFontSet(*pFontSet, &xfset_list, &font_name_list);
+      n += 0;
       /* do not translate -- the string is used to measure things */
       *pnFontWidth = XmbTextEscapement(*pFontSet, "x", 1);
       *pnFontAsc = (*xfset_list)->max_bounds.ascent;

@@ -139,6 +139,7 @@ void DisplayButtonInBBox(Win, Str, Len, BBox, Normal, HighLight, Width,
    button_h = BBox->rby - BBox->lty;
 
    btn_font_style = GetButtonFontStyle(pButtonFontInfo);
+   top +=0;
    switch (btn_font_style) {
    case BTN_DEFAULT_FONT:
       text_w = defaultFontWidth * Len;

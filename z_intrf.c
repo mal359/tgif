@@ -299,7 +299,7 @@ int DoDeflate(in_fp, in_buf, bytes_left, out_fp, use_def_compression, use_byte_s
          have = block_sz - strm.avail_out;
 
          if (use_byte_stuffing) {
-            unsigned int have2=0;
+            int have2=0;
             unsigned char out2[0x8000];
 
             have2 = 0;

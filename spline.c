@@ -67,11 +67,10 @@ int ReadSplineTightness(buf)
 void CalcAutoRetractedArrowAttrBend(Style, X0, Y0, X2, Y2, X1, Y1)
    int Style, X0, Y0, X2, Y2, *X1, *Y1;
 {
-   double dx, dy, len, new_x, new_y;
+   double dx, dy, new_x, new_y;
 
    dx = (double)(X2 - X0);
    dy = (double)(Y2 - Y0);
-   len = (double)(sqrt(((double)dx)*((double)dx)+((double)dy)*((double)dy)));
    if (Style == LS_RIGHT) {
       new_x = ((double)((X0+X2)>>1)) + dy/((double)8.0);
       new_y = ((double)((Y0+Y2)>>1)) - dx/((double)8.0);

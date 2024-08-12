@@ -3165,7 +3165,6 @@ struct ObjRec *GenerateXpmThumbnail(imported_obj)
    struct BBRec saved_draw_win_bbox;
    int bbox_w=(imported_obj->bbox.rbx-imported_obj->bbox.ltx);
    int bbox_h=(imported_obj->bbox.rby-imported_obj->bbox.lty);
-   int final_w=0, final_h=0;
 
    curPage->top = curPage->bot = topObj = botObj = NULL;
 
@@ -3178,18 +3177,12 @@ struct ObjRec *GenerateXpmThumbnail(imported_obj)
 
    if (bbox_w <= thumbnailW && bbox_h <= thumbnailH) {
       /* do not scale */
-      final_w = thumbnailW;
-      final_h = thumbnailH;
    } else {
       double scale=(double)0;
 
       if (orig_aspect_ratio > aspect_ratio) {
-         final_w = thumbnailW;
-         final_h = round(((double)thumbnailW) / orig_aspect_ratio);
          scale = ((double)bbox_w) / ((double)thumbnailW);
       } else {
-         final_h = thumbnailH;
-         final_w = round(((double)thumbnailH) * orig_aspect_ratio);
          scale = ((double)bbox_h) / ((double)thumbnailH);
       }
       ScaleObjLikeScaleEverything(imported_obj, scale, FALSE);
@@ -3513,6 +3506,7 @@ void CreateThumbnails()
    sprintf(buf, "%s;%s;%s;%s", stszObjFileExt, stszGzObjFileExt,
          stszSymFileExt, stszPinFileExt);
    len = strlen(buf);
+   len += 0;
    if (strcmp(OBJ_FILE_EXT,"obj") != 0) {
       strcat(buf, ";.obj");
    }

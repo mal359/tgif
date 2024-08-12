@@ -757,7 +757,7 @@ void ContinueMoveRightMarginMark(dpy, OrigX, OrigY)
    int OrigX, OrigY; /* these are mouse coordinates */
 {
    int moving=TRUE, dx=0, grid_x=0, grid_y=0, h=ZOOMED_SIZE(drawWinH);
-   int prev_x=0, orig_grid_x=0, orig_grid_y=0, orig_right_margin=0;
+   int prev_x=0, orig_grid_x=0, orig_right_margin=0;
    char buf[80], buf2[80];
    double dval=(double)0;
    XPoint orig_vs[6], vs[6];
@@ -772,7 +772,6 @@ void ContinueMoveRightMarginMark(dpy, OrigX, OrigY)
    }
    GridXY(OrigX, OrigY, &grid_x, &grid_y);
    orig_grid_x = grid_x;
-   orig_grid_y = grid_y;
    orig_right_margin = OFFSET_X(paperWidth-(rightMargin>>TIK_PER_PIXEL_SHIFTS));
    prev_x = orig_right_margin+0;
    GetRightMarginMarkVs(orig_vs);

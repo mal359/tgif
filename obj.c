@@ -359,14 +359,11 @@ static
 void InvalidateObjCache(ObjPtr)
    struct ObjRec *ObjPtr;
 {
-   int w=0, h=0, num_rows=0, num_cols=0;
    struct TextRec *text_ptr=NULL;
    struct XBmRec *xbm_ptr=NULL;
    struct XPmRec *xpm_ptr=NULL;
    struct ObjRec *obj_ptr=NULL;
 
-   w = ObjPtr->obbox.rbx - ObjPtr->obbox.ltx;
-   h = ObjPtr->obbox.rby - ObjPtr->obbox.lty;
    switch (ObjPtr->type) {
    case OBJ_POLY:
       if (NeedsToCachePolyObj(ObjPtr)) {
@@ -444,8 +441,6 @@ void InvalidateObjCache(ObjPtr)
       break;
    case OBJ_XBM:
       xbm_ptr = ObjPtr->detail.xbm;
-      num_cols = (zoomedIn) ? (w<<zoomScale) : (w>>zoomScale);
-      num_rows = (zoomedIn) ? (h<<zoomScale) : (h>>zoomScale);
       if (NeedsToCacheXBmObj(ObjPtr)) {
          if (xbm_ptr->cached_bitmap != None) {
             XFreePixmap(mainDisplay, xbm_ptr->cached_bitmap);
@@ -458,8 +453,6 @@ void InvalidateObjCache(ObjPtr)
       break;
    case OBJ_XPM:
       xpm_ptr = ObjPtr->detail.xpm;
-      num_cols = (zoomedIn) ? (w<<zoomScale) : (w>>zoomScale);
-      num_rows = (zoomedIn) ? (h<<zoomScale) : (h>>zoomScale);
       if (NeedsToCacheXPmObj(ObjPtr)) {
          if (xpm_ptr->cached_pixmap != None) {
             XFreePixmap(mainDisplay, xpm_ptr->cached_pixmap);

@@ -1563,8 +1563,8 @@ void AdjustDialogBoxWidth(dpy, pTdgtBase)
    TdgtBase *pTdgtBase;
 {
    ColorWheelDlgInfo *pcwdi=(ColorWheelDlgInfo*)(pTdgtBase->pti->userdata);
-   int max_w=0, bottom=0, h_pad=pTdgtBase->pti->tci.h_pad, cur_x=0, cur_y=0;
-   int v_pad=pTdgtBase->pti->tci.v_pad, end_y=0;
+   int max_w=0, bottom=0, h_pad=pTdgtBase->pti->tci.h_pad;
+   int v_pad=pTdgtBase->pti->tci.v_pad;
    SimpleWinInfo *pswi=NULL;
 
    /* hue edit */
@@ -1574,12 +1574,8 @@ void AdjustDialogBoxWidth(dpy, pTdgtBase)
    bottom = pcwdi->btn_row_ctl->pti->tci.win_info.y +
          pcwdi->btn_row_ctl->pti->tci.win_info.h;
 
-   cur_x = windowPadding + h_pad;
-   cur_y = windowPadding + v_pad;
-
    /* hs_pixmap */
    pswi = (&(pcwdi->hs_pixmap_ctl->pti->tci.win_info));
-   end_y = pswi->y+pswi->h;
 
    /* button row */
    pswi = (&(pcwdi->btn_row_ctl->pti->tci.win_info));
@@ -1720,8 +1716,8 @@ TidgetInfo *CreateTdgtColorWheelDialogBox(dpy, parent_win)
    Display *dpy;
    Window parent_win; /* should be the rootWindow */
 {
-   int cur_x=0, cur_y=0, v_gap=20, h_pad=0, v_pad=0;
-   int w=0, h=0, vh_padding=0, h_gap=14, end_y=0, rgbhsv_width=0;
+   int cur_x=0, cur_y=0, v_gap=20, end_y=0;
+   int w=0, h=0, vh_padding=0, h_gap=14, rgbhsv_width=0;
    TdgtBase *pTdgtBase=NULL;
    ColorWheelDlgInfo *pcwdi=NULL;
    char caption[MAXSTRING];
@@ -1750,8 +1746,6 @@ TidgetInfo *CreateTdgtColorWheelDialogBox(dpy, parent_win)
    } else {
        rgbhsv_width = defaultFontWidth * 4;
    }
-   h_pad = TDGTBASE_DEF_H_PAD;
-   v_pad = TDGTBASE_DEF_V_PAD;
    if (msgFontSet != NULL || msgFontPtr != NULL) {
       vh_padding = (msgFontWidth<<1);
    } else {

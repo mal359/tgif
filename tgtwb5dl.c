@@ -399,6 +399,7 @@ int LoadChars(pTdgtBase, buf)
       return FALSE;
    }
    len = strlen(psz_found);
+   len += 0;
 #ifdef _TGIF_DBG /* debug, do not translate */
    if (len > MAX_PINYIN_ET_BIG5_STR) {
       sprintf(gszMsgBox, "Fetched hexstring in LoadChars() is too long: %1d (limit is %1d).\n",
@@ -450,6 +451,7 @@ int FetchChars(pTdgtBase)
          buf[0] = buf[0]-'a'+'A';
       }
       ok = LoadChars(pTdgtBase, buf);
+      ok += 0;
       if (saved_ch != '\0') buf[0] = saved_ch;
    }
    pzdi->just_fetched = TRUE;

@@ -1032,11 +1032,10 @@ void PrTgifDumpOldXPmObj(FP, ObjPtr, pmtrx)
 {
    int row=0, i=0, index=0, col=0, j=0, num_nibbles=0, nibble_count=0;
    int ltx=0, lty=0, rbx=0, rby=0, w=0, h=0, image_w=0, image_h=0;
-   int ncolors=0, *pixels=NULL, flip=0, orig_x=0, orig_y=0;
+   int orig_x=0, orig_y=0;
    int chars_per_pixel=0, x=0, y=0;
    int h_blocks=0, v_blocks=0, block_w=0, block_h=0, bit_count=0, data=0;
    char *xpm_data=NULL, bg_char[2];
-   Pixmap pixmap, bitmap=(Pixmap)0;
    struct XPmRec *xpm_ptr=NULL;
 
    bg_char[0] = bg_char[1] = '\0';
@@ -1048,11 +1047,6 @@ void PrTgifDumpOldXPmObj(FP, ObjPtr, pmtrx)
 
    xpm_ptr = ObjPtr->detail.xpm;
 
-   pixmap = xpm_ptr->pixmap;
-   bitmap = xpm_ptr->bitmap;
-   pixels = xpm_ptr->pixels;
-   ncolors = xpm_ptr->ncolors;
-   flip = xpm_ptr->flip;
    image_w = xpm_ptr->image_w;
    image_h = xpm_ptr->image_h;
 
@@ -1642,7 +1636,7 @@ int GetImagePixels(ObjPtr, xpm_ptr, pipi, pxtii, pcb)
    int row=0, image_w=xpm_ptr->image_w, image_h=xpm_ptr->image_h;
    int chars_per_pixel=0, pixel_index=0;
    int ncolors=0;
-   char *xpm_data=NULL, *color_char=NULL;
+   char *xpm_data=NULL;
    Pixmap pixmap=(Pixmap)0, bitmap=(Pixmap)0;
    XImage *image=NULL, *bitmap_image=NULL;
  
@@ -1690,13 +1684,11 @@ int GetImagePixels(ObjPtr, xpm_ptr, pipi, pxtii, pcb)
 
    xpm_data = xpm_ptr->data;
    chars_per_pixel = xpm_ptr->chars_per_pixel;
-   color_char = xpm_ptr->color_char;
 
    for (row=0; row < image_h; row++) {
       int col=0;
 
       for (col=0; col < image_w; col++) {
-         int transparent_pixel=INVALID;
 #ifdef NOT_DEFINED
          float gray=(float)0;
          int value=0;
@@ -1753,7 +1745,6 @@ int GetImagePixels(ObjPtr, xpm_ptr, pipi, pxtii, pcb)
                } else {
                   /* transparent pixel */
                   pixel_index = XPmLookUp((-1), INVALID, NULL, NULL);
-                  transparent_pixel = pixel_index;
                }
                if (pxtii->has_transparent_pixel &&
                        pxtii->found_transparent_pixel &&
@@ -1949,7 +1940,7 @@ void DumpXPmObj(FP, ObjPtr)
 {
    int row=0, i=0, index=0, col=0, too_many_colors=FALSE;
    int ltx=0, lty=0, rbx=0, rby=0, w=0, h=0, image_w=0, image_h=0;
-   int ncolors=0, *pixels=NULL, flip=0, orig_x=0, orig_y=0;
+   int ncolors=0, *pixels=NULL, flip=0;
    int cur_pixel=0, chars_per_pixel=0, x=0, y=0, found_index=0, pixel_index=0;
    int has_transparent_pixel=FALSE, is_linked_jpeg=IsLinkedJpegObj(ObjPtr);
    unsigned int trans_color_pixel_r=0, trans_color_pixel_g=0, trans_color_pixel_b=0;
@@ -2006,9 +1997,6 @@ void DumpXPmObj(FP, ObjPtr)
    mtrx.rotate = ROTATE0; mtrx.flip = flip;
 
    CalcTransform(&mtrx);
-
-   orig_x = (mtrx.transformed_w >= 0.0) ? ltx : ltx+w;
-   orig_y = (mtrx.transformed_h >= 0.0) ? lty : lty+h;
 
    fprintf(FP, "%% XPM\n");
 
@@ -3977,7 +3965,7 @@ void ReadXPmObj(FP, Inbuf, ObjPtr)
    struct ObjRec **ObjPtr;
 {
    struct XPmRec *xpm_ptr;
-   char color_s[40], trans_color_s[40], *s, inbuf[MAXSTRING], *c_ptr, *line;
+   char color_s[40], trans_color_s[40], *s, inbuf[MAXSTRING], *c_ptr, *line, *discard;
    int ltx, lty, rbx, rby, i, j, k, image_w, image_h;
    int ncolors, * pixels, len, index, fill, color_index;
    int *red=NULL, *green=NULL, *blue=NULL;
@@ -4122,7 +4110,8 @@ void ReadXPmObj(FP, Inbuf, ObjPtr)
       flip = 0;
    }
    if (fileVersion >= 33 && transformed) {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 
@@ -4219,7 +4208,7 @@ void ReadXPmObj(FP, Inbuf, ObjPtr)
 
    bg_pixel = GetDrawingBgPixel(INVALID, INVALID);
    for (i=0; i < ncolors; i++) {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
       scanLineNum++;
       c_ptr = FindChar((int)'"', inbuf);
       for (j = 0; j < chars_per_pixel; j++) {
@@ -4292,7 +4281,7 @@ void ReadXPmObj(FP, Inbuf, ObjPtr)
       line = (char*)malloc((image_w*chars_per_pixel+20)*sizeof(char));
       if (line == NULL) FailAllocMessage();
       for (i=0; i < image_h; i++, xpm_data += image_w*chars_per_pixel) {
-         (void)fgets(line, image_w*chars_per_pixel+20, FP);
+         discard=fgets(line, image_w*chars_per_pixel+20, FP);
          scanLineNum++;
          c_ptr = &line[4];
          strncpy(xpm_data, c_ptr, image_w*chars_per_pixel);
@@ -4335,7 +4324,7 @@ void ReadXPmObj(FP, Inbuf, ObjPtr)
       line = (char*)malloc((image_w*chars_per_pixel+20)*sizeof(char));
       if (line == NULL) FailAllocMessage();
       for (i=0; i < image_h; i++) {
-         (void)fgets(line, image_w*chars_per_pixel+20, FP);
+         discard=fgets(line, image_w*chars_per_pixel+20, FP);
          scanLineNum++;
          c_ptr = &line[4];
          if (xpm_data != NULL) {
@@ -4580,11 +4569,11 @@ void ReadJpegObj(FP, Inbuf, ObjPtr)
 {
    struct XPmRec *xpm_ptr=NULL;
    char color_s[40], trans_color_s[40], *s=NULL, inbuf[MAXSTRING];
-   char *jpeg_filename=NULL;
+   char *jpeg_filename=NULL, *discard;
    int ltx, lty, rbx, rby, image_w=0, image_h=0;
    int ncolors, fill, color_index;
    int rotation, chars_per_pixel;
-   int first_pixel_is_bg, first_pixel_maybe_bg, new_alloc;
+   int first_pixel_is_bg, new_alloc;
    int id=0, rotate=ROTATE0, flip=NO_FLIP, locked=FALSE;
    int compressed=FALSE, real_x=0, real_y=0, real_type=0, linked_jpeg=FALSE;
    int transformed=FALSE, invisible=FALSE;
@@ -4603,7 +4592,6 @@ void ReadJpegObj(FP, Inbuf, ObjPtr)
 
    rotation = 0;
    chars_per_pixel = 1;
-   first_pixel_maybe_bg = TRUE;
    first_pixel_is_bg = TRUE;
    if (fileVersion < 37) {
       sprintf(gszMsgBox,
@@ -4639,12 +4627,12 @@ void ReadJpegObj(FP, Inbuf, ObjPtr)
          return;
       }
       if (id >= objId) objId = id+1;
-      first_pixel_maybe_bg = FALSE;
    }
    if (real_type == XPM_JPEG && linked_jpeg) {
       char *tmp_str=NULL;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
 
       tmp_str = FindChar((int)'"', inbuf);
@@ -4662,7 +4650,7 @@ void ReadJpegObj(FP, Inbuf, ObjPtr)
       return;
    }
    if (transformed) {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 
@@ -5165,7 +5153,7 @@ void ReadPpmTrueObj(FP, Inbuf, ObjPtr)
    struct ObjRec **ObjPtr;
 {
    struct XPmRec *xpm_ptr=NULL;
-   char *s=NULL, inbuf[MAXSTRING], *ppm_data=NULL, *ppm_mask_data=NULL;
+   char *s=NULL, inbuf[MAXSTRING], *ppm_data=NULL, *ppm_mask_data=NULL, *discard;
    char color_s[40], trans_color_s[40], tmp_fname[MAXPATHLENGTH];
    int ltx=0, lty=0, rbx=0, rby=0, image_w=0, image_h=0, color_index=(-1);
    int rotation=0, new_alloc=FALSE, id=0, rotate=ROTATE0, flip=NO_FLIP;
@@ -5242,7 +5230,8 @@ void ReadPpmTrueObj(FP, Inbuf, ObjPtr)
       return;
    }
    if (transformed) {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 
@@ -5265,6 +5254,7 @@ void ReadPpmTrueObj(FP, Inbuf, ObjPtr)
    }
    ppm_data = ReadPpmTrueData(FP, ppm_data_size);
    ppm_mask_data = ReadPpmTrueMask(FP, ppm_mask_size);
+   ppm_mask_data += 0;
    if (ppm_data == NULL) return;
 
    *tmp_fname = '\0';

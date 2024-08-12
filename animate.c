@@ -46,7 +46,6 @@ void AnimateSend(PolyPtr, Speed, Pixel)
    register XPoint *token;
    int x, y, num_pts, j, x_dist, y_dist;
    IntPoint *v;
-   struct BBRec bbox;
    double slope, delta_x, delta_y;
    XGCValues values;
 
@@ -60,8 +59,6 @@ void AnimateSend(PolyPtr, Speed, Pixel)
 #endif
    XChangeGC(mainDisplay, drawGC,
          GCForeground | GCFunction | GCLineStyle | GCLineWidth, &values);
-
-   bbox.ltx = 0; bbox.lty = 0; bbox.rbx = 2*TOKEN_R; bbox.rby = 2*TOKEN_R;
 
    num_pts = PolyPtr->n;
    v = PolyPtr->vlist;

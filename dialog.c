@@ -278,10 +278,11 @@ void CalcFormatStringInBox(buf, xfs, font_height, format_box_w, pn_num_lines,
    int font_height, format_box_w, *pn_num_lines, *pn_max_w, *pn_max_h;
 {
    char *dest_ptr=NULL, *c_ptr=NULL, *msg_copy=NULL;
-   int len=strlen(buf), max_len=0, max_w=0, max_h=0, total=0;
+   int len=strlen(buf), max_w=0, max_h=0, total=0;
    int num_lines=1, spacing=SPACING, sz=((((len+10)<<1)+1)*sizeof(char));
 
    total = BoldMsgTextWidth(xfs, buf, len);
+   total += 0;
 
    msg_copy = (char*)malloc(sz);
    if (msg_copy == NULL) FailAllocMessage();
@@ -384,7 +385,6 @@ void CalcFormatStringInBox(buf, xfs, font_height, format_box_w, pn_num_lines,
                }
             }
          } else {
-            max_len = full_str_len;
             max_w = full_str_total;
             sprintf(dest_ptr, "%s\n", c_ptr);
             dest_ptr = &dest_ptr[strlen(dest_ptr)];

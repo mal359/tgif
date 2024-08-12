@@ -926,11 +926,12 @@ void AutoJustify(obj_ptr)
    struct ObjRec *obj_ptr;
 {
    struct TextRec *text_ptr;
-   int new_ltx, new_lty, dx, dy, ltx, lty;
+   int new_ltx, dx, dy, ltx;
 
    text_ptr = obj_ptr->detail.t;
 
-   ltx = obj_ptr->obbox.ltx; lty = obj_ptr->obbox.lty;
+   /* lty is always zero! */
+   ltx = obj_ptr->obbox.ltx;
    switch (horiAlign) {
    case ALIGN_L: text_ptr->minilines.just = JUST_L; break;
    case ALIGN_C: text_ptr->minilines.just = JUST_C; break;
@@ -938,7 +939,7 @@ void AutoJustify(obj_ptr)
    }
    UpdTextBBox(obj_ptr);
    dx = dy = 0;
-   new_ltx = obj_ptr->obbox.ltx; new_lty = obj_ptr->obbox.lty;
+   new_ltx = obj_ptr->obbox.ltx;
    dx = ltx-new_ltx;
 
    if (text_ptr->cached_bitmap != None) {
@@ -1006,8 +1007,7 @@ void AlignSelObjs()
 
       for (vsel_ptr = topVSel; vsel_ptr != NULL; vsel_ptr = vsel_ptr->next) {
          StretchStructuredSplineInfo sssi;
-         int curved=(-1), ssn=(-1);
-         IntPoint *ssvlist=NULL;
+         int curved=(-1);
          struct PolyRec *poly_ptr=NULL;
          struct PolygonRec *polygon_ptr=NULL;
 
@@ -1020,8 +1020,6 @@ void AlignSelObjs()
             n = poly_ptr->n;
             vlist = poly_ptr->vlist;
             if (curved == LT_STRUCT_SPLINE) {
-               ssn = poly_ptr->ssn;
-               ssvlist = poly_ptr->ssvlist;
                SetIPTInfoForStretchPoly(vsel_ptr->v_index[0], n, vlist, &sssi);
             }
             break;
@@ -1031,8 +1029,6 @@ void AlignSelObjs()
             n = polygon_ptr->n;
             vlist = polygon_ptr->vlist;
             if (curved == LT_STRUCT_SPLINE) {
-               ssn = polygon_ptr->ssn;
-               ssvlist = polygon_ptr->ssvlist;
                SetIPTInfoForStretchPolygon(vsel_ptr->v_index[0], n, vlist,
                      &sssi);
             }
@@ -1395,7 +1391,7 @@ void AlignSelToGrid()
    HighLightReverse();
    if (curChoice == VERTEXMODE) {
       for (vsel_ptr = topVSel; vsel_ptr != NULL; vsel_ptr = vsel_ptr->next) {
-         int changed=FALSE, n=0, ssn=(-1), curved=(-1);
+         int changed=FALSE, n=0, curved=(-1);
          IntPoint *vlist=NULL, *ssvlist=NULL;
          struct PolyRec *poly_ptr=NULL;
          struct PolygonRec *polygon_ptr=NULL;
@@ -1411,7 +1407,6 @@ void AlignSelToGrid()
             n = poly_ptr->n;
             vlist = poly_ptr->vlist;
             if (curved == LT_STRUCT_SPLINE) {
-               ssn = poly_ptr->ssn;
                ssvlist = poly_ptr->ssvlist;
                SetIPTInfoForStretchPoly(vsel_ptr->v_index[0], n, vlist, &sssi);
             }
@@ -1422,7 +1417,6 @@ void AlignSelToGrid()
             n = polygon_ptr->n;
             vlist = polygon_ptr->vlist;
             if (curved == LT_STRUCT_SPLINE) {
-               ssn = polygon_ptr->ssn;
                ssvlist = polygon_ptr->ssvlist;
                SetIPTInfoForStretchPolygon(vsel_ptr->v_index[0], n, vlist,
                      &sssi);

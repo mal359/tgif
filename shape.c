@@ -676,7 +676,7 @@ void HighLightCreateShape(end_x, end_y, generate, pn_need_to_draw)
       }
    }
    if (*pn_need_to_draw) {
-      int w, h, diam_y, radius_y, side_h;
+      int w, h, diam_y, radius_y;
 
       switch (curShape) {
       case SHAPE_OVAL:
@@ -690,7 +690,6 @@ void HighLightCreateShape(end_x, end_y, generate, pn_need_to_draw)
          h = gShapeBBox.rby-gShapeBBox.lty;
          radius_y = (int)(h/6);
          diam_y = (radius_y<<1);
-         side_h = h-diam_y;
          XDrawArc(mainDisplay, drawWindow, revDefaultGC,
                gShapeBBox.ltx, gShapeBBox.lty, w, diam_y, 0, 360<<6);
          XDrawArc(mainDisplay, drawWindow, revDefaultGC,
@@ -865,7 +864,7 @@ static
 struct AttrRec *GenerateShape()
 {
    struct ObjRec *saved_top_obj, *saved_bot_obj, *tmp_top_obj, *tmp_bot_obj;
-   int w, h, diam_y, radius_y, side_h, saved_cur_spline, saved_line_style;
+   int w, h, diam_y, radius_y, saved_cur_spline, saved_line_style;
    struct AttrRec *label_attr=NULL;
    struct BBRec bbox;
 
@@ -887,7 +886,6 @@ struct AttrRec *GenerateShape()
       h = gShapeBBox.rby-gShapeBBox.lty;
       radius_y = (int)(h/6);
       diam_y = (radius_y<<1);
-      side_h = h-diam_y;
       if (penPat != NONEPAT) {
          int saved_pen=penPat;
 

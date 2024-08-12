@@ -292,6 +292,7 @@ int GetPixelRGB(ptfri, pixel, pxc_pixel)
       if (pxc_pixel->red > 255) pxc_pixel->red = 255;
       if (pxc_pixel->green > 255) pxc_pixel->green = 255;
       if (pxc_pixel->blue > 255) xcolor.blue = 255;
+      xcolor.blue += 0;
    } else {
       int i=0, global_color_index=(-1);
 
@@ -4243,9 +4244,12 @@ int DoPrepareForErrorDiffuse(xpm_ptr)
             red = (int)(r) + this_r_err[col+1];
             green = (int)(g) + this_g_err[col+1];
             blue = (int)(b) + this_b_err[col+1];
-            if (red < 0) red = 0; if (red > 65535) red = 65535;
-            if (green < 0) green = 0; if (green > 65535) green = 65535;
-            if (blue < 0) blue = 0; if (blue > 65535) blue = 65535;
+            if (red < 0) red = 0; 
+            if (red > 65535) red = 65535;
+            if (green < 0) green = 0;
+            if (green > 65535) green = 65535;
+            if (blue < 0) blue = 0;
+            if (blue > 65535) blue = 65535;
 
             min_index = GetClosestColorIndex(gDefErrorDiffuseLevel.red,
                   gDefErrorDiffuseLevel.green, gDefErrorDiffuseLevel.blue,
@@ -4256,9 +4260,12 @@ int DoPrepareForErrorDiffuse(xpm_ptr)
             red = (int)(tgifColors[index].red) + this_r_err[col+1];
             green = (int)(tgifColors[index].green) + this_g_err[col+1];
             blue = (int)(tgifColors[index].blue) + this_b_err[col+1];
-            if (red < 0) red = 0; if (red > 65535) red = 65535;
-            if (green < 0) green = 0; if (green > 65535) green = 65535;
-            if (blue < 0) blue = 0; if (blue > 65535) blue = 65535;
+            if (red < 0) red = 0; 
+            if (red > 65535) red = 65535;
+            if (green < 0) green = 0; 
+            if (green > 65535) green = 65535;
+            if (blue < 0) blue = 0; 
+            if (blue > 65535) blue = 65535;
 
             min_index = GetClosestColorIndex(red_bits, green_bits, blue_bits,
                   red, green, blue, target_ncolors);
@@ -4798,6 +4805,7 @@ void ReduceToDefaultColors()
    }
    xpm_ptr = topSel->obj->detail.xpm;
    image_h = xpm_ptr->image_h;
+   image_h += 0;
 
    if (DoPpm6(xpm_ptr)) {
       gnObjectColorsToTargetColorMapping = NULL;
@@ -6946,6 +6954,8 @@ void VectorWarp()
 {
    int ok=TRUE;
    IntPoint from_pt, to_pt;
+   to_pt.x=0;
+   to_pt.y=0;
 
    if (!CheckSelectionForImageProc(CMDID_VECTORWARP)) {
       return;
@@ -9027,12 +9037,12 @@ int SetupReplaceColorInfo(obj_ptr, prci)
          unsigned int g_maxval=((ptci->g_mask)>>ptci->g_shift);
          unsigned int b_maxval=((ptci->b_mask)>>ptci->b_shift);
 
-         memset(has_r, 0, sizeof(256*sizeof(unsigned char)));
-         memset(has_g, 0, sizeof(256*sizeof(unsigned char)));
-         memset(has_b, 0, sizeof(256*sizeof(unsigned char)));
-         memset(can_have_r, 0, sizeof(256*sizeof(unsigned char)));
-         memset(can_have_g, 0, sizeof(256*sizeof(unsigned char)));
-         memset(can_have_b, 0, sizeof(256*sizeof(unsigned char)));
+         memset(has_r, 0, 256*sizeof(unsigned char));
+         memset(has_g, 0, 256*sizeof(unsigned char));
+         memset(has_b, 0, 256*sizeof(unsigned char));
+         memset(can_have_r, 0, 256*sizeof(unsigned char));
+         memset(can_have_g, 0, 256*sizeof(unsigned char));
+         memset(can_have_b, 0, 256*sizeof(unsigned char));
          for (i=0; i < r_maxval; i++) {
             double dval=((double)i)/ptci->dr_maxval_div255;
             unsigned int uval=round(dval);

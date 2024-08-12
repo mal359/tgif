@@ -293,7 +293,7 @@ void HighLightAPin(forward)
 void HandlePinHighlights(MouseX, MouseY)
    int MouseX, MouseY;
 {
-   int need_to_highlight=FALSE, something_changed=FALSE;
+   int need_to_highlight=FALSE;
    struct ObjRec *obj_under_cursor=NULL;
 
    obj_under_cursor = FindPinObj(ABS_X(MouseX), ABS_Y(MouseY));
@@ -311,14 +311,12 @@ void HandlePinHighlights(MouseX, MouseY)
          if (drawPolyHighlightedNode != NULL) {
             need_to_highlight = TRUE;
          }
-         something_changed = TRUE;
       }
    } else {
       if (obj_under_cursor != NULL) {
          drawPolyHighlightedNode = obj_under_cursor;
          /* may need to call something like SetWiringNodeInfo()!? */
          need_to_highlight = TRUE;
-         something_changed = TRUE;
       }
    }
    if (need_to_highlight) {

@@ -157,27 +157,14 @@ static
 void RedrawTdgtBmpListScrollWindow(pTdgtBmpList)
    TdgtBmpList *pTdgtBmpList;
 {
-   double frac=(double)0, start_frac=(double)0;
-   int block_h=0, block_start=0, scr_area_h=pTdgtBmpList->scr_win_info.h;
+   double start_frac=(double)0;
+   int scr_area_h=pTdgtBmpList->scr_win_info.h;
    int num_rows=TdgtBmpListGetNumRows(pTdgtBmpList);
    int first_visible_row=(pTdgtBmpList->first_index/pTdgtBmpList->num_cols);
 
    start_frac = (num_rows > 0) ?  (double)(((double)first_visible_row) /
          ((double)num_rows)) : (((double)0));
-   /* starting pixel */
-   block_start = (int)(scr_area_h * start_frac);
 
-   if (num_rows > pTdgtBmpList->num_visible_lines) {
-      frac = (double)(((double)pTdgtBmpList->num_visible_lines) /
-            ((double)num_rows));
-   } else {
-      frac = (double)1;
-   }
-   if (pTdgtBmpList->first_index+pTdgtBmpList->num_visible_lines >= num_rows) {
-      block_h = scr_area_h - block_start;
-   } else {
-      block_h = (int)(scr_area_h * frac);
-   }
    TgDrawScrollBar(mainDisplay, pTdgtBmpList->scr_win, VERT_SCROLLBAR, 0, 0,
          scrollBarW, scr_area_h, start_frac, pTdgtBmpList->num_visible_lines,
          num_rows);
@@ -203,14 +190,12 @@ void RedrawTdgtBmpListDspWindow(pTdgtBmpList)
    x = y = gap;
    for ( ; pElem != NULL; pElem=pNextElem, i++) {
       BmpListItemInfo *pblii=(BmpListItemInfo*)(pElem->obj);
-      BmpListItemInfo *pblii_next=NULL;
 
       RedrawTdgtBmpListItem(pTdgtBmpList, i, x, y, pblii);
 
       x += pTdgtBmpList->one_bmp_w + gap;
       pNextElem = ListNext(&pTdgtBmpList->list, pElem);
       if (pNextElem != NULL) {
-         pblii_next = (BmpListItemInfo*)(pNextElem->obj);
          if (x+pTdgtBmpList->one_bmp_w > pTdgtBmpList->dsp_win_info.w) {
             x = gap;
             y += pTdgtBmpList->one_bmp_h+gap;

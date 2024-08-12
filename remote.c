@@ -747,7 +747,7 @@ int LoadHttpIntoMem(url, host, port, path, ppsz_buf, ppsz_content_type,
    char *url, *host, *path, **ppsz_buf, **ppsz_content_type;
    int port, *pn_buf_sz, *pn_html, *pn_http_extracted_text;
 {
-   int status=TG_REMOTE_STATUS_OK, n_socket=0, proxy_port=0;
+   int status=TG_REMOTE_STATUS_OK, n_socket=0, proxy_port=0, discard;
    char *proxy_host=NULL, port_str[20];
 
    if (pn_http_extracted_text != NULL) *pn_http_extracted_text=FALSE;
@@ -815,8 +815,9 @@ int LoadHttpIntoMem(url, host, port, path, ppsz_buf, ppsz_content_type,
                    * no matter what kind of file it is!
                    */
                   if (cmdLineDumpURL) {
-                     (void)fwrite(*ppsz_buf, sizeof(char), (*pn_buf_sz),
+                     discard=fwrite(*ppsz_buf, sizeof(char), (*pn_buf_sz),
                            stdout);
+                     UNUSED ((void) discard);
                   }
                }
             }
@@ -867,7 +868,7 @@ int LoadFtpIntoMem(url, host, port, path, ppsz_buf, ppsz_content_type,
    char *url, *host, *path, **ppsz_buf, **ppsz_content_type;
    int port, *pn_buf_sz, *pn_html;
 {
-   int status=TG_REMOTE_STATUS_OK, n_socket=0, proxy_port=0;
+   int status=TG_REMOTE_STATUS_OK, n_socket=0, proxy_port=0, discard;
    char *proxy_host=NULL, port_str[20];
 
    if (port == 0) port = 21;
@@ -928,7 +929,8 @@ int LoadFtpIntoMem(url, host, port, path, ppsz_buf, ppsz_content_type,
              * no matter what kind of file it is!
              */
             if (cmdLineDumpURL) {
-               (void)fwrite(*ppsz_buf, sizeof(char), (*pn_buf_sz), stdout);
+               discard=fwrite(*ppsz_buf, sizeof(char), (*pn_buf_sz), stdout);
+               UNUSED ((void) discard);
             }
          }
          sprintf(gszMsgBox, TgLoadCachedString(CSTID_DATA_RECEIVED), "FTP");
@@ -1266,6 +1268,7 @@ void LaunchViewer(launch_remote_file, psz_viewer, psz_url,
    int launch_remote_file;
    char *psz_viewer, *psz_url, *psz_new_fname;
 {
+   int discard;
    if (strcmp(psz_viewer, "NONE") != 0) {
 #ifndef _BACKGROUND_DONT_FORK
       int pid=0;
@@ -1283,7 +1286,8 @@ void LaunchViewer(launch_remote_file, psz_viewer, psz_url,
 
 #ifdef _BACKGROUND_DONT_FORK
       strcat(cmd, " &");
-      (void)system(cmd);
+      discard=system(cmd);
+      UNUSED ((void) discard);
 #else /* ~_BACKGROUND_DONT_FORK */
       pid = fork();
       if (pid == 0) {

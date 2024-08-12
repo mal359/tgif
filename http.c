@@ -79,7 +79,7 @@ static struct AuthInfo curAuthorization;
 
 static struct TgifHttpHeaderInfo tgifHttpHeaderInfo;
 
-static char SZ_HTTP_VERSION[]="HTTP/1.0";
+static char SZ_HTTP_VERSION[]="HTTP/1.1";
 static char SZ_USER_AGENT[128];
 static char SZ_USER_NAME[128];
 
@@ -734,7 +734,7 @@ int HttpDoWrite(n_socket, psz_path, psz_host, us_port)
    int n_socket, us_port;
    char *psz_path, *psz_host;
 {
-   int status=0, total_sz=0;
+   int status=0, total_sz=0, discard;
    FILE *fp=NULL;
    char *buf=(char*)malloc((strlen(psz_path)+5+2+31)*sizeof(char)), msg[40];
 
@@ -830,12 +830,14 @@ int HttpDoWrite(n_socket, psz_path, psz_host, us_port)
       fprintf(stderr, "************************\n");
       fprintf(stderr, "* Begin Request Header *\n");
       fprintf(stderr, "************************\n");
-      (void)fwrite(buf, sizeof(char), strlen(buf), stderr);
+      discard=fwrite(buf, sizeof(char), strlen(buf), stderr);
+      UNUSED ((void) discard);
       fprintf(stderr, "************************\n");
       fprintf(stderr, "*  End Request Header  *\n");
       fprintf(stderr, "************************\n");
    }
    status = TcpDoWrite(n_socket, buf, (int)strlen(buf));
+   status += 0;
    free(buf);
 
    if (status != TG_REMOTE_STATUS_OK) {
@@ -1333,7 +1335,7 @@ int HttpDoRead(n_socket, ppsz_buf, pn_buf_sz)
    char **ppsz_buf;
 {
    int buf_sz=0x400, len=0, end_of_file=FALSE;
-   int status=TG_REMOTE_STATUS_OK, content_len=(-1), header_len=0;
+   int status=TG_REMOTE_STATUS_OK, content_len=(-1), header_len=0, discard;
    char *buf=(char*)malloc(buf_sz*sizeof(char)), msg[MAXSTRING];
 
    if (pn_buf_sz != NULL) *pn_buf_sz = 0;
@@ -1444,7 +1446,8 @@ int HttpDoRead(n_socket, ppsz_buf, pn_buf_sz)
          /* debug, do not translate */
          if (!cmdLineDumpURL) {
             fprintf(stderr, "\n==========>>>\n");
-            (void)fwrite(buf, sizeof(char), len, stderr);
+            discard=fwrite(buf, sizeof(char), len, stderr);
+            UNUSED ((void) discard);
             fprintf(stderr, "\n<<<==========\n");
          }
       }

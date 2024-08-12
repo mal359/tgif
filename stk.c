@@ -367,7 +367,7 @@ int PushIcon()
 void RestoreFileInfo(StkPtr)
    struct StkRec *StkPtr;
 {
-   char fname[MAXPATHLENGTH], *rest;
+   char fname[MAXPATHLENGTH+16], *rest;
 
    fileModified = StkPtr->file_mod;
    objId = StkPtr->id;

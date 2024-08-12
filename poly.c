@@ -209,8 +209,10 @@ void CalcPolyBBox(ObjPtr)
          x = tmp_x+ObjPtr->x;
          y = tmp_y+ObjPtr->y;
       }
-      if (x < ltx) ltx = x; if (y < lty) lty = y;
-      if (x > rbx) rbx = x; if (y > rby) rby = y;
+      if (x < ltx) ltx = x;
+      if (y < lty) lty = y;
+      if (x > rbx) rbx = x;
+      if (y > rby) rby = y;
 
       x = round(v[0].x + w*cos + h*sin);
       y = round(v[0].y + w*sin - h*cos);
@@ -220,8 +222,10 @@ void CalcPolyBBox(ObjPtr)
          x = tmp_x+ObjPtr->x;
          y = tmp_y+ObjPtr->y;
       }
-      if (x < ltx) ltx = x; if (y < lty) lty = y;
-      if (x > rbx) rbx = x; if (y > rby) rby = y;
+      if (x < ltx) ltx = x; 
+      if (y < lty) lty = y;
+      if (x > rbx) rbx = x; 
+      if (y > rby) rby = y;
    }
    dx = v[num_pts-1].x - v[num_pts-2].x;
    dy = v[num_pts-1].y - v[num_pts-2].y;
@@ -241,8 +245,10 @@ void CalcPolyBBox(ObjPtr)
          x = tmp_x+ObjPtr->x;
          y = tmp_y+ObjPtr->y;
       }
-      if (x < ltx) ltx = x; if (y < lty) lty = y;
-      if (x > rbx) rbx = x; if (y > rby) rby = y;
+      if (x < ltx) ltx = x; 
+      if (y < lty) lty = y;
+      if (x > rbx) rbx = x; 
+      if (y > rby) rby = y;
 
       x = round(v[num_pts-1].x - w*cos - h*sin);
       y = round(v[num_pts-1].y - w*sin + h*cos);
@@ -252,16 +258,20 @@ void CalcPolyBBox(ObjPtr)
          x = tmp_x+ObjPtr->x;
          y = tmp_y+ObjPtr->y;
       }
-      if (x < ltx) ltx = x; if (y < lty) lty = y;
-      if (x > rbx) rbx = x; if (y > rby) rby = y;
+      if (x < ltx) ltx = x;
+      if (y < lty) lty = y;
+      if (x > rbx) rbx = x;
+      if (y > rby) rby = y;
    }
    if (retracted_arrow) {
       int i;
 
       for (i=1; i < num_pts; i++) {
          x = v[i].x; y = v[i].y;
-         if (x-ah < ltx) ltx = x-ah; if (y-ah < lty) lty = y-ah;
-         if (x+ah > rbx) rbx = x+ah; if (y+ah > rby) rby = y+ah;
+         if (x-ah < ltx) ltx = x-ah;
+         if (y-ah < lty) lty = y-ah;
+         if (x+ah > rbx) rbx = x+ah;
+         if (y+ah > rby) rby = y+ah;
       }
    }
    ObjPtr->bbox.ltx = min(ltx, ObjPtr->obbox.ltx-(width>>1));
@@ -282,8 +292,10 @@ void UpdPolyBBox(ObjPtr, NumPts, V)
    lty = rby = V[0].y;
 
    for (i = 1; i < NumPts; i++) {
-      if (V[i].x < ltx) ltx = V[i].x; if (V[i].y < lty) lty = V[i].y;
-      if (V[i].x > rbx) rbx = V[i].x; if (V[i].y > rby) rby = V[i].y;
+      if (V[i].x < ltx) ltx = V[i].x;
+      if (V[i].y < lty) lty = V[i].y;
+      if (V[i].x > rbx) rbx = V[i].x;
+      if (V[i].y > rby) rby = V[i].y;
    }
    if (ObjPtr->ctm == NULL) {
       ObjPtr->x = ltx;
@@ -1392,6 +1404,7 @@ void ContinuePoly(OrigX, OrigY)
 
                obj_ptr = FindAnObj(end_x, end_y, &owner_obj, &obj_under_cursor,
                      port_name);
+               obj_ptr += 0;
                if (drawPolyHighlightedNode != NULL) {
                   if (obj_under_cursor != drawPolyHighlightedNode) {
                      /* un-highlight */
@@ -4155,7 +4168,7 @@ void DumpPolyObj(FP, ObjPtr)
 {
    IntPoint *intv=NULL, *v=NULL;
    int num_pts, trans_pat, fill, pen, width, curved, dash, color_index;
-   int style, aw, ah, rotation, intn, retracted_arrow;
+   int style, aw, ah, intn, retracted_arrow;
    char *smooth=NULL, *width_spec=NULL, *aw_spec=NULL, *ah_spec=NULL;
 
    trans_pat = ObjPtr->trans_pat;
@@ -4170,7 +4183,6 @@ void DumpPolyObj(FP, ObjPtr)
    style = ObjPtr->detail.p->style;
    curved = ObjPtr->detail.p->curved;
    dash = ObjPtr->detail.p->dash;
-   rotation = ObjPtr->rotation;
    if (curved == LT_STRUCT_SPLINE) {
       v = ObjPtr->detail.p->ssvlist;
       num_pts = ObjPtr->detail.p->ssn;
@@ -4745,7 +4757,7 @@ void DrawPolyObj(Win, XOff, YOff, ObjPtr)
    struct PolyRec *poly_ptr=ObjPtr->detail.p;
    XPoint *v, tmp_v[4];
    XPoint v0, v1, vnminus2, vnminus1;
-   int trans_pat, pen, width, pixel, fill, n, dash, real_x_off, real_y_off;
+   int trans_pat, pen, width, pixel, fill, dash, real_x_off, real_y_off;
    int style, aw, ah, num_pts, left_dx, left_dy, right_dx, right_dy;
    int retracted_arrow=FALSE;
    short tmps;
@@ -4753,7 +4765,6 @@ void DrawPolyObj(Win, XOff, YOff, ObjPtr)
    XGCValues values;
 
    trans_pat = ObjPtr->trans_pat;
-   n = poly_ptr->n;
    fill = poly_ptr->fill;
    width = poly_ptr->width;
    aw = poly_ptr->aw;
@@ -5047,10 +5058,11 @@ int ReadSmoothHinge(FP, Curved, NumPts, Smooth)
    char *Smooth;
 {
    int num_nibbles=NumPts>>2, nibble_count=0, bit_count=0, j, k;
-   char *c_ptr, inbuf[MAXSTRING+1];
+   char *c_ptr, inbuf[MAXSTRING+1], *discard;
 
    if ((NumPts & 0x3) != 0) num_nibbles++;
-   (void)fgets(inbuf, MAXSTRING, FP);
+   discard=fgets(inbuf, MAXSTRING, FP);
+   UNUSED ((void) discard);
    scanLineNum++;
    if (Curved == LT_INTSPLINE || Smooth == NULL) return TRUE;
    if ((c_ptr=strchr(inbuf, '"')) == NULL) {
@@ -5068,7 +5080,7 @@ int ReadSmoothHinge(FP, Curved, NumPts, Smooth)
       int data=0;
 
       if (nibble_count++ == 64) {
-         (void)fgets(inbuf, MAXSTRING, FP);
+         discard=fgets(inbuf, MAXSTRING, FP);
          scanLineNum++;
          for (c_ptr=inbuf; *c_ptr == ' '; c_ptr++) ;
          nibble_count = 1;
@@ -5106,7 +5118,7 @@ void ReadPolyObj(FP, Inbuf, ObjPtr)
    int initialized, rotation, count, new_alloc, line_cap=LCAP_BUTT;
    int style, width=0, pen, curved, fill, dash, locked=FALSE, trans_pat=FALSE;
    int aw=origArrowHeadW[6], ah=origArrowHeadH[6], arrow_style=ASTY_COMPAT;
-   char *smooth=NULL;
+   char *smooth=NULL, *discard;
    int real_x=0, real_y=0, transformed=FALSE, invisible=FALSE;
    struct XfrmMtrxRec *ctm=NULL;
    struct BBRec orig_obbox;
@@ -5175,12 +5187,15 @@ void ReadPolyObj(FP, Inbuf, ObjPtr)
             initialized = TRUE;
             ltx = rbx = x; lty = rby = y;
          } else {
-            if (x < ltx) ltx = x; if (y < lty) lty = y;
-            if (x > rbx) rbx = x; if (y > rby) rby = y;
+            if (x < ltx) ltx = x;
+            if (y < lty) lty = y;
+            if (x > rbx) rbx = x;
+            if (y > rby) rby = y;
          }
       }
    } else {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       s = inbuf;
       InitScan(s, "\t\n, []");
@@ -5196,14 +5211,17 @@ void ReadPolyObj(FP, Inbuf, ObjPtr)
          v[i].x = x; v[i].y = y;
          if (!initialized) {
             initialized = TRUE;
-            ltx = rbx = x; lty = rby = y;
+            ltx = rbx = x;
+            lty = rby = y;
          } else {
-            if (x < ltx) ltx = x; if (y < lty) lty = y;
-            if (x > rbx) rbx = x; if (y > rby) rby = y;
+            if (x < ltx) ltx = x;
+            if (y < lty) lty = y;
+            if (x > rbx) rbx = x;
+            if (y > rby) rby = y;
          }
          if (++count == 8 && i != num_pts-1) {
             count = 0;
-            (void)fgets(inbuf, MAXSTRING, FP);
+            discard=fgets(inbuf, MAXSTRING, FP);
             scanLineNum++;
             s = inbuf;
             InitScan(s, "\t\n, []");
@@ -5518,7 +5536,7 @@ void ReadPolyObj(FP, Inbuf, ObjPtr)
       int aindent=0;
       char aindent_spec[40];
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
       scanLineNum++;
       InitScan(inbuf, "\t\n, []");
 
@@ -5548,7 +5566,7 @@ void ReadPolyObj(FP, Inbuf, ObjPtr)
       UtilRemoveQuotes(aindent_spec);
    }
    if (fileVersion >= 33 && transformed) {
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 

@@ -1131,6 +1131,7 @@ void LaunchIt(cmd)
    char *cmd;
 {
    int len=strlen(cmd);
+   int discard;
 
    while (len > 0 && (cmd[len-1] == ' ')) cmd[--len] = '\0';
    if (cmd[0] != '\0' && FindProgramInPath(cmd, NULL, FALSE)) {
@@ -1144,7 +1145,8 @@ void LaunchIt(cmd)
             fprintf(stderr, TgLoadCachedString(CSTID_BACKGROUNDING_CMD), cmd);
             fprintf(stderr, "\n");
             strcat(cmd, " &");
-            (void)system(cmd);
+            discard=system(cmd);
+	    UNUSED ((void) discard);
 #else /* ~_BACKGROUND_DONT_FORK */
             int pid;
 
@@ -1571,6 +1573,7 @@ int ReplaceAttrAllValues(obj_ptr, attr_ptr, ppTopStr, ppBotStr)
          next_str = str_ptr->next;
          pMiniLine = CreateMiniLineFromString(str_ptr->dyn_str.s,
                &pFirstMiniLine, &pLastMiniLine);
+	 pMiniLine += 0;
          FreeStr(str_ptr);
       }
       attr_ptr->obj->detail.t->minilines.first = pFirstMiniLine;
@@ -3204,7 +3207,7 @@ int ExecMakeCGIQuery(argv, obj_ptr, orig_cmd)
    struct ObjRec *dest_attr_owner_obj=NULL;
    MiniLineInfo *pMiniLine=NULL;
    char *buf=NULL, *c_ptr, *attr_names_buf=NULL;
-   int buf_sz=0, buf_len=0, tmp_sz=0, num_attrs=0;
+   int buf_sz=0, tmp_sz=0, num_attrs=0;
    int found_name=FALSE, seen_first_attr=FALSE, null_url=FALSE;
 
    UtilRemoveQuotes(dest_attr_name);
@@ -3220,7 +3223,6 @@ int ExecMakeCGIQuery(argv, obj_ptr, orig_cmd)
    if (buf == NULL) return FailAllocMessage();
 
    sprintf(buf, "%s", url_name);
-   buf_len = buf_sz;
 
    sprintf(execDummyStr, "%s=", dest_attr_name);
    dest_attr = FindAttrWithName(obj_ptr, execDummyStr, &dest_attr_owner_obj);
@@ -4478,6 +4480,7 @@ int ExecCopyStrToCutBuffer(argv, obj_ptr, orig_cmd)
    UtilRemoveQuotes(the_str);
 
    len = strlen(the_str);
+   len+=0;
    if (!WriteBufToCutBuffer(the_str, strlen(the_str), TRUE, FALSE, NULL)) {
       sprintf(gszMsgBox, TgLoadString(STID_WRITE_CUT_BUF_WHILE_EXEC_CMD),
             orig_cmd);
@@ -9661,7 +9664,6 @@ int ExecRndPermLinesInAttr(argv, obj_ptr, orig_cmd)
 {
    char *attr_name=argv[0], *tmp_buf=NULL, **word_array=NULL;
    int i=0, count=0, index=0, need_to_free_tmp_buf=FALSE;
-   MiniLinesInfo *minilines=NULL;
    MiniLineInfo *pMiniLine=NULL;
    struct AttrRec *attr_ptr=NULL;
    struct ObjRec *attr_owner_obj=NULL;
@@ -9713,7 +9715,6 @@ int ExecRndPermLinesInAttr(argv, obj_ptr, orig_cmd)
 
    need_to_free_tmp_buf = FALSE;
    tmp_buf = NULL;
-   minilines = (&attr_ptr->obj->detail.t->minilines);
    tmp_buf = ConvertAttrNameFirstMiniLineToString(attr_ptr,
          &need_to_free_tmp_buf);
    if (!AppendToTmpStr(tmp_buf)) FailAllocMessage();

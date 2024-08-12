@@ -643,18 +643,14 @@ void DumpArcObj(FP, ObjPtr)
    register struct ArcRec *arc_ptr=ObjPtr->detail.a;
    int fill, trans_pat, width, pen, dash, color_index;
    int xc, yc, xr, yr, dir, angle1, angle2, style, a_angle1, a_angle2;
-   int x1, y1, aw, ah;
 
    trans_pat = ObjPtr->trans_pat;
    fill = arc_ptr->fill;
    width = arc_ptr->width;
-   aw = arc_ptr->aw;
-   ah = arc_ptr->ah;
    pen = arc_ptr->pen;
    dash = arc_ptr->dash;
    style = arc_ptr->style;
    xc = arc_ptr->xc; yc = arc_ptr->yc;
-   x1 = arc_ptr->x1; y1 = arc_ptr->y1;
    xr = (int)(arc_ptr->w/2); yr = (int)(arc_ptr->h/2);
    dir = arc_ptr->dir;
    angle1 = -round(((double)arc_ptr->angle1)/64.0);
@@ -1741,6 +1737,7 @@ void ContinueArc(OrigX, OrigY)
       if (curChoice == DRAWEDGEARC) {
          obj_ptr = CreateArcObj(cx, cy, OrigX, OrigY, first_x, first_y,
                dir, ltx, lty, w, h, angle1, angle2, FALSE);
+         obj_ptr->x += 0;
       } else {
          obj_ptr = CreateArcObj(OrigX, OrigY, first_x, first_y, saved_x,
                saved_y, dir, ltx, lty, w, h, angle1, angle2, FALSE);
@@ -1826,6 +1823,7 @@ void ReadArcObj(FP, Inbuf, ObjPtr)
    int aw=origArrowHeadW[0], ah=origArrowHeadH[0];
    int xc, yc, x1, y1, x2, y2, dir, angle1, angle2;
    int invisible=FALSE, transformed=FALSE;
+   char *discard;
 
    *ObjPtr = NULL;
 
@@ -2126,7 +2124,8 @@ void ReadArcObj(FP, Inbuf, ObjPtr)
       char inbuf[MAXSTRING+1];
       struct XfrmMtrxRec *ctm;
 
-      (void)fgets(inbuf, MAXSTRING, FP);
+      discard=fgets(inbuf, MAXSTRING, FP);
+      UNUSED ((void) discard);
       scanLineNum++;
       InitScan(inbuf, "\t\n, ");
 
