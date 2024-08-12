@@ -1591,13 +1591,15 @@ void ContinueArc(OrigX, OrigY)
          ExposeEventHandler(&input, TRUE);
          SetXorDrawGC(xorColorPixels[colorIndex]);
       } else if (input.type == ButtonPress) {
-         if (input.xbutton.button != Button1 || drawing_arc) {
+         if (input.xbutton.button == Button2 ||
+               (input.xbutton.button == Button3 && !drawing_arc) ||
+               drawing_arc) {
             XUngrabPointer(mainDisplay, CurrentTime);
             HighLightInContinueArc(drawing_arc, OrigX, OrigY, saved_x,
                   saved_y, ltx, lty, &w, &h, angle1, angle2, &dx, &dy, &radius,
                   FALSE, TRUE, buf);
             done = TRUE;
-            if (input.xbutton.button != Button1) {
+            if (input.xbutton.button == Button2) {
                angle2 = 0;
             }
             Msg("");
@@ -1623,12 +1625,12 @@ void ContinueArc(OrigX, OrigY)
             Msg(TgLoadCachedString(CSTID_SPECIFY_ARC_THIRD));
             SetMouseStatus(TgLoadCachedString(CSTID_SET_ARC_THIRD),
                   TgLoadCachedString(CSTID_CANCEL),
-                  TgLoadCachedString(CSTID_CANCEL));
+                  TgLoadCachedString(CSTID_SET_ARC_THIRD));
          } else {
             Msg(TgLoadCachedString(CSTID_SPECIFY_ARC_END));
             SetMouseStatus(TgLoadCachedString(CSTID_SET_ARC_END),
                   TgLoadCachedString(CSTID_CANCEL),
-                  TgLoadCachedString(CSTID_CANCEL));
+                  TgLoadCachedString(CSTID_SET_ARC_END));
          }
          PixelToMeasurementUnit(r_buf, ABS_SIZE(radius));
          sprintf(buf, "r=%s\ndegree=0", r_buf);
