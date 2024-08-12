@@ -207,22 +207,43 @@ int GetUserID(psz_buf, buf_sz)
    char *psz_buf;
    int buf_sz;
 {
+    /* prepare for getaddrinfo ()*/
+   struct addrinfo hints, *res, *p;
+   char *ipstr=NULL;
+   int do_not_continue=0;
+
    char user_name[MAXSTRING+1];
    int total=0;
+
+   memset (&hints, 0, sizeof(hints));
+   hints.ai_family = AF_UNSPEC;
+   hints.ai_socktype = SOCK_STREAM;
 
    sprintf(user_name, "%s@", TOOL_NAME);
    total = strlen(user_name);
    if (gethostname(&user_name[total], sizeof(user_name)-1-total) < 0) {
       sprintf(&user_name[total], "UNKNOWN");
    } else {
-      struct hostent *p_hostent=gethostbyname(&user_name[total]);
+	if (!(getaddrinfo(&user_name[0], NULL, &hints, &res))){
+	   for (p = res; p != NULL; p = p->ai_next){
+		/* only do IP V4 for now ... subject to change in the future ...*/
+		if (p->ai_family == AF_INET6){
+		  do_not_continue=1;
+		}
+		else {
+		  struct sockaddr_in *ipv4 = (struct sockaddr_in *)p->ai_addr;
+		  ipstr = (char *) &(ipv4->sin_addr);
+		}
+	   }
+	   freeaddrinfo(res);
+	 }
 
-      if (p_hostent != NULL && p_hostent->h_name != NULL &&
-            *p_hostent->h_name != '\0') {
-         if (strchr(p_hostent->h_name, '.') == NULL &&
+      if (do_not_continue == 0 && ipstr != NULL &&
+            *ipstr != '\0') {
+         if (strchr(ipstr, '.') == NULL &&
                strchr(&user_name[total], '.') != NULL) {
          } else {
-            strcpy(&user_name[total], p_hostent->h_name);
+            strcpy(&user_name[total], ipstr);
          }
       }
    }

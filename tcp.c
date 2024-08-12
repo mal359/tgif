@@ -76,10 +76,16 @@ int TcpDoConnect(psz_host, us_port, pn_socket)
    int us_port, *pn_socket;
 {
    static int not_initialized=TRUE;
+   struct addrinfo hints, *res, *p;
+   char *ipstr=NULL;
+
    struct sockaddr_in soc_address;
    struct sockaddr_in *sin=(&soc_address);
-   struct hostent *p_hostent=NULL;
    int status=TG_REMOTE_STATUS_OK;
+
+   memset (&hints, 0, sizeof(hints));
+   hints.ai_family = AF_UNSPEC;
+   hints.ai_socktype = SOCK_STREAM;
 
    if (not_initialized) {
       not_initialized = FALSE;
@@ -88,11 +94,22 @@ int TcpDoConnect(psz_host, us_port, pn_socket)
    if (*psz_host >= '0' && *psz_host <= '9') {
       sin->sin_addr.s_addr = inet_addr(psz_host);
    } else {
-      p_hostent = gethostbyname(psz_host);
-      if (p_hostent == NULL) {
-         return TG_REMOTE_STATUS_HOST;
-      }
-      memcpy(&sin->sin_addr, p_hostent->h_addr, p_hostent->h_length);
+	if (getaddrinfo(psz_host, NULL, &hints, &res)){
+	  return TG_REMOTE_STATUS_HOST;
+	}
+	for (p = res; p != NULL; p = p->ai_next){
+	  /* only do IP V4 for now ... subject to change in the future ...*/
+	  if (p->ai_family == AF_INET6){
+	    return 1;
+	  }
+	  else {
+	    struct sockaddr_in *ipv4 = (struct sockaddr_in *)p->ai_addr;
+	    ipstr = (char *) &(ipv4->sin_addr);
+	  }
+	}
+	freeaddrinfo(res);
+
+	memcpy(&sin->sin_addr, ipstr, (int) strlen(ipstr));
    }
    sin->sin_family = AF_INET;
    sin->sin_port = htons((unsigned short)us_port);

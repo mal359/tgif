@@ -398,7 +398,6 @@ void ExecStartSimulator(obj_ptr, orig_cmd)
 {
     char host[ 10 ];
     char *protocol = "udp";
-    struct hostent     *phe;
     struct servent     *pse;
     struct protoent    *ppe;
     struct sockaddr_in  sin;
@@ -410,6 +409,15 @@ void ExecStartSimulator(obj_ptr, orig_cmd)
     int one = 1;
     char *service = "6743";
 
+    /* prepare for getaddrinfo ()*/
+    struct addrinfo hints, *res, *p;
+    char *ipstr=NULL;
+    int do_not_continue=0;
+  
+    memset (&hints, 0, sizeof(hints));
+    hints.ai_family = AF_UNSPEC;
+    hints.ai_socktype = SOCK_STREAM;
+  
     strcpy( host, "localhost" );
     memset( (char *)&sin, 0, sizeof( sin ) );
     sin.sin_family = AF_INET;
@@ -422,10 +430,24 @@ void ExecStartSimulator(obj_ptr, orig_cmd)
             return;
         }
     
-    if( (phe = gethostbyname( host )) != NULL )
-        memcpy( (char *)&sin.sin_addr, phe->h_addr, phe->h_length );
-    else
-    {
+  do_not_continue=getaddrinfo(host, NULL, &hints, &res);
+  
+  if (!do_not_continue){
+    for (p = res; p != NULL; p = p->ai_next){
+	 /* only do IP V4 for now ... subject to change in the future ...*/
+	 if (p->ai_family == AF_INET6){
+	   do_not_continue=1;
+	 }
+	 else {
+	   struct sockaddr_in *ipv4 = (struct sockaddr_in *)p->ai_addr;
+	   ipstr = (char *) &(ipv4->sin_addr);
+	 }
+    }
+    freeaddrinfo(res);
+    if (!do_not_continue)
+	 memcpy( (char *)&sin.sin_addr, ipstr, (int) strlen(ipstr));
+    }
+    if (do_not_continue){
         sin.sin_addr.s_addr = inet_addr( host );
 #ifdef linux
         if( sin.sin_addr.s_addr == INADDR_NONE )
