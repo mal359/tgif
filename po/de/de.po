@@ -1,0 +1,1707 @@
+# Author : Dr. Ing. Dieter Jurzitza <dieter.jurzitza@t-online.de>
+#
+# @(#)$Header: /mm2/home/cvs/bc-src/tgif/po/de/po/de/po/de/de.po,v 1.0 2013/03/10 00:00:00 dieter $
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tgif-4.2.5\n"
+"Report-Msgid-Bugs-To: dieter.jurzitza@t-online.de\n"
+"POT-Creation-Date: 2013-03-12\n"
+"PO-Revision-Date: 2013-03-12\n"
+"Last-Translator: Dr. Ing. Dieter Jurzitza <dieter.jurzitza@t-online.de>\n"
+"Language-Team: German <de@li.org>"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+
+#: ../../menuinfo.c:196 
+msgid "Add Object Shadow"
+msgstr "Objektschatten hinzufügen"
+
+#: ../../menuinfo.c:198 
+msgid "Remove Object Shadow"
+msgstr "Objektschatten entfernen"
+
+#: ../../menuinfo.c:201 
+msgid "Set Object Shadow Color..."
+msgstr "Wähle Farbe des Objektschattens ..."
+
+#: ../../menuinfo.c:204 
+msgid "Set Object Shadow Offsets..."
+msgstr "Wähle den Objektschattenversatz"
+
+#: ../../menuinfo.c:237 ../../menuinfo.c:1384 
+msgid "Portrait"
+msgstr "Hochformat"
+
+#: ../../menuinfo.c:239 ../../menuinfo.c:1386 
+msgid "Landscape"
+msgstr "Querformat"
+
+#: ../../menuinfo.c:251 
+msgid "Roman"
+msgstr "Regulär"
+
+#: ../../menuinfo.c:253 
+msgid "Bold"
+msgstr "Fett"
+
+#: ../../menuinfo.c:255 
+msgid "Italic"
+msgstr "Kursiv"
+
+#: ../../menuinfo.c:257 
+msgid "BoldItalic"
+msgstr "Fett Kursiv"
+
+#: ../../menuinfo.c:260 
+msgid "Left"
+msgstr "Linksbündig"
+
+#: ../../menuinfo.c:262 
+msgid "Center"
+msgstr "Zentriert"
+
+#: ../../menuinfo.c:264 
+msgid "Right"
+msgstr "Rechtsbündig"
+
+#: ../../menuinfo.c:267 
+msgid "No Underline"
+msgstr "Nicht unterstrichen"
+
+#: ../../menuinfo.c:269 
+msgid "Underline"
+msgstr "Unterstrichen"
+
+#: ../../menuinfo.c:272 
+msgid "No Overline"
+msgstr "Kein Oberstrich"
+
+#: ../../menuinfo.c:274 
+msgid "Overline"
+msgstr "Oberstrich"
+
+#: ../../menuinfo.c:284 
+msgid "Next Page"
+msgstr "Nächste Seite"
+
+#: ../../menuinfo.c:285 
+msgid "Prev Page"
+msgstr "Vorige Seite"
+
+#: ../../menuinfo.c:286 
+msgid "Goto Page..."
+msgstr "Gehe zur Seite ..."
+
+#: ../../menuinfo.c:288 
+msgid "Name Pages..."
+msgstr "Benenne Seite ..."
+
+#: ../../menuinfo.c:290 
+msgid "Edit Page File Names..."
+msgstr "Bearbeite die Seitennamen ..."
+
+#: ../../menuinfo.c:294 
+msgid "Add Page Before..."
+msgstr "Eine Seite davor einfügen ..."
+
+#: ../../menuinfo.c:296 
+msgid "Add Page After..."
+msgstr "Eine Seite dahinter einfügen ..."
+
+#: ../../menuinfo.c:298 
+msgid "Add Page Before (Copy All)..."
+msgstr "Aktuelle Seite kopieren und davor einfügen ..."
+
+#: ../../menuinfo.c:301 
+msgid "Add Page After (Copy All)..."
+msgstr "Aktuelle Seite kopieren und dahinter einfügen ..."
+
+#: ../../menuinfo.c:304 
+msgid "Delete Current Page"
+msgstr "Aktuelle Seite löschen"
+
+#: ../../menuinfo.c:306 
+msgid "Delete Pages..."
+msgstr "Seiten Löschen ..."
+
+#: ../../menuinfo.c:309 ../../menuinfo.c:332 ../../menuinfo.c:700 
+msgid "Print One Page"
+msgstr "Eine Seite drucken"
+
+#: ../../menuinfo.c:311 ../../menuinfo.c:702 
+msgid "Print Pages..."
+msgstr "Seiten drucken ..."
+
+#: ../../menuinfo.c:313 ../../menuinfo.c:704 
+msgid "Print One File Per Page..."
+msgstr "Eine Datei je Seite drucken ..."
+
+#: ../../menuinfo.c:317 ../../menuinfo.c:335 
+msgid "Specify Paper Size..."
+msgstr "Papiergröße angeben ..."
+
+#: ../../menuinfo.c:319 ../../menuinfo.c:337 
+msgid "Set Paper Color..."
+msgstr "Papierfarbe wählen ..."
+
+#: ../../menuinfo.c:327 
+msgid "Toggle Page Line Shown"
+msgstr "Seitenumrandung anzeigen"
+
+#: ../../menuinfo.c:330 
+msgid "Specify Drawing Size..."
+msgstr "Bildgröße angeben ..."
+
+#: ../../menuinfo.c:345 ../../menuinfo.c:1389 ../../menuinfo.c:1841 
+msgid "Stacked Page"
+msgstr "Seiten als Stapel"
+
+#: ../../menuinfo.c:347 ../../menuinfo.c:1391 ../../menuinfo.c:1843 
+msgid "Tiled Page"
+msgstr "Seiten als Kachel"
+
+#: ../../menuinfo.c:354 
+msgid "Reduce Colors..."
+msgstr "Farbenzahl reduzieren ..."
+
+#: ../../menuinfo.c:358 
+msgid "Set Default Color Levels..."
+msgstr "Standard Farbbereiche setzen ..."
+
+#: ../../menuinfo.c:361 
+msgid "Reduce To Default Colors"
+msgstr "Reduzieren auf Standardfarben"
+
+#: ../../menuinfo.c:364 
+msgid "Default Error Diffuse"
+msgstr "Fehlerverteilung zur Farbreduktion auf Standard"
+
+#: ../../menuinfo.c:368 
+msgid "Reduce To Pixmap Colors..."
+msgstr "Reduzieren auf Rastergrafikfarben ..."
+
+#: ../../menuinfo.c:371 
+msgid "Reduce To Mobileweb Safe Colors"
+msgstr "Farbreduktion auf Mobileweb-Kompatibilität (6 Stufen rgb)"
+
+#: ../../menuinfo.c:380 
+msgid "Edge Detect"
+msgstr "Kantendetektion"
+
+#: ../../menuinfo.c:382 
+msgid "Emboss"
+msgstr "Prägen"
+
+#: ../../menuinfo.c:385 
+msgid "Spread..."
+msgstr "Verteilen ..."
+
+#: ../../menuinfo.c:387 
+msgid "Sharpen"
+msgstr "Schärfen"
+
+#: ../../menuinfo.c:389 
+msgid "Blur (3x3)"
+msgstr "Verwischen (3x3)"
+
+#: ../../menuinfo.c:391 
+msgid "Blur (5x5)"
+msgstr "Verwischen (5x5)"
+
+#: ../../menuinfo.c:393 
+msgid "Blur (7x7)"
+msgstr "Verwischen (7x7)"
+
+#: ../../menuinfo.c:401 
+msgid "Run Bggen..."
+msgstr "Hintergrund erzeugen ..."
+
+#: ../../menuinfo.c:404 
+msgid "Circular Bggen..."
+msgstr "Hintergrundkreise ..."
+
+#: ../../menuinfo.c:407 
+msgid "Simple Rect Bggen..."
+msgstr "Einfacher Rechteckhintergrund ..."
+
+#: ../../menuinfo.c:416 
+msgid "Replace Color"
+msgstr "Farbe ersetzen"
+
+#: ../../menuinfo.c:419 
+msgid "Replace Color with Transparent"
+msgstr "Farbe durch transparente Farbe ersetzen"
+
+#: ../../menuinfo.c:422 
+msgid "Flood Fill"
+msgstr "Mit Farbe füllen"
+
+#: ../../menuinfo.c:426 
+msgid "Enable Threshold-based Flood and Replace Color"
+msgstr "Schwellwertbasierte Farbfüllung und Farbtausch"
+
+#: ../../menuinfo.c:429 
+msgid "Set Flood and Replace Color Threshold"
+msgstr "Setze Schwellwert für Farbfüllung und Farbtausch"
+
+#: ../../menuinfo.c:437 
+msgid "Make Gray"
+msgstr "Eingrauen"
+
+#: ../../menuinfo.c:439 
+msgid "Brighten/Darken..."
+msgstr "Aufhellen/Abdunkeln ..."
+
+#: ../../menuinfo.c:441 
+msgid "Contrast Enhance..."
+msgstr "Kontrast anheben ..."
+
+#: ../../menuinfo.c:443 
+msgid "Gamma Correct..."
+msgstr "Gammawert ändern ..."
+
+#: ../../menuinfo.c:446 
+msgid "Change Saturation..."
+msgstr "Sättigung ändern ..."
+
+#: ../../menuinfo.c:449 
+msgid "Change Hue..."
+msgstr "Farbton ändern ..."
+
+#: ../../menuinfo.c:452 
+msgid "Invert Color"
+msgstr "Farben invertieren"
+
+#: ../../menuinfo.c:455 
+msgid "Interpolate Color..."
+msgstr "Farben interpolieren ..."
+
+#: ../../menuinfo.c:458 
+msgid "Color Balance..."
+msgstr "Farbbalance ..."
+
+#: ../../menuinfo.c:462 
+msgid "Reduce Number Of Colors"
+msgstr "Farbenzahl"
+
+#: ../../menuinfo.c:464 
+msgid "Effects"
+msgstr "Effekte"
+
+#: ../../menuinfo.c:466 
+msgid "Generate"
+msgstr "Erzeugen"
+
+#: ../../menuinfo.c:468 
+msgid "Flood Fill / Replace Colors"
+msgstr "Ausfüllen / Farbwechsel"
+
+#: ../../menuinfo.c:471 
+msgid "Regenerate Image"
+msgstr "Bild regenerieren"
+
+#: ../../menuinfo.c:473 
+msgid "Crop Image"
+msgstr "Bild beschneiden"
+
+#: ../../menuinfo.c:475 
+msgid "Get Color"
+msgstr "Farbe holen"
+
+#: ../../menuinfo.c:478 
+msgid "Create Contour"
+msgstr "Kontur erzeugen"
+
+#: ../../menuinfo.c:482 
+msgid "Subtract"
+msgstr "Subtrahieren"
+
+#: ../../menuinfo.c:484 
+msgid "Alpha Combine"
+msgstr "Alpha Kombination"
+
+#: ../../menuinfo.c:487 
+msgid "Xor Color"
+msgstr "Xor-Farbverknüpfung"
+
+#: ../../menuinfo.c:490 
+msgid "Vector Warp"
+msgstr "Vektor Verkrümmung"
+
+#: ../../menuinfo.c:499 
+msgid "Solve"
+msgstr "Lösen"
+
+#: ../../menuinfo.c:500 
+msgid "Simulate"
+msgstr "Simulieren"
+
+#: ../../menuinfo.c:501 
+msgid "Probe"
+msgstr "Testen"
+
+#: ../../menuinfo.c:502 
+msgid "Animate"
+msgstr "Animieren"
+
+#: ../../menuinfo.c:503 
+msgid "Escape"
+msgstr "Escape"
+
+#: ../../menuinfo.c:510 
+msgid "Create Thumbnails"
+msgstr "Vorschau aller Objektdateien"
+
+#: ../../menuinfo.c:514 
+msgid "Browse X Bitmap"
+msgstr "Durchsuche X Bitmap"
+
+#: ../../menuinfo.c:517 
+msgid "Browse X Pixmap"
+msgstr "Durchsuche X Pixmap"
+
+#: ../../menuinfo.c:520 
+msgid "Browse Other..."
+msgstr "Durchsuche andere ..."
+
+#: ../../menuinfo.c:529 ../../menuinfo.c:598 
+msgid "Import Multipage Text File"
+msgstr "Mehrseitige Textdatei importieren"
+
+#: ../../menuinfo.c:531 
+msgid "Set Margins"
+msgstr "Ränder setzen"
+
+#: ../../menuinfo.c:534 
+msgid "Word Wrap"
+msgstr "Wortumbruch"
+
+#: ../../menuinfo.c:544 ../../menuinfo.c:604 
+msgid "Screen Capture"
+msgstr "Bildschirmfoto"
+
+#: ../../menuinfo.c:547 
+msgid "Full Screen Capture"
+msgstr "Bildschirmfoto (gesamt)"
+
+#: ../../menuinfo.c:549 
+msgid "Delayed Full Screen Capture..."
+msgstr "Bildschirmfoto - verzögert ..."
+
+#: ../../menuinfo.c:553 
+msgid "Hide During Capture"
+msgstr "Verstecken während der Aufnahme"
+
+#: ../../menuinfo.c:562 
+msgid "Import..."
+msgstr "Importieren ..."
+
+#: ../../menuinfo.c:564 
+msgid "Import X Bitmap..."
+msgstr "X-Bitmap importieren ..."
+
+#: ../../menuinfo.c:566 
+msgid "Import X Pixmap..."
+msgstr "X Pixmap importieren ..."
+
+#: ../../menuinfo.c:568 
+msgid "Import EPS File..."
+msgstr "EPS-Datei importieren ..."
+
+#: ../../menuinfo.c:570 
+msgid "Import GIF File..."
+msgstr "GIF-Datei importieren ..."
+
+#: ../../menuinfo.c:572 
+msgid "Import PNG File..."
+msgstr "PNG-Datei importieren ..."
+
+#: ../../menuinfo.c:574 
+msgid "Import JPEG File..."
+msgstr "JPEG-Datei importieren ..."
+
+#: ../../menuinfo.c:576 
+msgid "Import PBM File..."
+msgstr "PBM-Datei importieren ..."
+
+#: ../../menuinfo.c:578 
+msgid "Import PGM File..."
+msgstr "PGM-Datei importieren ..."
+
+#: ../../menuinfo.c:580 
+msgid "Import PPM File..."
+msgstr "PPM-Datei importieren ..."
+
+#: ../../menuinfo.c:582 
+msgid "Import Other File..."
+msgstr "Andere Datei importieren ..."
+
+#: ../../menuinfo.c:585 
+msgid "Embed EPS File..."
+msgstr "EPS-Datei einbetten ..."
+
+#: ../../menuinfo.c:588 
+msgid "Link External JPEG File..."
+msgstr "Externe JPEG-Datei verknüpfen ..."
+
+#: ../../menuinfo.c:591 
+msgid "Auto EPS Preview Bitmap"
+msgstr "Generiere automatisch EPS-Vorschau"
+
+#: ../../menuinfo.c:595 ../../menuinfo.c:987 
+msgid "Paste From File..."
+msgstr "Aus Datei einfügen ..."
+
+#: ../../menuinfo.c:602 
+msgid "Browse"
+msgstr "Durchsuchen"
+
+#: ../../menuinfo.c:612 
+msgid "Change Domain..."
+msgstr "Bereich ändern ..."
+
+#: ../../menuinfo.c:615 
+msgid "Edit Domain Paths..."
+msgstr "Bereichspfade bearbeiten ..."
+
+#: ../../menuinfo.c:617 
+msgid "Select Default Domain..."
+msgstr "Standardbereich wählen ..."
+
+#: ../../menuinfo.c:619 
+msgid "Add A Domain..."
+msgstr "Bereich hinzufügen ..."
+
+#: ../../menuinfo.c:621 
+msgid "Delete A Domain..."
+msgstr "Bereich löschen ..."
+
+#: ../../menuinfo.c:624 
+msgid "Reload Domain Info From X..."
+msgstr "Bereichsinformation aus X neu laden ..."
+
+#: ../../menuinfo.c:636 
+msgid "Export X Pixmap Deck To GIF"
+msgstr "Exportiere X Pixmap nach GIF"
+
+#: ../../menuinfo.c:639 
+msgid "Import GIF To X Pixmap Deck..."
+msgstr "Importiere GIF in X Pixmap ..."
+
+#: ../../menuinfo.c:651 
+msgid "Fake User Agent..."
+msgstr "Unechtes Netzwerkprogramm ..."
+
+#: ../../menuinfo.c:654 
+msgid "Fake Referer..."
+msgstr "Unechter Verweis ..."
+
+#: ../../menuinfo.c:657 
+msgid "Toggle Keep Alive"
+msgstr "Toggle Keep Alive"
+
+#: ../../menuinfo.c:667 
+msgid "New"
+msgstr "Neu"
+
+#: ../../menuinfo.c:669 
+msgid "Open..."
+msgstr "Öffnen ..."
+
+#: ../../menuinfo.c:671 
+msgid "Import"
+msgstr "Importieren"
+
+#: ../../menuinfo.c:674 
+msgid "Save"
+msgstr "Speichern"
+
+#: ../../menuinfo.c:675 
+msgid "Save New..."
+msgstr "Speichern als ..."
+
+#: ../../menuinfo.c:677 
+msgid "Save Selected As..."
+msgstr "Auswahl speichern als ..."
+
+#: ../../menuinfo.c:680 
+msgid "Save Pages As..."
+msgstr "Seiten speichern als ..."
+
+#: ../../menuinfo.c:684 
+msgid "Print"
+msgstr "Drucken"
+
+#: ../../menuinfo.c:686 ../../menuinfo.c:1396 
+msgid "Print/Export Format"
+msgstr "Druck-/Exportformat"
+
+#: ../../menuinfo.c:689 
+msgid "Set HTML Export Template..."
+msgstr "Wähle HTML Exportvorlage ..."
+
+#: ../../menuinfo.c:692 ../../menuinfo.c:1399 
+msgid "Print/Export In Color"
+msgstr "Druck/Export in Farben"
+
+#: ../../menuinfo.c:695 
+msgid "Print With Cmd..."
+msgstr "Druckbefehl ..."
+
+#: ../../menuinfo.c:698 
+msgid "Print Selected Objects"
+msgstr "Drucke gewählte Objekte"
+
+#: ../../menuinfo.c:708 
+msgid "GIF Animation"
+msgstr "GIF Animation"
+
+#: ../../menuinfo.c:711 
+msgid "Mime"
+msgstr "Mime"
+
+#: ../../menuinfo.c:715 
+msgid "Print Msg Buffer..."
+msgstr "Drucke den Nachrichtenpuffer ..."
+
+#: ../../menuinfo.c:719 
+msgid "Set Export Pixel Trim..."
+msgstr "Wähle die Pixelreduktion beim Export ..."
+
+#: ../../menuinfo.c:722 
+msgid "Set Template..."
+msgstr "Wähle eine Vorlage ..."
+
+#: ../../menuinfo.c:726 
+msgid "Recent Files"
+msgstr "Zuletzt bearbeitete Dateien"
+
+#: ../../menuinfo.c:729 
+msgid "Quit"
+msgstr "Verlassen"
+
+#: ../../menuinfo.c:735 
+msgid "Precise Scale..."
+msgstr "Exaktes skalieren ..."
+
+#: ../../menuinfo.c:737 
+msgid "Precise Scale Everything..."
+msgstr "Alles skalieren ..."
+
+#: ../../menuinfo.c:739 
+msgid "Precise Rotate..."
+msgstr "Exaktes drehen ..."
+
+#: ../../menuinfo.c:743 
+msgid "Restore Image Width & Height"
+msgstr "Bildhöhe und -breite wiederherstellen"
+
+#: ../../menuinfo.c:746 
+msgid "No Transform"
+msgstr "Keine Transformation"
+
+#: ../../menuinfo.c:755 
+msgid "Invert X Bitmap"
+msgstr "X Bitmap invertieren"
+
+#: ../../menuinfo.c:758 
+msgid "Cut Bit/Pixmap..."
+msgstr "Bit/Pixmap ausschneiden ..."
+
+#: ../../menuinfo.c:761 
+msgid "Break Up Bit/Pixmap..."
+msgstr "Bit/Pixmap aufbrechen ..."
+
+#: ../../menuinfo.c:765 
+msgid "Remove Transparent Pixel For Pixmap..."
+msgstr "Transparente Pixel der Pixmap entfernen ..."
+
+#: ../../menuinfo.c:769 
+msgid "Export Half Tone Bitmap"
+msgstr "Exportiere Halbton-Bitmap"
+
+#: ../../menuinfo.c:772 
+msgid "Export Threshold Bitmap"
+msgstr "Exportiere Schwellwert-Bitmap"
+
+#: ../../menuinfo.c:775 
+msgid "Set Export Bitmap Threshold..."
+msgstr "Setze Schwellwert für Export-Bitmap ..."
+
+#: ../../menuinfo.c:779 
+msgid "Update EPS"
+msgstr "EPS aktualisieren"
+
+#: ../../menuinfo.c:787 
+msgid "Set Tick Mark Size..."
+msgstr "Skalenstrichgröße festlegen ..."
+
+#: ../../menuinfo.c:791 
+msgid "Add Squares"
+msgstr "Quadrate hinzufügen"
+
+#: ../../menuinfo.c:794 
+msgid "Add Triangles"
+msgstr "Dreiecke hinzufügen"
+
+#: ../../menuinfo.c:797 
+msgid "Add Circles"
+msgstr "Kreise hinzufügen"
+
+#: ../../menuinfo.c:800 
+msgid "Add Xs"
+msgstr "X-e hinzufügen"
+
+#: ../../menuinfo.c:803 
+msgid "Add Diamonds"
+msgstr "Rauten hinzufügen"
+
+#: ../../menuinfo.c:806 
+msgid "Add Bowties"
+msgstr "Schleifen hinzufügen"
+
+#: ../../menuinfo.c:809 
+msgid "Add Inverted Triangles"
+msgstr "Invertierte Dreiecke hinzufügen"
+
+#: ../../menuinfo.c:812 
+msgid "Add Plus"
+msgstr "+ hinzufügen"
+
+#: ../../menuinfo.c:815 
+msgid "Add Hour Glasses"
+msgstr "Sanduhren hinzufügen"
+
+#: ../../menuinfo.c:825 
+msgid "Delete Point"
+msgstr "Punkt löschen"
+
+#: ../../menuinfo.c:828 
+msgid "Add Point"
+msgstr "Punkt hinzufügen"
+
+#: ../../menuinfo.c:830 
+msgid "Extend Segment"
+msgstr "Erweitere oder verkleinere einen Linienabschnitt"
+
+#: ../../menuinfo.c:833 
+msgid "Convert Interpolated Spline"
+msgstr "Spline-Interpolation"
+
+#: ../../menuinfo.c:836 
+msgid "Smooth<->Hinge"
+msgstr "Weich<->Kantig"
+
+#: ../../menuinfo.c:841 
+msgid "Use Tighter Structured Splines"
+msgstr "Umschaltung engere/weitere Splines"
+
+#: ../../menuinfo.c:846 
+msgid "Convert To Bezier Curve"
+msgstr "Spline in Bezier Kurve umwandeln"
+
+#: ../../menuinfo.c:849 
+msgid "Set Segments For Convert To Bezier..."
+msgstr "Lege Splines für die Bezier-Umwandlung fest ..."
+
+#: ../../menuinfo.c:853 
+msgid "Join Poly"
+msgstr "Polynome zusammenfassen"
+
+#: ../../menuinfo.c:855 
+msgid "Cut Poly"
+msgstr "Poly schneiden"
+
+#: ../../menuinfo.c:858 
+msgid "Make Regular Polygon..."
+msgstr "Reguläres Polygon erzeugen ..."
+
+#: ../../menuinfo.c:862 ../../menuinfo.c:937 
+msgid "Add Tick Marks"
+msgstr "Skalenstriche hinzufügen"
+
+#: ../../menuinfo.c:870 
+msgid "Break Up Text"
+msgstr "Text aufbrechen"
+
+#: ../../menuinfo.c:873 
+msgid "Set Text Fill Pattern Color"
+msgstr "Text Füllmusterfarbe festlegen"
+
+#: ../../menuinfo.c:877 
+msgid "Insert Right Superscript"
+msgstr "Rechten Exponenten einfügen"
+
+#: ../../menuinfo.c:880 
+msgid "Insert Right Subscript"
+msgstr "Rechts tiefgestelltes Zeichen einfügen"
+
+#: ../../menuinfo.c:883 
+msgid "Insert Left Superscript"
+msgstr "Linken Exponenten einfügen"
+
+#: ../../menuinfo.c:886 
+msgid "Insert Left Subscript"
+msgstr "Links tiefgestelltes Zeichen einfügen"
+
+#: ../../menuinfo.c:889 
+msgid "Insert Center Superscript"
+msgstr "Zentrierten Exponenten einfügen"
+
+#: ../../menuinfo.c:892 
+msgid "Insert Center Subscript"
+msgstr "Zentrierten Subscript einfügen"
+
+#: ../../menuinfo.c:896 
+msgid "Insert Symbol..."
+msgstr "Sonderzeichen einfügen ..."
+
+#: ../../menuinfo.c:901 
+msgid "Insert Hex/Octal Character..."
+msgstr "Hex-/Oktalzeichen einfügen ..."
+
+#: ../../menuinfo.c:906 
+msgid "Reset input method..."
+msgstr "Eingabe zurücksetzen ..."
+
+#: ../../menuinfo.c:910 
+msgid "Insert Thin Space..."
+msgstr "Schmalen Leerraum einfügen ..."
+
+#: ../../menuinfo.c:914 
+msgid "Insert Vertical Offset..."
+msgstr "Vertikalen Versatz einfügen ..."
+
+#: ../../menuinfo.c:917 
+msgid "Remove Vertical Offset..."
+msgstr "Vertikalen Versatz entfernen ..."
+
+#: ../../menuinfo.c:921 
+msgid "Set Script Fraction..."
+msgstr "Rel. Größe hochgestellter/tiefgestellter Zeichen ..."
+
+#: ../../menuinfo.c:930 
+msgid "Input Poly Pts"
+msgstr "Eingabe der Poly-Punkte"
+
+#: ../../menuinfo.c:933 
+msgid "Input Polygon Pts"
+msgstr "Eingabe der Polygonpunkte"
+
+#: ../../menuinfo.c:940 
+msgid "Specify An Arc..."
+msgstr "Winkel angeben ..."
+
+#: ../../menuinfo.c:942 
+msgid "Get Bounding Box"
+msgstr "Bestimme die Bildgröße (Selektierte Objekte)"
+
+#: ../../menuinfo.c:945 
+msgid "Create Rectangle From Bounding Box"
+msgstr "Erzeuge Rechteck aus der Bildgröße (Bounding Box)"
+
+#: ../../menuinfo.c:948 
+msgid "Create Oval From Bounding Box"
+msgstr "Erzeuge ein Oval aus der Bildgröße (Bounding Box)"
+
+#: ../../menuinfo.c:951 
+msgid "Create Rounded-corner Rectangle From Bounding Box"
+msgstr "Erzeuge verrundetes Rechteck aus der Bildgröße (Bounding Box)"
+
+#: ../../menuinfo.c:954 
+msgid "Create Pixmap From Selected"
+msgstr "Erzeuge eine Pixmap der ausgewählten Objekte"
+
+#: ../../menuinfo.c:964 
+msgid "Redraw"
+msgstr "Neu zeichnen"
+
+#: ../../menuinfo.c:965 ../../menuinfo.c:1739 ../../menuinfo.c:1777 
+msgid "Duplicate"
+msgstr "Duplizieren"
+
+#: ../../menuinfo.c:967 ../../menuinfo.c:1741 ../../menuinfo.c:1779 
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../../menuinfo.c:968 
+msgid "Select All"
+msgstr "Alles auswählen"
+
+#: ../../menuinfo.c:971 
+msgid "Undo"
+msgstr "Rückgängig machen"
+
+#: ../../menuinfo.c:973 
+msgid "Redo"
+msgstr "Wiederholen"
+
+#: ../../menuinfo.c:975 
+msgid "Flush Undo Buffer"
+msgstr "Den Rückgängig-Speicher leeren"
+
+#: ../../menuinfo.c:978 ../../menuinfo.c:1737 ../../menuinfo.c:1768 
+msgid "Copy"
+msgstr "Kopieren"
+
+#: ../../menuinfo.c:980 ../../menuinfo.c:1770 
+msgid "Copy Plain Text As Object"
+msgstr "Text als Objekt kopieren"
+
+#: ../../menuinfo.c:983 ../../menuinfo.c:1773 
+msgid "Cut"
+msgstr "Ausschneiden"
+
+#: ../../menuinfo.c:985 ../../menuinfo.c:1775 
+msgid "Paste"
+msgstr "Einfügen"
+
+#: ../../menuinfo.c:991 
+msgid "Copy Double-byte (UTF-8) String"
+msgstr "Kopiere einen UTF-8 String"
+
+#: ../../menuinfo.c:994 
+msgid "Paste Double-byte (UTF-8) String"
+msgstr "Füge einen UTF-8 String ein"
+
+#: ../../menuinfo.c:998 
+msgid "Generic Object Shadow"
+msgstr "Allgemeine Objektschattierung"
+
+#: ../../menuinfo.c:1000 ../../menuinfo.c:1876 ../../menuinfo.c:1960 
+msgid "Shape"
+msgstr "Muster"
+
+#: ../../menuinfo.c:1002 
+msgid "Set Shape Shadow..."
+msgstr "Musterschatten"
+
+#: ../../menuinfo.c:1005 ../../menuinfo.c:1746 ../../menuinfo.c:1884 ../../menuinfo.c:1980 
+msgid "Image Proc"
+msgstr "Bildbearbeitung"
+
+#: ../../menuinfo.c:1007 ../../menuinfo.c:1744 ../../menuinfo.c:1785 ../../menuinfo.c:1838 ../../menuinfo.c:1916 ../../menuinfo.c:1942 
+msgid "Properties"
+msgstr "Eigenschaften"
+
+#: ../../menuinfo.c:1010 
+msgid "Transformation"
+msgstr "Transformation"
+
+#: ../../menuinfo.c:1013 
+msgid "Bitmap/Pixmap/EPS"
+msgstr "Bitmap/Pixmap/EPS"
+
+#: ../../menuinfo.c:1015 
+msgid "Poly/Polygon"
+msgstr "Poly/Polygon"
+
+#: ../../menuinfo.c:1017 
+msgid "Text"
+msgstr "Text"
+
+#: ../../menuinfo.c:1019 
+msgid "Create Object"
+msgstr "Objekt erzeugen"
+
+#: ../../menuinfo.c:1022 
+msgid "Push Current Choice"
+msgstr "Push aktuelle Auswahl"
+
+#: ../../menuinfo.c:1025 
+msgid "Find Case Sensitive..."
+msgstr "Suchen (Groß- Kleinschreibung beachten) ..."
+
+#: ../../menuinfo.c:1028 
+msgid "Find No Case..."
+msgstr "Suchen ..."
+
+#: ../../menuinfo.c:1031 
+msgid "Find Again"
+msgstr "Wieder suchen"
+
+#: ../../menuinfo.c:1035 
+msgid "ConnectPins"
+msgstr "Verbinde Anschlüsse"
+
+#: ../../menuinfo.c:1042 
+msgid "Align Objects Top"
+msgstr "Objekte oben ausrichten"
+
+#: ../../menuinfo.c:1044 
+msgid "Align Objects Middle"
+msgstr "Objekte mittig ausrichten"
+
+#: ../../menuinfo.c:1047 
+msgid "Align Objects Bottom"
+msgstr "Objekte unten ausrichten"
+
+#: ../../menuinfo.c:1050 
+msgid "Align Objects Left"
+msgstr "Objekte links ausrichten"
+
+#: ../../menuinfo.c:1052 
+msgid "Align Objects Center"
+msgstr "Objekte mittig ausrichten"
+
+#: ../../menuinfo.c:1055 
+msgid "Align Objects Right"
+msgstr "Objekte rechts ausrichten"
+
+#: ../../menuinfo.c:1058 
+msgid "Center An End Point"
+msgstr "Am Ende zentrieren"
+
+#: ../../menuinfo.c:1067 
+msgid "Size To Widest"
+msgstr "Maximale Breite"
+
+#: ../../menuinfo.c:1070 
+msgid "Size To Narrowest"
+msgstr "So schmal wie möglich"
+
+#: ../../menuinfo.c:1073 
+msgid "Size To Tallest"
+msgstr "Maximale Länge"
+
+#: ../../menuinfo.c:1076 
+msgid "Size To Shortest"
+msgstr "So kurz wie möglich"
+
+#: ../../menuinfo.c:1080 
+msgid "Size To Given Width & Height..."
+msgstr "Skalieren nach gegebener Breite und Höhe ..."
+
+#: ../../menuinfo.c:1083 
+msgid "Size To Given Width..."
+msgstr "Skalieren nach gegebener Breite ..."
+
+#: ../../menuinfo.c:1086 
+msgid "Size To Given Height..."
+msgstr "Skalieren nach gegebener Höhe ..."
+
+#: ../../menuinfo.c:1118 
+msgid "Move Rotation Pivot To Center"
+msgstr "Pivot-Drehpunkt in die Mitte verschieben"
+
+#: ../../menuinfo.c:1121 
+msgid "Move Rotation Pivot To LeftTop Corner"
+msgstr "Pivot-Drehpunkt zur linken oberen Ecke verschieben"
+
+#: ../../menuinfo.c:1124 
+msgid "Move Rotation Pivot To RightTop Corner"
+msgstr "Pivot-Drehpunkt zur rechten oberen Ecke verschieben"
+
+#: ../../menuinfo.c:1127 
+msgid "Move Rotation Pivot To LeftBottom Corner"
+msgstr "Pivot-Drehpunkt zur linken unteren Ecke verschieben"
+
+#: ../../menuinfo.c:1130 
+msgid "Move Rotation Pivot To RightBottom Corner"
+msgstr "Pivot-Drehpunkt zur rechten unteren Ecke verschieben"
+
+#: ../../menuinfo.c:1133 
+msgid "Move Rotation Pivot To Left Center"
+msgstr "Pivot-Drehpunkt links mittig verschieben"
+
+#: ../../menuinfo.c:1136 
+msgid "Move Rotation Pivot To Right Center"
+msgstr "Pivot-Drehpunkt rechts mittig verschieben"
+
+#: ../../menuinfo.c:1139 
+msgid "Move Rotation Pivot To Top Center"
+msgstr "Pivot-Drehpunkt oben in die Mitte verschieben"
+
+#: ../../menuinfo.c:1142 
+msgid "Move Rotation Pivot To Bottom Center"
+msgstr "Pivot-Drehpunkt unten in die Mitte verschieben"
+
+#: ../../menuinfo.c:1151 
+msgid "Flip Horizontal"
+msgstr "Horizontal spiegeln"
+
+#: ../../menuinfo.c:1153 
+msgid "Flip Vertical"
+msgstr "Vertikal spiegeln"
+
+#: ../../menuinfo.c:1156 
+msgid "Rotate Clock-Wise"
+msgstr "Im Uhrzeigersinn drehen"
+
+#: ../../menuinfo.c:1158 
+msgid "Rotate Counter"
+msgstr "Gegen den Uhrzeigersinn drehen"
+
+#: ../../menuinfo.c:1162 
+msgid "Set Text Rotation..."
+msgstr "Textdrehung ..."
+
+#: ../../menuinfo.c:1164 
+msgid "Set Rotation Increment..."
+msgstr "Drehwinkelinkrement ..."
+
+#: ../../menuinfo.c:1168 
+msgid "Rotation Pivot"
+msgstr "Pivot-Drehung"
+
+#: ../../menuinfo.c:1170 
+msgid "Reset Rotation Pivot"
+msgstr "Pivot-Drehung deaktivieren"
+
+#: ../../menuinfo.c:1173 
+msgid "Specify Rotation Pivot..."
+msgstr "Koordinaten für die Pivot-Drehung angeben ..."
+
+#: ../../menuinfo.c:1177 
+msgid "Next Poly/Polygon Rotation Pivot"
+msgstr "Pivot-Drehung an der Ecke des nächste Poly/Polygons"
+
+#: ../../menuinfo.c:1180 
+msgid "Move Rotation Pivot To Arc Center"
+msgstr "Pivot-Drehung in Bogenmitte"
+
+#: ../../menuinfo.c:1183 
+msgid "Move Standard Rotation Pivot"
+msgstr "Bezugspunkt der Pivot-Drehung"
+
+#: ../../menuinfo.c:1192 
+msgid "Front"
+msgstr "In den Vordergrund"
+
+#: ../../menuinfo.c:1194 
+msgid "Back"
+msgstr "In den Hintergrund"
+
+#: ../../menuinfo.c:1197 
+msgid "Group"
+msgstr "Gruppieren"
+
+#: ../../menuinfo.c:1199 
+msgid "UnGroup"
+msgstr "Auftrennen"
+
+#: ../../menuinfo.c:1203 
+msgid "Lock"
+msgstr "Fixieren"
+
+#: ../../menuinfo.c:1205 
+msgid "UnLock"
+msgstr "Fixierung aufheben"
+
+#: ../../menuinfo.c:1208 ../../menuinfo.c:1848 ../../menuinfo.c:1950 
+msgid "Horizontal Align"
+msgstr "Horizontal ausrichten"
+
+#: ../../menuinfo.c:1210 ../../menuinfo.c:1850 ../../menuinfo.c:1952 
+msgid "Vertical Align"
+msgstr "Vertikal ausrichten"
+
+#: ../../menuinfo.c:1213 
+msgid "Align Objects"
+msgstr "Objekte ausrichten"
+
+#: ../../menuinfo.c:1216 
+msgid "Align Objects Direct"
+msgstr "Die Objekte direkt ausrichten"
+
+#: ../../menuinfo.c:1219 
+msgid "Align To Grid"
+msgstr "Am Gitter ausrichten"
+
+#: ../../menuinfo.c:1222 
+msgid "Align To Grid Direct"
+msgstr "Direkt am Gitter ausrichten"
+
+#: ../../menuinfo.c:1225 
+msgid "Align To Page"
+msgstr "An der Seite ausrichten"
+
+#: ../../menuinfo.c:1228 
+msgid "Align To Page Direct"
+msgstr "Direkt auf die Seite ausrichten"
+
+#: ../../menuinfo.c:1231 
+msgid "More Object Alignments"
+msgstr "Weitere Objektausrichtungen"
+
+#: ../../menuinfo.c:1234 
+msgid "Size Objects"
+msgstr "Objektrgöße anpassen"
+
+#: ../../menuinfo.c:1237 
+msgid "Distribute Objects"
+msgstr "Objekte verteilen"
+
+#: ../../menuinfo.c:1240 
+msgid "Distribute Objects Direct"
+msgstr "Objekte direkt verteilen"
+
+#: ../../menuinfo.c:1243 
+msgid "Layout On Arc"
+msgstr "Auf einem Bogen platzieren"
+
+#: ../../menuinfo.c:1246 
+msgid "Abut Horizontal"
+msgstr "Wagerecht ausrichten"
+
+#: ../../menuinfo.c:1249 
+msgid "Abut Vertical"
+msgstr "Senkrecht ausrichten"
+
+#: ../../menuinfo.c:1253 
+msgid "Flip/Rotate"
+msgstr "Spiegeln/Drehen"
+
+#: ../../menuinfo.c:1261 
+msgid "Off"
+msgstr "Aus"
+
+#: ../../menuinfo.c:1263 
+msgid "Jump"
+msgstr "Sprung"
+
+#: ../../menuinfo.c:1265 
+msgid "Smooth"
+msgstr "Weich"
+
+#: ../../menuinfo.c:1273 
+msgid "Show Bit/Pixmap"
+msgstr "Zeige Bit/Pixmap"
+
+#: ../../menuinfo.c:1277 
+msgid "Show Measurement"
+msgstr "Messwerte zeigen"
+
+#: ../../menuinfo.c:1279 
+msgid "Show Measurement in Tooltip"
+msgstr "Messwerte im Werkzeugfenster zeigen"
+
+#: ../../menuinfo.c:1282 
+msgid "Set Measure Unit..."
+msgstr "Setze Masseinheiten ..."
+
+#: ../../menuinfo.c:1285 ../../menuinfo.c:1817 
+msgid "Enable Right Margin"
+msgstr "Rechten Rand aktivieren"
+
+#: ../../menuinfo.c:1288 ../../menuinfo.c:1820 
+msgid "Specify Right Margin..."
+msgstr "Rechten Rand setzen ..."
+
+#: ../../menuinfo.c:1292 
+msgid "Show Menubar"
+msgstr "Zeige Auswahlfenster"
+
+#: ../../menuinfo.c:1294 
+msgid "Show Choice"
+msgstr "Zeige Auswahl"
+
+#: ../../menuinfo.c:1296 
+msgid "Show Status"
+msgstr "Zeige Status"
+
+#: ../../menuinfo.c:1298 
+msgid "Show Mode"
+msgstr "Zeige Modus"
+
+#: ../../menuinfo.c:1300 
+msgid "Show Chat"
+msgstr "Zeige Chatfenster"
+
+#: ../../menuinfo.c:1308 ../../menuinfo.c:1343 
+msgid "Go HyperSpace In Slide Show"
+msgstr "HyperSpace Modus in der Präsentation"
+
+#: ../../menuinfo.c:1311 ../../menuinfo.c:1346 
+msgid "Freehand Mode In Slide Show"
+msgstr "Freihandzeichnen in der Präsentation"
+
+#: ../../menuinfo.c:1315 
+msgid "Next Slide"
+msgstr "Nächste Folie"
+
+#: ../../menuinfo.c:1317 
+msgid "Prev Slide"
+msgstr "Vorhergehende Folie"
+
+#: ../../menuinfo.c:1320 ../../menuinfo.c:1494 ../../menuinfo.c:1887 ../../menuinfo.c:1918 ../../menuinfo.c:1978 
+msgid "Color"
+msgstr "Farbe"
+
+#: ../../menuinfo.c:1323 
+msgid "Exit Slide Show Mode"
+msgstr "Präsentationsmodus verlassen"
+
+#: ../../menuinfo.c:1331 ../../menuinfo.c:1420 
+msgid "Slide Show"
+msgstr "Präsentation"
+
+#: ../../menuinfo.c:1333 
+msgid "Set Slide Show Border Color..."
+msgstr "Rahmenfarbe der Präsentation ..."
+
+#: ../../menuinfo.c:1336 
+msgid "Set Slide Show Window Offsets..."
+msgstr "Positionsversatz der Präsentation ..."
+
+#: ../../menuinfo.c:1339 
+msgid "Visible Grid In Slide Show"
+msgstr "Sichtbares Gitter bei der Präsentation"
+
+#: ../../menuinfo.c:1355 
+msgid "Zoom In"
+msgstr "Vergrössern"
+
+#: ../../menuinfo.c:1356 
+msgid "Zoom Out"
+msgstr "Verkleinern"
+
+#: ../../menuinfo.c:1357 
+msgid "Default Zoom"
+msgstr "Standardgröße"
+
+#: ../../menuinfo.c:1358 
+msgid "Zoom Way Out"
+msgstr "Vollbild"
+
+#: ../../menuinfo.c:1366 ../../menuinfo.c:1795 
+msgid "+Grid"
+msgstr "+Gitterlinien"
+
+#: ../../menuinfo.c:1367 ../../menuinfo.c:1796 
+msgid "-Grid"
+msgstr "-Gitterlinien"
+
+#: ../../menuinfo.c:1368 ../../menuinfo.c:1797 
+msgid "Visible Grid"
+msgstr "Gitter sichtbar"
+
+#: ../../menuinfo.c:1370 ../../menuinfo.c:1799 
+msgid "Snap To Grid"
+msgstr "Am Gitter ausrichten"
+
+#: ../../menuinfo.c:1373 ../../menuinfo.c:1802 
+msgid "Save Origin"
+msgstr "Ursprung sichern"
+
+#: ../../menuinfo.c:1376 ../../menuinfo.c:1805 
+msgid "Scroll To Origin"
+msgstr "Gehe zum Ursprung"
+
+#: ../../menuinfo.c:1378 
+msgid "Scroll Mode"
+msgstr "Blättermodus"
+
+#: ../../menuinfo.c:1381 ../../menuinfo.c:1808 
+msgid "Zoom"
+msgstr "Skalierung"
+
+#: ../../menuinfo.c:1393 ../../menuinfo.c:1845 ../../menuinfo.c:1948 
+msgid "Page Layout"
+msgstr "Seitenlayout"
+
+#: ../../menuinfo.c:1403 ../../menuinfo.c:1811 
+msgid "Set Reduction..."
+msgstr "Skalierungsfaktor setzen ..."
+
+#: ../../menuinfo.c:1406 ../../menuinfo.c:1814 
+msgid "Metric Grid"
+msgstr "Metrisches Gitter"
+
+#: ../../menuinfo.c:1409 
+msgid "One Motion Select Move"
+msgstr "Auswählen/verschieben mit einem Klick"
+
+#: ../../menuinfo.c:1412 
+msgid "Use Gray Scale"
+msgstr "Verwende Graustufen"
+
+#: ../../menuinfo.c:1415 
+msgid "Use Color Layers"
+msgstr "Verwende Farblayer"
+
+#: ../../menuinfo.c:1418 
+msgid "Show/Hide"
+msgstr "Zeigen/Verbergen"
+
+#: ../../menuinfo.c:1428 
+msgid "Copy Properties..."
+msgstr "Kopiereigenschaften ..."
+
+#: ../../menuinfo.c:1431 
+msgid "Paste Properties..."
+msgstr "Einfügeeigenschaften ..."
+
+#: ../../menuinfo.c:1434 
+msgid "Save Properties..."
+msgstr "Eigenschaften sichern ..."
+
+#: ../../menuinfo.c:1437 
+msgid "Restore Properties..."
+msgstr "Eigenschaften wiederherstellen ..."
+
+#: ../../menuinfo.c:1442 
+msgid "Update Objects"
+msgstr "Objekte aktualisieren"
+
+#: ../../menuinfo.c:1447 
+msgid "Set Selected Line Width..."
+msgstr "Linienbreite auswählen ..."
+
+#: ../../menuinfo.c:1450 
+msgid "Set Selected Font Size..."
+msgstr "Zeichensatzgröße auswählen ..."
+
+#: ../../menuinfo.c:1454 
+msgid "Add Color..."
+msgstr "Farbe hinzufügen ..."
+
+#: ../../menuinfo.c:1456 
+msgid "Choose Color..."
+msgstr "Farbe wählen .."
+
+#: ../../menuinfo.c:1460 
+msgid "Set Edit Text Size..."
+msgstr "Wähle Größe des bearbeiteten Textes ..."
+
+#: ../../menuinfo.c:1463 
+msgid "Set Alt Edit Text BgColor..."
+msgstr "Wähle den Texthintergrundfarbe bei Alt Edit ..."
+
+#: ../../menuinfo.c:1466 
+msgid "Set Alt Edit Text Highlight Color..."
+msgstr "Wähle Farbe des hervorgehobenen Textes bei Alt Edit ..."
+
+#: ../../menuinfo.c:1469 
+msgid "Use Alt Edit Text BgColor"
+msgstr "Verwende Alt Edit Text Hintergrundfarbe"
+
+#: ../../menuinfo.c:1473 ../../menuinfo.c:1853 ../../menuinfo.c:1954 
+msgid "Font"
+msgstr "Zeichensatz"
+
+#: ../../menuinfo.c:1475 ../../menuinfo.c:1855 ../../menuinfo.c:1956 
+msgid "Text Style"
+msgstr "Zeichensatzstil"
+
+#: ../../menuinfo.c:1477 ../../menuinfo.c:1857 ../../menuinfo.c:1958 
+msgid "Text Size"
+msgstr "Zeichensatzgröße"
+
+#: ../../menuinfo.c:1480 ../../menuinfo.c:1860 ../../menuinfo.c:1964 
+msgid "Line Dash"
+msgstr "Linienstrichlierung"
+
+#: ../../menuinfo.c:1482 ../../menuinfo.c:1862 ../../menuinfo.c:1966 
+msgid "Line Style"
+msgstr "Linienstil"
+
+#: ../../menuinfo.c:1484 ../../menuinfo.c:1864 ../../menuinfo.c:1968 
+msgid "Line Type"
+msgstr "Linienart"
+
+#: ../../menuinfo.c:1486 ../../menuinfo.c:1866 ../../menuinfo.c:1970 
+msgid "Line Width"
+msgstr "Linienbreite"
+
+#: ../../menuinfo.c:1489 ../../menuinfo.c:1869 ../../menuinfo.c:1972 
+msgid "Fill"
+msgstr "Füllen"
+
+#: ../../menuinfo.c:1491 ../../menuinfo.c:1871 ../../menuinfo.c:1974 
+msgid "Pen"
+msgstr "Stift"
+
+#: ../../menuinfo.c:1496 ../../menuinfo.c:1880 ../../menuinfo.c:1976 
+msgid "Transparent Pattern"
+msgstr "Transparenz"
+
+#: ../../menuinfo.c:1504 
+msgid "Go Back"
+msgstr "Zurück"
+
+#: ../../menuinfo.c:1505 
+msgid "Go Forward"
+msgstr "Vorwärts"
+
+#: ../../menuinfo.c:1507 
+msgid "Refresh Current"
+msgstr "Neuzeichnen"
+
+#: ../../menuinfo.c:1510 
+msgid "Hot List..."
+msgstr "Favoriten ..."
+
+#: ../../menuinfo.c:1512 
+msgid "Add Current To Hot List"
+msgstr "Aktuelles zu den Favoriten hinzufügen"
+
+#: ../../menuinfo.c:1516 
+msgid "Session History..."
+msgstr "Sitzungshistorie ..."
+
+#: ../../menuinfo.c:1520 
+msgid "Hyper Space"
+msgstr "Hyperraum"
+
+#: ../../menuinfo.c:1528 
+msgid "Attach Attributes"
+msgstr "Eigenschaften fixieren"
+
+#: ../../menuinfo.c:1531 
+msgid "Detach Attributes"
+msgstr "Eigenschaften abtrennen"
+
+#: ../../menuinfo.c:1535 
+msgid "Edit Attributes..."
+msgstr "Eigenschaften bearbeiten ..."
+
+#: ../../menuinfo.c:1539 
+msgid "Show Attributes"
+msgstr "Eigenschaften zeigen"
+
+#: ../../menuinfo.c:1542 
+msgid "Show Attribute Names"
+msgstr "Bezeichnungen der Eigenschaften zeigen"
+
+#: ../../menuinfo.c:1545 
+msgid "Hide Attributes"
+msgstr "Eigenschaften verstecken"
+
+#: ../../menuinfo.c:1548 
+msgid "Hide Attribute Names"
+msgstr "Eigenschaftsbezeichnungen verstecken"
+
+#: ../../menuinfo.c:1551 
+msgid "Toggle Eq Attribute Shown..."
+msgstr "Schalte Eq Attribut um ..."
+
+#: ../../menuinfo.c:1555 
+msgid "Move/Justfy An Attribute"
+msgstr "Bewegen/Ausrichten einer Eigenschaft"
+
+#: ../../menuinfo.c:1559 
+msgid "Import Attributes..."
+msgstr "Eigenschaften importieren ..."
+
+#: ../../menuinfo.c:1562 
+msgid "Export Attributes..."
+msgstr "Eigenschaften exportieren ..."
+
+#: ../../menuinfo.c:1571 
+msgid "Attach File Attributes"
+msgstr "Dateieigenschaften fixieren"
+
+#: ../../menuinfo.c:1574 
+msgid "Detach File Attributes"
+msgstr "Dateieigenschaften lösen"
+
+#: ../../menuinfo.c:1578 
+msgid "Edit File Attributes..."
+msgstr "Dateieigenschaften bearbeiten ..."
+
+#: ../../menuinfo.c:1587 
+msgid "Animate Send"
+msgstr "Animieren Senden"
+
+#: ../../menuinfo.c:1590 
+msgid "Animate Flash"
+msgstr "Animate Flash"
+
+#: ../../menuinfo.c:1594 
+msgid "Renumber Object IDs"
+msgstr "Objektnummerierung erneuern"
+
+#: ../../menuinfo.c:1603 
+msgid "Connect Two Ports by a Wire..."
+msgstr "Zwei Ein/Ausgänge mit einer Leitung verbinden ..."
+
+#: ../../menuinfo.c:1606 
+msgid "Repeat Connect Two Ports by a Wire..."
+msgstr "Wiederholt zwei Ein/Ausgänge verbinden ..."
+
+#: ../../menuinfo.c:1610 
+msgid "Show Wire Signal Name"
+msgstr "Zeige die Signalbezeichnung des Drahtes"
+
+#: ../../menuinfo.c:1614 
+msgid "Merge Ports with An Object"
+msgstr "Verschmelze Ein/Ausgänge mit einem Objekt"
+
+#: ../../menuinfo.c:1617 
+msgid "Connect Ports to a Broadcast Wire"
+msgstr "Verbinde gewählte Ein/Ausgänge mit einer Leitung"
+
+#: ../../menuinfo.c:1621 
+msgid "Clear Signal Name for a Port..."
+msgstr "Lösche die Signalbezeichnung für einen Ein/Ausgang ..."
+
+#: ../../menuinfo.c:1624 
+msgid "Rename Signal Name for a Port..."
+msgstr "Ändere die Signalbezeichnung für einen Ein/Ausgang ..."
+
+#: ../../menuinfo.c:1633 
+msgid "Merge With Table..."
+msgstr "Mit Tabelle vereinigen ..."
+
+#: ../../menuinfo.c:1636 
+msgid "Export To Table..."
+msgstr "Zur Tabelle exportieren ..."
+
+#: ../../menuinfo.c:1645 
+msgid "Make Symbolic"
+msgstr "Zum Symbol machen"
+
+#: ../../menuinfo.c:1648 
+msgid "UnMake Symbolic"
+msgstr "Symbol restaurieren"
+
+#: ../../menuinfo.c:1652 
+msgid "Instantiate..."
+msgstr "Instanzieren ..."
+
+#: ../../menuinfo.c:1656 
+msgid "Make Iconic..."
+msgstr "Zum Icon machen ..."
+
+#: ../../menuinfo.c:1659 
+msgid "UnMake Iconic"
+msgstr "Icon wiederherstellen"
+
+#: ../../menuinfo.c:1663 
+msgid "Push"
+msgstr "Abwärts"
+
+#: ../../menuinfo.c:1666 
+msgid "Pop"
+msgstr "Aufwärts"
+
+#: ../../menuinfo.c:1670 
+msgid "Attribute"
+msgstr "Eigenschaften"
+
+#: ../../menuinfo.c:1672 
+msgid "File Attribute"
+msgstr "Dateieigenschaften"
+
+#: ../../menuinfo.c:1675 
+msgid "Update Symbols"
+msgstr "Symbole aktualisieren"
+
+#: ../../menuinfo.c:1678 
+msgid "Save Sym In Library..."
+msgstr "Symbol in Library speichern ..."
+
+#: ../../menuinfo.c:1681 
+msgid "Replace Graphic"
+msgstr "Grafik austauschen"
+
+#: ../../menuinfo.c:1685 
+msgid "Domain"
+msgstr "Bereich"
+
+#: ../../menuinfo.c:1687 
+msgid "Ports and Signals"
+msgstr "Ein/Ausgänge und Signale"
+
+#: ../../menuinfo.c:1689 
+msgid "Table"
+msgstr "Tabelle"
+
+#: ../../menuinfo.c:1691 
+msgid "Misc"
+msgstr "Verschiedenes"
+
+#: ../../menuinfo.c:1693 
+msgid "Return"
+msgstr "Zurück"
+
+#: ../../menuinfo.c:1696 
+msgid "Exec Cmds From File..."
+msgstr "Führe Befehle aus Datei aus ..."
+
+#: ../../menuinfo.c:1705 
+msgid "Latest Release Info"
+msgstr "Letzter Ausgabestand"
+
+#: ../../menuinfo.c:1709 
+msgid "Copyright"
+msgstr "Copyright"
+
+#: ../../menuinfo.c:1712 
+msgid "About"
+msgstr "Über"
+
+#: ../../menuinfo.c:1734 ../../menuinfo.c:1765 
+msgid "Mode"
+msgstr "Modus"
+
+#: ../../menuinfo.c:1749 
+msgid "Edit Attribute In Editor"
+msgstr "Bearbeite Eigenschaft im Editor"
+
+#: ../../menuinfo.c:1752 
+msgid "Edit Attribute Group In Editor"
+msgstr "Bearbeite Eigenschaftsgruppe im Editor"
+
+#: ../../menuinfo.c:1755 
+msgid "Get Property"
+msgstr "Hole Eigenschaft"
+
+#: ../../menuinfo.c:1757 
+msgid "Peek Dimension"
+msgstr "Dimension nachprüfen"
+
+#: ../../menuinfo.c:1782 
+msgid "Move Edit Text Box..."
+msgstr "Verschiebe Textbearbeitungsrahmen ..."
+
+#: ../../menuinfo.c:1830 ../../menuinfo.c:1908 ../../menuinfo.c:1934 
+msgid "File"
+msgstr "Datei"
+
+#: ../../menuinfo.c:1832 ../../menuinfo.c:1910 ../../menuinfo.c:1936 
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: ../../menuinfo.c:1834 ../../menuinfo.c:1912 ../../menuinfo.c:1938 
+msgid "Layout"
+msgstr "Layout"
+
+#: ../../menuinfo.c:1836 ../../menuinfo.c:1914 ../../menuinfo.c:1940 
+msgid "Arrange"
+msgstr "Ausrichten"
+
+#: ../../menuinfo.c:1874 ../../menuinfo.c:1944 
+msgid "Move Mode"
+msgstr "Verschiebemodus"
+
+#: ../../menuinfo.c:1878 ../../menuinfo.c:1962 
+msgid "Stretchable Text"
+msgstr "Dehnbarer Text"
+
+#: ../../menuinfo.c:1889 ../../menuinfo.c:1920 ../../menuinfo.c:1982 
+msgid "Navigate"
+msgstr "Navigation"
+
+#: ../../menuinfo.c:1891 ../../menuinfo.c:1922 ../../menuinfo.c:1984 
+msgid "Special"
+msgstr "Spezielles"
+
+#: ../../menuinfo.c:1893 ../../menuinfo.c:1924 ../../menuinfo.c:1986 
+msgid "Tangram-II"
+msgstr "Tangram-II"
+
+#: ../../menuinfo.c:1895 ../../menuinfo.c:1926 ../../menuinfo.c:1988 
+msgid "Help"
+msgstr "Hilfe"
+
+#: ../../menuinfo.c:1946 
+msgid "Page"
+msgstr "Seite"
+
+# Zeilenzahl: 1994
+# Gültige Einträge: 522
