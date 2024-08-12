@@ -37,6 +37,13 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
+#ifdef HAVE_LIBIDN
+#include <stringprep.h>
+#endif /* HAVE_LIBIDN */
+
+/* avoid messages about unused variables ... */
+#define UNUSED(p) ( (void) (p) )
+
 #ifdef HAVE_GETTIMEOFDAY
 #undef _NO_GETTIMEOFDAY
 #endif /* HAVE_GETTIMEOFDAY */

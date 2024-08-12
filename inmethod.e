@@ -36,10 +36,16 @@ extern char	cmdLineInputMethod[];
 #define extern
 #endif /*_INCLUDE_FROM_INMETHOD_C_*/
 
+#ifndef HAVE_LIBIDN
 extern int	Tgim_has_stringprep_convert ARGS_DECL((void));
 extern char	*Tgim_stringprep_convert ARGS_DECL((const char *str,
 		                                    const char *to_codeset,
 		                                    const char *from_codeset));
+#define IDNSTRSZ 1024
+#define LIBDIRS ((char const*[]) {"/lib/", "/lib64/", "/usr/lib/", "/usr/lib64/", "/usr/local/lib/", "/usr/local/lib64/"})
+#define LIBDIRSELEM 6
+#define LIBIDN "libidn.so."
+#endif /* HAVE_LIBIDN */
 
 extern void	CleanUpInputMethods ARGS_DECL((void));
 extern int	InitInputMethods ARGS_DECL((void));

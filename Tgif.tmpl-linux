@@ -53,7 +53,7 @@ MISCDEFINES	= -D_BACKGROUND_DONT_FORK -D_USE_XDRAWPOINT_TO_PUT_A_POINT \@@\
 		  -DDEFATTRGROUP=\"TANGRAM-II:Declaration:Events:Messages:Rewards:Initialization:Watches\" \@@\
 		  -D_NO_NKF -D_NO_CHINPUT -D_NO_XCIN \@@\
 		  -DUSE_XT_INITIALIZE -DPTHREAD
-MOREDEFINES	=
+MOREDEFINES	= -DHAVE_LIBIDN
 
 XCOMM ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 XCOMM Please see Imakefile for more defines to be added to MOREDEFINES above

@@ -3809,8 +3809,12 @@ int HandleDoubleByteUTF8Chars(s, has_ch)
    char *s;
    int has_ch;
 {
+#ifdef HAVE_LIBIDN
+   if (has_ch >= 2 && !canvasFontDoubleByte) {
+#else
    if (has_ch >= 2 && !canvasFontDoubleByte &&
          Tgim_has_stringprep_convert()) {
+#endif
       char *psz=NULL, *psz1=NULL, *psz2=NULL, *psz_encoding=NULL;
       char buf[MAXSTRING];
 
@@ -3831,8 +3835,12 @@ int HandleDoubleByteUTF8Chars(s, has_ch)
          *psz2 = '-';
       }
       if (psz_encoding != NULL) {
-         psz = Tgim_stringprep_convert(s, psz_encoding, "utf-8");
-         if (psz != NULL && strlen(psz) == 1) {
+#ifdef HAVE_LIBIDN
+	    psz = stringprep_convert(s, psz_encoding, "utf-8");
+#else
+	    psz = Tgim_stringprep_convert(s, psz_encoding, "utf-8");
+#endif /* HAVE_LIBIDN */
+	   if (psz != NULL && strlen(psz) == 1) {
             s[0] = psz[0];
             s[1] = '\0';
             has_ch = 1;

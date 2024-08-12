@@ -637,6 +637,7 @@ static struct tagIMInfo gstIMInfo[] = {
    }
 };
 
+#ifndef HAVE_LIBIDN
 static void *gpLibIdnHandle=NULL;
 static Tgim_stringprep_convert_Func *gpfn_stringprep_convert=NULL;
 
@@ -654,7 +655,24 @@ static
 void InitTgim_stringprep_convert()
 {
 #if (!defined(_NO_IDNLIB) || defined(HAVE_LIBZ))
-   gpLibIdnHandle = OPEN_DL("libidn.so", OPEN_DL_MODE);
+  int loop, len;
+  char libidnname[IDNSTRSZ], pathname[IDNSTRSZ];
+  extern void list_libdirectory (char *dirname, char *libidnname, int *done);
+
+  /* no better idea - loop through the list of libdirs and search for the entry with LIBIDN - 
+	libidnname will contain the value at the end. */
+  for (loop=0; loop < LIBDIRSELEM; loop ++){
+    sprintf (&pathname[0], "%s", LIBDIRS[loop]);
+    list_libdirectory(&pathname[0], &libidnname[0], &loop);
+  }
+  if ((len=readlink(&libidnname[0], &libidnname[0], IDNSTRSZ-1))>0){
+    /* readlink() does not null terminate the string. Let us do this manually ... */
+    libidnname[len]='\0';
+  }
+  else {
+    libidnname[0]='\0';
+  }
+   gpLibIdnHandle = OPEN_DL(&libidnname[0], OPEN_DL_MODE);
    if (gpLibIdnHandle != NULL) {
       gpfn_stringprep_convert =
             (Tgim_stringprep_convert_Func*)GET_DL_SYM(gpLibIdnHandle,
@@ -664,6 +682,33 @@ void InitTgim_stringprep_convert()
          gpLibIdnHandle = NULL;
       }
    }
+}
+/* Search for LIBIDN within dirname and store the result in libidnname */
+void list_libdirectory(char *dirname, char *libidnname, int *done){
+  /* Scan files in directory */
+  struct dirent **files;
+  int n, i;
+
+  n = scandir(dirname, &files, NULL, alphasort);
+
+  /* Loop through file names */
+  if (n > 0){
+    for (i = 0; i < n; i++) {
+	 /* Get pointer to file entry */
+	 struct dirent *ent = files[i];
+	 if (strstr (ent->d_name, LIBIDN)){
+	   /* found it -> break the loops (both here and in the calling function ) */
+	   i=n;
+	   *done=LIBDIRSELEM;
+	   sprintf(libidnname, "%s%s", dirname, ent->d_name);
+	 }
+    }
+    /* Release file names */
+    for (i = 0; i < n; i++) {
+	 free(files[i]);
+    }
+    free(files);
+  }
 #endif /* (!defined(_NO_IDNLIB) || defined(HAVE_LIBZ)) */
 }
 
@@ -687,10 +732,13 @@ char *Tgim_stringprep_convert(const char *str, const char *to_codeset,
 #endif /* (!defined(_NO_IDNLIB) || defined(HAVE_LIBZ)) */
    return NULL;
 }
+#endif /* HAVE_LIBIDN */
 
 void CleanUpInputMethods()
 {
-   CleanUpTgim_stringprep_convert();
+#ifndef HAVE_LIBIDN
+  CleanUpTgim_stringprep_convert();
+#endif /* HAVE_LIBIDN */
    if (gnInputMethodIndex != INVALID &&
          gstIMInfo[gnInputMethodIndex].pCleanUpFunc != NULL) {
       (gstIMInfo[gnInputMethodIndex].pCleanUpFunc)(mainDisplay, mainWindow);
@@ -815,10 +863,12 @@ int InitInputMethods()
          fprintf(stderr, "\n");
       }
    }
+#ifndef HAVE_LIBIDN
    if (gnSingleOrDoubleByteInputMethod == TGIM_SBIM &&
          gnInputMethod != INVALID) {
       InitTgim_stringprep_convert();
    }
+#endif /* HAVE_LIBIDN */
    return TRUE;
 }
 

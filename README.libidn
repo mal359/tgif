@@ -1,0 +1,17 @@
+Watchout!
+Recent distributions of linux always have stringprep_convert as part of
+libidn. Due to this a code simplification has been introduced that can 
+be controlled by the compile time switch:
+
+MOREDEFINES	= -DHAVE_LIBIDN
+
+in either Tgif.tmpl and / or Tgif.tmp-linux.
+
+If this is defined (and libidn is linked to tgif) the call to
+stringprep_convert is used directly, seveal function pointer definitions
+within inmethod.c are commented out.
+
+To revert to the original behavior simply remove the -DHAVE_LIBIDN from the
+compile time parameters and you will be back to the original behavior.
+
+Dieter Jurzitza / 2021-01-03
